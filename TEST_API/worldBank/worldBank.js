@@ -74,22 +74,22 @@ async function fetchAndLogData(iso3) {
     const country = iso3;
     const transformedData = await fetchDataByCategory(country);
 
-    // console.log(transformedData);
+    console.log(transformedData);
 
     // Log country information
     // console.log('Country:', transformedData.country);
 
-    // Log category information
-    for (const category of Object.keys(transformedData)) {
-      if (category !== 'country') {
-        console.log('\nCategory:', category);
-        for (const item of transformedData[category]) {
-          console.log('Indicator:', item.indicator);
-          console.log('Values:', item.values);
-          console.log('----------------------');
-        }
-      }
-    }
+    // // Log category information
+    // for (const category of Object.keys(transformedData)) {
+    //   if (category !== 'country') {
+    //     console.log('\nCategory:', category);
+    //     for (const item of transformedData[category]) {
+    //       console.log('Indicator:', item.indicator);
+    //       console.log('Values:', item.values);
+    //       console.log('----------------------');
+    //     }
+    //   }
+    // }
   } catch (error) {
     console.error(error);
   }

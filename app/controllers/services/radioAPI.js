@@ -9,8 +9,16 @@ async function fetchRadioData(isoCode) {
   };
 
   try {
-    const data = await RadioBrowser.getStations(filter);
-    logger.info(data);
+    const [data] = await RadioBrowser.getStations(filter); // Utilisation de [data] pour extraire le premier élément du tableau
+    const { name, url, url_resolved, homepage, favicon } = data; // Déconstruction pour extraire les propriétés spécifiques
+
+    const extractedData = {
+      name,
+      url,
+      url_resolved,
+      homepage,
+    };
+    return(extractedData);
   } catch (error) {
     logger.error(error);
   }

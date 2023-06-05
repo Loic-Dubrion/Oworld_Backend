@@ -74,11 +74,12 @@ async function fetchAndLogData(iso3) {
   try {
     const country = iso3;
     const transformedData = await fetchDataByCategory(country);
-    return ('Country:', transformedData.country);
+    console.log('Country:', transformedData.country);
+    return transformedData;
   } catch (error) {
     logger.error(error);
     return null;
   }
 }
 
-fetchAndLogData('FRA');
+module.exports = fetchAndLogData;
