@@ -1,15 +1,19 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const faker = require('faker');
 const client = require('../app/services/clientdb');
 const logger = require('../app/services/logger');
 
-// Fonction pour insérer les utilisateurs dans la base de données
+/**
+ *  Generate 300 fictitious users
+ *  Assign roles to each user
+ *  and insert in database
+ */
 async function insertUsers() {
   try {
     await client.connect();
 
-    // Générer 300 utilisateurs fictifs
     const users = [];
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 300; i += 1) {
       const username = faker.internet.userName();
       const email = faker.internet.email();
       const password = faker.internet.password();
@@ -29,7 +33,7 @@ async function insertUsers() {
       users.push(user);
     }
 
-    // Insertion des utilisateurs dans la base de données
+    // Insert users
     const query = `
       INSERT INTO "user" ("username", "email", "password", "country_origin", "birth_date")
       VALUES ($1, $2, $3, $4, $5)
@@ -41,16 +45,22 @@ async function insertUsers() {
       VALUES ($1, $2)
     `;
 
-    for (let i = 0; i < users.length; i++) {
-      const user = users[i];
-      const result = await client.query(query, [user.username, user.email, user.password, user.country_origin, user.birth_date]);
+    const promises = users.map(async (user, index) => {
+      const result = await client.query(
+        query,
+        [
+          user.username, user.email, user.password, user.country_origin, user.birth_date,
+        ],
+      );
       const userId = result.rows[0].id;
 
-      // Attribuer le rôle souhaité à chaque utilisateur
-      const roleId = i < 10 ? 1 : 2; // Admin (id 1) pour les 10 premiers, User (id 2) pour les autres
+      //  Assign the desired role to each user
+      const roleId = index < 10 ? 1 : 2; // Admin for the first 10, User for the others
       const userRole = { user_id: userId, role_id: roleId };
       await client.query(roleQuery, [userRole.user_id, userRole.role_id]);
-    }
+    });
+
+    await Promise.all(promises);
 
     logger.info('Utilisateurs insérés avec succès dans la base de données');
   } catch (error) {
@@ -60,6 +70,4 @@ async function insertUsers() {
   }
 }
 
-
-// Appel de la fonction d'insertion des utilisateurs
 insertUsers();
