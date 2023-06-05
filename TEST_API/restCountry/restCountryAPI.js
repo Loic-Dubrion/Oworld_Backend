@@ -21,15 +21,7 @@ const param = {
   ],
 };
 
-const param2 = {
-  service: 'all',
-  fields: [
-    'languages',
-  ],
-};
-
 const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
-const url2 = `${baseUrl}/${param2.service}?fields=${param2.fields}`;
 
 async function fetchData() {
   try {
