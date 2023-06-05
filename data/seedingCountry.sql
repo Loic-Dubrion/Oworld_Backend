@@ -1,4 +1,4 @@
-INSERT INTO "country" ("name", iso2, iso3, iso_numeric, insolite)
+INSERT INTO "country" ("name", "iso2", "iso3", "iso_numeric", "insolite")
 VALUES
     ('Afghanistan', 'AF', 'AFG', 4, NULL),
     ('Îles Åland', 'AX', 'ALA', 248, NULL),

@@ -8,16 +8,19 @@ const logger = require('../app/services/logger');
  *  Assign roles to each user
  *  and insert in database
  */
-async function insertUsers() {
+(async function() {
+  let connectionEstablished = false;
   try {
     await client.connect();
+    connectionEstablished = true;
+    logger.info('Database connection established.');
 
     const users = [];
     for (let i = 0; i < 300; i += 1) {
       const username = faker.internet.userName();
       const email = faker.internet.email();
       const password = faker.internet.password();
-      const countryOrigin = faker.datatype.number({ min: 1, max: 195 });
+      const countryOrigin = faker.datatype.number({ min: 1, max: 30 }); // Users are from 30 different countries
       const birthDate = faker.date.between(
         new Date('1928-01-01'),
         new Date('2008-01-01'),
@@ -45,29 +48,47 @@ async function insertUsers() {
       VALUES ($1, $2)
     `;
 
-    const promises = users.map(async (user, index) => {
-      const result = await client.query(
-        query,
-        [
-          user.username, user.email, user.password, user.country_origin, user.birth_date,
-        ],
-      );
-      const userId = result.rows[0].id;
+    const favQuery = `
+      INSERT INTO "user_has_favorite" ("user_id", "country_id")
+      VALUES ($1, $2)
+    `;
 
-      //  Assign the desired role to each user
-      const roleId = index < 10 ? 1 : 2; // Admin for the first 10, User for the others
-      const userRole = { user_id: userId, role_id: roleId };
-      await client.query(roleQuery, [userRole.user_id, userRole.role_id]);
+    const promises = users.map(async (user, index) => {
+      try {
+        const result = await client.query(
+          query,
+          [
+            user.username, user.email, user.password, user.country_origin, user.birth_date,
+          ],
+        );
+        const userId = result.rows[0].id;
+
+        const roleId = index < 10 ? 1 : 2;
+        const userRole = { user_id: userId, role_id: roleId };
+        await client.query(roleQuery, [userRole.user_id, userRole.role_id]);
+
+        // Insert favorite countries for each user
+        const favoriteCountriesCount = faker.datatype.number({ min: 0, max: 10 });
+        for (let i = 0; i < favoriteCountriesCount; i++) {
+          const countryId = faker.datatype.number({ min: 20, max: 50 }); // Each user has favorites from 30 different countries
+          await client.query(favQuery, [userId, countryId]);
+        }
+
+      } catch (error) {
+        logger.error(`Error inserting user ${index}`, error);
+        // instead of throwing error, just return to continue with the other users
+        return;
+      }
     });
 
     await Promise.all(promises);
-
-    logger.info('Utilisateurs insérés avec succès dans la base de données');
+    logger.info('Users successfully inserted in the database 🎉');
   } catch (error) {
-    logger.error('Erreur lors de l\'insertion des utilisateurs dans la base de données', error);
+    logger.error('Error inserting users into the database', error);
   } finally {
-    await client.end();
+    if (connectionEstablished) {
+      client.end();
+    }
+    process.exit();
   }
-}
-
-insertUsers();
+})();

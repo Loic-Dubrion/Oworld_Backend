@@ -1,4 +1,4 @@
-const logger = require('../../services/logger');
+const logger = require('../services/logger');
 
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
