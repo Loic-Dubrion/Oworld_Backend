@@ -1,42 +1,37 @@
-GET /api/oworld/:UserID
-
-- Tous les pays (id, iso, name)
-- Les pays favoris (id, iso, name)
-
 const express = require('express');
 
 const router = express.Router();
 
 router.get(
-  '/:userID',
+  '/:userID'
 );
 // - Objet avec détail d'un pays ( catégories api rest world bank)
 // - Les pays favoris
 // - % de pays favoris vs total
 
 router.get(
-  '/:userID/:countryId',
+  '/:userID/:countryId'
 );
 // - Objet avec détail d'un pays ( catégories api rest world bank)
 // - Les pays favoris
 // - % de pays favoris vs total
 
 router.post(
-  '/:userID/:countryID/',
+  '/:userID/:countryID/'
 );
 // - ajout d'un favoris
 
 router.put(
-  '/:userID',
+  '/:userID'
 );
 // - Modifier le profil
 // - Modifier les pays pin
 
 router.delete(
-  '/:userID',
+  '/:userID'
 );
 
 router.delete(
-  '/:userID/:countryID/',
+  '/:userID/:countryID/'
 );
 // - supp d'un favoris

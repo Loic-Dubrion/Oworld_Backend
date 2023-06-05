@@ -1,5 +1,6 @@
 const express = require('express');
 
+const { apiController } = require('../../controllers/API');
 const adminRouter = require('./admin');
 const visitorRouter = require('./visitor');
 const userRouter = require('./user');
@@ -10,10 +11,12 @@ const apiErrorHandler = require('../../errors/apiErrorHandler');
 
 const router = express.Router();
 
-router.use('/oworld', visitorRouter);
-router.use('/users', userRouter);
-router.use('/admin', adminRouter);
-router.use('/account', accountRouter);
+router.all('/', apiController.getHome);
+
+// router.use('/oworld', visitorRouter);
+// router.use('/users', userRouter);
+// router.use('/admin', adminRouter);
+// router.use('/account', accountRouter);
 
 router.use((request, response, next) => {
   next(new Error404());

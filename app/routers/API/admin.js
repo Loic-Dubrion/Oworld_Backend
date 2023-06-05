@@ -9,5 +9,5 @@ const router = express.Router();
 // - Le nombre de pins par pays
 // - Le nombre de d'utilisateur pour chaque pays visités
 router.get(
-  '/stats',
+  '/stats'
 );

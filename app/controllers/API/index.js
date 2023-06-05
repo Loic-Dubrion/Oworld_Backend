@@ -1,6 +1,3 @@
-const categoryController = require('./categoryController');
-const postController = require('./postController');
-
 const apiController = {
 
   getHome(request, response) {
@@ -10,4 +7,4 @@ const apiController = {
 
 };
 
-module.exports = { apiController, categoryController, postController };
+module.exports = { apiController };

@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 router.post(
-  '/in',
+  '/in'
 );
 
 router.post(
-  '/out',
+  '/out'
 );
 
 router.post(
-  '/subscribe',
+  '/subscribe'
 );
