@@ -33,8 +33,10 @@ async function fetchCountryData(isoCode) {
     }
     const data = await response.json();
     logger.info(data);
+    return data;
   } catch (error) {
     logger.error(error);
+    return null;
   }
 }
 

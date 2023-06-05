@@ -1,7 +1,7 @@
 const RadioBrowser = require('radio-browser');
 const logger = require('../../services/logger');
 
-async function fetchRadioStationsByCountry(isoCode) {
+async function fetchRadioData(isoCode) {
   const filter = {
     limit: 1,
     by: 'country',
@@ -16,4 +16,4 @@ async function fetchRadioStationsByCountry(isoCode) {
   }
 }
 
-module.exports = fetchRadioStationsByCountry;
+module.exports = fetchRadioData;
