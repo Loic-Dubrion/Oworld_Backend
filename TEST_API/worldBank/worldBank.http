@@ -1,0 +1,14 @@
+@baseUrl = http://api.worldbank.org/v2/country
+@country = FRA
+@type = indicator
+@paramEnv = EN.ATM.CO2E.KT;EG.USE.PCAP.KG.OE;ER.PTD.TOTL.ZS;EN.ATM.PM25.MC.M3;AG.SRF.TOTL.K2
+@paramPop = SP.POP.TOTL;SP.DYN.LE00.IN;SP.POP.GROW;SP.POP.DPND.OL;SP.ADO.TFRT
+@paramEduc = SE.ADT.LITR.ZS;SE.XPD.TOTL.GD.ZS;SE.SEC.ENRL.TC.ZS;SE.SEC.CUAT.UP.ZS;SE.SEC.CMPT.LO.ZS
+@paramEco = NY.GDP.MKTP.CD;NY.GDP.MKTP.KD.ZG;FP.CPI.TOTL.ZG;GC.DOD.TOTL.GD.ZS;BX.KLT.DINV.WD.GD.ZS
+@paramJob = SL.EMP.TOTL.SP.ZS;SL.UEM.TOTL.ZS;SL.TLF.TOTL.IN;SI.DST.FRST.20; SL.EMP.TOTL.SP.FE.ZS
+@source = source=2
+@format = format=json
+@date = date=2002:2022
+@size = per_page=105
+### 
+GET {{baseUrl}}/{{country}}/{{type}}/{{paramJob}}?{{source}}&{{format}}&{{date}}&{{size}}
