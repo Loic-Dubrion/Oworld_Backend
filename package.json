@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js | bunyan -o short",
-    "start": "node index.js"
+    "start": "node index.js",
+    "db:seed": "psql oworld -f data/seedingCountry.sql && psql oworld -f data/seedingRBAC.sql && node data/faker.js"
   },
   "author": "Loïc Dubrion",
   "license": "ISC",

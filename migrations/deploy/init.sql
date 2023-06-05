@@ -21,7 +21,9 @@ CREATE TABLE "country" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "iso2" iso2 UNIQUE NOT NULL,
     "iso3" iso3 UNIQUE NOT NULL,
+    "iso_numeric" INTEGER UNIQUE NOT NULL,
     "name" TEXT UNIQUE NOT NULL,
+    "insolite" TEXT DEFAULT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
