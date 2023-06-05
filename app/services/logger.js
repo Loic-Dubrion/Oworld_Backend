@@ -14,7 +14,7 @@ if (env === 'development') {
 // If prod environment, add the flow in the file logs/
 if (env === 'production') {
   streams.push({
-    path: 'logs/connected_garden.log',
+    path: 'logs/oWorld.log',
     level: 'error',
     type: 'rotating-file',
     period: '3000ms',
