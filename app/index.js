@@ -1,7 +1,8 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-// const router = require('./routers');
+
+const router = require('./routers');
 
 const swagger = require('./services/swagger');
 
@@ -20,6 +21,6 @@ swagger(app, path.join(__dirname, 'routers'));
 app.use(express.json());
 
 // Routers
-// app.use(router);
+app.use(router);
 
 module.exports = app;
