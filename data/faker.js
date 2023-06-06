@@ -13,7 +13,6 @@ const logger = require('../app/services/logger');
   try {
     await client.connect();
     connectionEstablished = true;
-    logger.info('Database connection established.');
 
     const users = [];
     for (let i = 0; i < 300; i += 1) {
