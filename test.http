@@ -4,4 +4,6 @@
 GET {{baseUrl}}/admin/stat
 ################################################################
 
-http://localhost:3000/api/
+http://localhost:3000/api/oworld/FRA
+###
+http://localhost:3000/api/oworld/FRA/category

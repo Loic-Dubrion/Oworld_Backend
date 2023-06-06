@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.all('/', apiController.getHome);
 
-// router.use('/oworld', apiHandler(visitorRouter));
+router.use('/oworld', visitorRouter);
 // router.use('/users', userRouter);
 router.use('/admin', adminRouter);
 // router.use('/account', accountRouter);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1686043805969" clover="3.2.0">
-  <project timestamp="1686043805969" name="All files">
-    <metrics statements="238" coveredstatements="209" conditionals="17" coveredconditionals="9" methods="4" coveredmethods="4" elements="259" coveredelements="222" complexity="0" loc="238" ncloc="238" packages="2" files="4" classes="4"/>
+<coverage generated="1686050072510" clover="3.2.0">
+  <project timestamp="1686050072510" name="All files">
+    <metrics statements="225" coveredstatements="197" conditionals="17" coveredconditionals="9" methods="4" coveredmethods="4" elements="246" coveredelements="210" complexity="0" loc="225" ncloc="225" packages="2" files="4" classes="4"/>
     <package name="models">
-      <metrics statements="207" coveredstatements="191" conditionals="15" coveredconditionals="9" methods="4" coveredmethods="4"/>
+      <metrics statements="194" coveredstatements="179" conditionals="15" coveredconditionals="9" methods="4" coveredmethods="4"/>
       <file name="radioAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/radioAPI.js">
         <metrics statements="44" coveredstatements="41" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -52,10 +52,10 @@
         <line num="44" count="1" type="stmt"/>
       </file>
       <file name="restCountryAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/restCountryAPI.js">
-        <metrics statements="56" coveredstatements="50" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="43" coveredstatements="38" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -67,7 +67,7 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
@@ -83,32 +83,19 @@
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
+        <line num="31" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
       </file>
       <file name="worldBankApi.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/worldBankApi.js">
         <metrics statements="107" coveredstatements="100" conditionals="10" coveredconditionals="7" methods="2" coveredmethods="2"/>
