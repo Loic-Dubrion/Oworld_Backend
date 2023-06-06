@@ -2,3 +2,4 @@
 %project=oWorld
 
 init 2023-06-05T08:08:25Z Loic Dubrion <loic-dubrion@hotmail.fr> # create_tables
+view_stat 2023-06-06T06:10:39Z Loic Dubrion <loic-dubrion@hotmail.fr> # create view for admin stat
