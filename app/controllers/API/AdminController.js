@@ -1,6 +1,6 @@
-const debug = require('debug')('oblog:controllers');
+const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
-const adminDataMapper = require('../../models/adminDataMapper');
+const adminDataMapper = require('../../models/AdminDataMapper');
 
 /** Class representing a category controller. */
 class AdminController extends CoreController {
@@ -13,7 +13,7 @@ class AdminController extends CoreController {
   */
   constructor() {
     super();
-    debug('adminController created');
+    logger.info('adminController created');
   }
 }
 
