@@ -1,5 +1,8 @@
-const logger = require('../services/logger');
-
+/**
+ * Performs a query to retrieve data for a country using an ISO code.
+ * @param {string} isoCode ex: FRA
+ * @returns {Promise<Object|null>} Country data or null in case of error.
+ */
 async function fetchCountryData(isoCode) {
   const baseUrl = 'https://restcountries.com/v3.1/';
 
@@ -32,10 +35,8 @@ async function fetchCountryData(isoCode) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    logger.info(data);
     return data;
   } catch (error) {
-    logger.error(error);
     return null;
   }
 }

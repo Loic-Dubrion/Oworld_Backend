@@ -22,8 +22,9 @@ const size = 'per_page=150';
  * various properties about the country like environment, population, economy, job, and education.
  *
  * @param {string} country - The ISO3 code for the country of interest.
- * @returns {Promise<Object>} A Promise that resolves to an object containing country data by category.
- * 
+ * @returns {Promise<Object>} A Promise that resolves to an object
+ * containing country data by category.
+ *
  * @throws Will throw an error if the World Bank API call fails.
  */
 async function fetchDataByCategory(country) {
@@ -31,7 +32,6 @@ async function fetchDataByCategory(country) {
 
   const promises = Object.keys(categories).map(async (category) => {
     const url = `${baseUrl}/${country}/indicator/${categories[category]}?${source}&${format}&${date}&${size}`;
-    console.log(url);
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -72,7 +72,7 @@ async function fetchDataByCategory(country) {
       // Add transformed data to the main object
       transformedData[category] = transformedCategoryData;
     } catch (error) {
-      logger.error(error);
+      return null;
     }
   });
 
@@ -88,18 +88,17 @@ async function fetchDataByCategory(country) {
  * Returns the transformed data or null in case of an error.
  *
  * @param {string} iso3 - The ISO3 code for the country of interest.
- * @returns {Promise<Object|null>} A Promise that resolves to an object containing country data, or null if an error occurs.
- * 
+ * @returns {Promise<Object|null>} A Promise that resolves to an object
+ * containing country data, or null if an error occurs.
+ *
  * @throws Will throw an error if the fetching process fails.
  */
 async function fetchAndLogData(iso3) {
   try {
     const country = iso3;
     const transformedData = await fetchDataByCategory(country);
-    console.log('Country:', transformedData.country);
     return transformedData;
   } catch (error) {
-    logger.error(error);
     return null;
   }
 }

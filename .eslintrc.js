@@ -1,20 +1,17 @@
 module.exports = {
   env: {
-    'jest/globals': true,
-    browser: true,
+    commonjs: true,
     es2021: true,
+    node: true,
+    'jest/globals': true,
   },
-  extends: [
-    'airbnb-base',
-    'plugin:jest/recommended' 
+  plugins: ['jest'],
+  extends: 'airbnb-base',
+  overrides: [
   ],
   parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
+    ecmaVersion: 'latest',
   },
-  plugins: [
-    'jest' 
-  ],
   rules: {
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
