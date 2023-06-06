@@ -12,4 +12,4 @@ GET {{baseUrl}}/oworld/FRA/category
 
 ### ROUTES USERS ###
 ### Profile ###
-GET {{baseUrl}}/user/2
+GET {{baseUrl}}/user/1
