@@ -2,12 +2,21 @@ const express = require('express');
 
 const router = express.Router();
 
-// - Tous les pays d'origines des utilisateurs
-// - Le nombre d'utilisateur par classe d'âge
-// - Le nombre d'utilisateur par pays d'origine
-// - Le nombre d'utilisateur total
-// - Le nombre de pins par pays
-// - Le nombre de d'utilisateur pour chaque pays visités
+const controllerHandler = require('../../controllers/services/controllerHandler');
+const { adminController } = require('../../controllers/API');
+
+/**
+ * GET /api/admin/stat
+ *
+ * @summary get stat 
+ * @tags Stat - Statistics on user origins and preferences
+ *
+ * @return {array} 200 - success response
+ * @return {object} 500 - internal server error
+ */
 router.get(
-  '/stats'
+  '/stat',
+  controllerHandler(adminController.getAll.bind(adminController))
 );
+
+module.exports = router;

@@ -1,4 +1,4 @@
-const logger = require('../services/clientdb');
+const logger = require('../services/logger');
 const client = require('../services/clientdb');
 
 /** Class representing an abstract data mapper. */
@@ -17,9 +17,11 @@ class CoreDataMapper {
     logger.info(`${this.constructor.name} findAll`);
     const tableName = this.constructor.viewName || this.constructor.tableName;
     const preparedQuery = {
-      text: `SELECT * FROM "${tableName}" ORDER BY "id"`,
+      text: `SELECT * FROM "${tableName}"`,
     };
     const results = await client.query(preparedQuery);
     return results.rows;
   }
 }
+
+module.exports = CoreDataMapper;

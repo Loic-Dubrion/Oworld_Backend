@@ -3,7 +3,7 @@ const CoreDataMapper = require('./CoreDataMapper');
 
 /** Class representing a category data mapper. */
 class AdminDataMapper extends CoreDataMapper {
-  static tableName = 'admin';
+  static viewName = 'stat_admin';
 
   /**
    * create a category data mapper
