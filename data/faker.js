@@ -4,9 +4,11 @@ const client = require('../app/services/clientdb');
 const logger = require('../app/services/logger');
 
 /**
- *  Generate 300 fictitious users
- *  Assign roles to each user
- *  and insert in database
+ *  This script generates 300 fictitious users,
+ *  assigns roles to each user,
+ *  and inserts them into the database.
+ *
+ *  @returns {Promise} A Promise that resolves when all users have been inserted into the database
  */
 (async function() {
   let connectionEstablished = false;
@@ -14,7 +16,12 @@ const logger = require('../app/services/logger');
     await client.connect();
     connectionEstablished = true;
 
+    /**
+     *  @type {Array<Object>} users - An array to hold the generated user data
+     */
     const users = [];
+
+    // Generate user data for 300 users
     for (let i = 0; i < 300; i += 1) {
       const username = faker.internet.userName();
       const email = faker.internet.email();
@@ -25,6 +32,14 @@ const logger = require('../app/services/logger');
         new Date('2008-01-01'),
       );
 
+      /**
+       *  @type {Object} user - An object representing a single user
+       *  @property {string} username - The user's username
+       *  @property {string} email - The user's email
+       *  @property {string} password - The user's password
+       *  @property {number} country_origin - The user's country of origin
+       *  @property {Date} birth_date - The user's date of birth
+       */
       const user = {
         username,
         email,
@@ -35,7 +50,7 @@ const logger = require('../app/services/logger');
       users.push(user);
     }
 
-    // Insert users
+    // SQL queries for inserting data into the database
     const query = `
       INSERT INTO "user" ("username", "email", "password", "country_origin", "birth_date")
       VALUES ($1, $2, $3, $4, $5)
@@ -52,6 +67,7 @@ const logger = require('../app/services/logger');
       VALUES ($1, $2)
     `;
 
+    // Execute the queries for each user
     const promises = users.map(async (user, index) => {
       try {
         const result = await client.query(

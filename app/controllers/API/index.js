@@ -8,7 +8,8 @@ const apiController = {
    * @param {Object} response
    */
   getHome(request, response) {
-    const fullURL = `${request.protocol}://${request.get('host')}${process.env.API_DOCUMENTATION_ROUTE ?? '/api-docs'}`;
+    console.log("test home");
+    const fullURL = `${request.protocol}://${request.get('host')}${process.env.API_DOCUMENTATION_ROUTE ?? '/docs'}`;
     response.json({ documentation_url: fullURL });
   },
 };

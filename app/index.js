@@ -23,4 +23,6 @@ app.use(express.json());
 // Routers
 app.use(router);
 
+app.use('/docs', express.static('../documentation'));
+
 module.exports = app;

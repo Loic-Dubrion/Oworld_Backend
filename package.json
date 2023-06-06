@@ -9,11 +9,13 @@
     "db:create": "sqitch revert -y && sqitch deploy",
     "db:seed": "psql oworld -f data/seedingCountry.sql && psql oworld -f data/seedingRBAC.sql && node data/faker.js",
     "db:reset": "npm run db:create && npm run db:seed | bunyan -o short",
-    "test": "jest"
+    "test": "jest",
+    "docs": "jsdoc -c jsdoc.config.json"
   },
   "author": "Loïc Dubrion",
   "license": "ISC",
   "devDependencies": {
+    "clean-jsdoc-theme": "^4.2.7",
     "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",

@@ -15,6 +15,17 @@ const format = 'format=json';
 const date = 'date=2002:2022';
 const size = 'per_page=150';
 
+/**
+ * Fetch World Bank data by category for a specific country.
+ *
+ * The function makes a call to the World Bank API and returns an object containing
+ * various properties about the country like environment, population, economy, job, and education.
+ *
+ * @param {string} country - The ISO3 code for the country of interest.
+ * @returns {Promise<Object>} A Promise that resolves to an object containing country data by category.
+ * 
+ * @throws Will throw an error if the World Bank API call fails.
+ */
 async function fetchDataByCategory(country) {
   const transformedData = {};
 
@@ -70,6 +81,17 @@ async function fetchDataByCategory(country) {
   return { country: { id: country }, ...transformedData };
 }
 
+/**
+ * Fetch and log World Bank data for a specific country.
+ *
+ * The function fetches World Bank data for a specific country and logs the country data.
+ * Returns the transformed data or null in case of an error.
+ *
+ * @param {string} iso3 - The ISO3 code for the country of interest.
+ * @returns {Promise<Object|null>} A Promise that resolves to an object containing country data, or null if an error occurs.
+ * 
+ * @throws Will throw an error if the fetching process fails.
+ */
 async function fetchAndLogData(iso3) {
   try {
     const country = iso3;

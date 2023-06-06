@@ -3,3 +3,5 @@
 ### STAT ADMINS ###
 GET {{baseUrl}}/admin/stat
 ################################################################
+
+http://localhost:3000/api/
