@@ -1,4 +1,4 @@
-const fetchRadioData = require('../radioAPI');
+const fetchRadioData = require('../external_API/radioAPI');
 
 describe('fetchRadioData', () => {
   it('should return an object with the expected categories', async () => {

@@ -1,4 +1,4 @@
-const fetchCountryData = require('../restCountryAPI');
+const fetchCountryData = require('../external_API/restCountryAPI');
 
 describe('fetchCountryData', () => {
   it('should return an object with the expected categories', async () => {

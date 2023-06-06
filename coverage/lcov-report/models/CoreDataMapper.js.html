@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/logger.js</title>
+    <title>Code coverage report for models/CoreDataMapper.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> logger.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> CoreDataMapper.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.06% </span>
+                <span class="strong">70.37% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/31</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>19/27</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.06% </span>
+                <span class="strong">50% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">70.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/31</span>
+                <span class='fraction'>19/27</span>
             </div>
         
             
@@ -90,11 +90,16 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -106,56 +111,39 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const bunyan = require('bunyan');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const logger = require('../services/logger');
+const client = require('../services/clientdb');
 &nbsp;
-const env = process.env.NODE_ENV;
-const streams = [];
+/** Class representing an abstract data mapper. */
 &nbsp;
-// If dev environment, add the console flow (Stdout)
-if (env === 'development') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >  streams.push({</span>
-<span class="cstat-no" title="statement not covered" >    stream: process.stdout,</span>
-<span class="cstat-no" title="statement not covered" >    level: 'debug',</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+class CoreDataMapper {
+  static tableName;
 &nbsp;
-// If prod environment, add the flow in the file logs/
-if (env === 'production') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >  streams.push({</span>
-<span class="cstat-no" title="statement not covered" >    path: 'logs/oWorld.log',</span>
-<span class="cstat-no" title="statement not covered" >    level: 'error',</span>
-<span class="cstat-no" title="statement not covered" >    type: 'rotating-file',</span>
-<span class="cstat-no" title="statement not covered" >    period: '3000ms',</span>
-<span class="cstat-no" title="statement not covered" >    count: 10,</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+  static viewName; // if viewName is defined, it will be used for find methods
 &nbsp;
-const logger = bunyan.createLogger({
-  name: 'O\'World', // name of the logger ( because you can have several )
-  level: 'trace', // minimum level of errors to be displayed
-  streams,
-});
+  /**
+   * fetch all entries
+   *
+   * @returns {array} array of entries
+   */
+<span class="fstat-no" title="function not covered" >  async findAll() {</span>
+<span class="cstat-no" title="statement not covered" >    logger.info(`${this.constructor.name} findAll`);</span>
+<span class="cstat-no" title="statement not covered" >    const tableName = this.constructor.viewName || this.constructor.tableName;</span>
+<span class="cstat-no" title="statement not covered" >    const preparedQuery = {</span>
+<span class="cstat-no" title="statement not covered" >      text: `SELECT * FROM "${tableName}"`,</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+<span class="cstat-no" title="statement not covered" >    const results = await client.query(preparedQuery);</span>
+<span class="cstat-no" title="statement not covered" >    return results.rows;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+}
 &nbsp;
-module.exports = logger;
+module.exports = CoreDataMapper;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

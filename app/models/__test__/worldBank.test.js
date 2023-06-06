@@ -1,4 +1,4 @@
-const fetchAndLogData = require('../worldBankApi');
+const fetchAndLogData = require('../external_API/worldBankApi');
 
 describe('fetchAndLogData', () => {
   it('should return an object with the expected structure', async () => {
