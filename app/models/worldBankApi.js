@@ -31,7 +31,7 @@ async function fetchDataByCategory(country) {
 
   const promises = Object.keys(categories).map(async (category) => {
     const url = `${baseUrl}/${country}/indicator/${categories[category]}?${source}&${format}&${date}&${size}`;
-
+    console.log(url);
     try {
       const response = await fetch(url);
       if (!response.ok) {
