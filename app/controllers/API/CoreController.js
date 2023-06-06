@@ -16,6 +16,20 @@ class CoreController {
     response.json(results);
   }
 
+  /**
+   * responds with one entry from a table
+   *
+   * @param {Object} request
+   * @param {Object} response
+   */
+  async getOne(request, response) {
+    logger.info(`${this.constructor.name} getOne`);
+    const { id } = request.params;
+    const results = await this.constructor.dataMapper.findByPk(id);
+    response.json(results);
+  }
+
+ 
 }
 
 module.exports = CoreController;

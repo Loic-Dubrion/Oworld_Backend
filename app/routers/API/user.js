@@ -2,19 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get(
-  '/:userID',
-);
-// - Objet avec détail d'un pays ( catégories api rest world bank)
-// - Les pays favoris
-// - % de pays favoris vs total
+const controllerHandler = require('../../controllers/services/controllerHandler');
+const { userController } = require('../../controllers/API');
 
 router.get(
-  '/:userID/:countryId',
+  '/:userId',
+  controllerHandler(userController.getFavoriteCountries.bind(userController)),
 );
-// - Objet avec détail d'un pays ( catégories api rest world bank)
-// - Les pays favoris
-// - % de pays favoris vs total
 
 router.post(
   '/:userID/:countryID/',
@@ -35,3 +29,5 @@ router.delete(
   '/:userID/:countryID/',
 );
 // - supp d'un favoris
+
+module.exports = router;

@@ -5,25 +5,25 @@ const router = express.Router();
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const { adminController } = require('../../controllers/API');
 
-
 /**
  * GET /api/admin/stat
  *
- * @summary Get statistics 
+ * @summary Get statistics
  * @tags Admin - management administration
  *
- * @return {array<object>} 200 - success response - an array of objects where each object represents the statistics for a particular country
+ * @return {array<object>} 200 - success response -
+ * an array of objects where each object represents the statistics for a particular country
  * @property {string} country_origin - The country of origin
  * @property {number} average_age - The average age of users
  * @property {string} user_count - The count of users
  * @property {string} favorite_count - The count of favorites
  * @return {Error} 500 - Internal server error
- * 
+ *
  */
 
 router.get(
   '/stat',
-  controllerHandler(adminController.getAll.bind(adminController))
+  controllerHandler(adminController.getAll.bind(adminController)),
 );
 
 module.exports = router;
