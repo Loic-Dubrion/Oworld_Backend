@@ -4,6 +4,8 @@
 GET {{baseUrl}}/admin/stat
 ################################################################
 
-http://localhost:3000/api/oworld/FRA
-###
-http://localhost:3000/api/oworld/FRA/category
+### ROUTES VISITORS ###
+### One country ###
+GET {{baseUrl}}/oworld/FRA
+### Categories by country ###
+GET {{baseUrl}}/oworld/FRA/category

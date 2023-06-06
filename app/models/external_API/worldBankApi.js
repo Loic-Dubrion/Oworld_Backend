@@ -1,5 +1,3 @@
-const logger = require('../services/logger');
-
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
 const categories = {
@@ -93,7 +91,7 @@ async function fetchDataByCategory(country) {
  *
  * @throws Will throw an error if the fetching process fails.
  */
-async function fetchAndLogData(iso3) {
+async function fetchWorldBankData(iso3) {
   try {
     const country = iso3;
     const transformedData = await fetchDataByCategory(country);
@@ -103,4 +101,4 @@ async function fetchAndLogData(iso3) {
   }
 }
 
-module.exports = fetchAndLogData;
+module.exports = fetchWorldBankData;

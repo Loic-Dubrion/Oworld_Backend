@@ -1,7 +1,7 @@
 const logger = require('../../services/logger');
 
-const fetchCountryData = require('../../models/restCountryAPI');
-const fetchAndLogData = require('../../models/worldBankApi');
+const fetchCountryData = require('../../models/external_API/restCountryAPI');
+const fetchWorldBankData = require('../../models/external_API/worldBankApi');
 
 const externalApiController = {
   testRestCountry: async (request, response) => {
@@ -12,7 +12,7 @@ const externalApiController = {
 
   testWB: async (request, response) => {
     logger.info(request.params.countryIso3);
-    const result = await fetchAndLogData(request.params.countryIso3);
+    const result = await fetchWorldBankData(request.params.countryIso3);
     response.json(result);
   },
 };

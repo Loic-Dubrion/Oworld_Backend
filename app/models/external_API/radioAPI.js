@@ -1,5 +1,5 @@
 const RadioBrowser = require('radio-browser');
-const logger = require('../services/logger');
+const logger = require('../../services/logger');
 
 /**
  * Fetch radio station data for a specific country using the RadioBrowser API.
