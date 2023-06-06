@@ -1,5 +1,5 @@
 const RadioBrowser = require('radio-browser');
-const logger = require('../../services/logger');
+const logger = require('../services/logger');
 
 async function fetchRadioData(isoCode) {
   const filter = {

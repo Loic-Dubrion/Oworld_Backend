@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685970763425" clover="3.2.0">
-  <project timestamp="1685970763426" name="All files">
+<coverage generated="1686037924419" clover="3.2.0">
+  <project timestamp="1686037924420" name="All files">
     <metrics statements="186" coveredstatements="159" conditionals="17" coveredconditionals="9" methods="4" coveredmethods="4" elements="207" coveredelements="172" complexity="0" loc="186" ncloc="186" packages="2" files="4" classes="4"/>
-    <package name="controllers.services">
+    <package name="models">
       <metrics statements="155" coveredstatements="141" conditionals="15" coveredconditionals="9" methods="4" coveredmethods="4"/>
-      <file name="radioAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/radioAPI.js">
+      <file name="radioAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/radioAPI.js">
         <metrics statements="27" coveredstatements="25" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -34,7 +34,7 @@
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="restCountryAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/restCountryAPI.js">
+      <file name="restCountryAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/restCountryAPI.js">
         <metrics statements="43" coveredstatements="38" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -80,7 +80,7 @@
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
       </file>
-      <file name="worldBankApi.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/worldBankApi.js">
+      <file name="worldBankApi.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/worldBankApi.js">
         <metrics statements="85" coveredstatements="78" conditionals="10" coveredconditionals="7" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

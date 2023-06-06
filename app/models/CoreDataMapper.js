@@ -8,20 +8,18 @@ class CoreDataMapper {
 
   static viewName; // if viewName is defined, it will be used for find methods
 
-    /**
-   * fetch an entry according to its id
+  /**
+   * fetch all entries
    *
-   * @param {number} id - id of the entry
-   * @returns an entry
+   * @returns {array} array of entries
    */
-    async findByPk(id) {
-      debug(`${this.constructor.name} findByPk(${id})`);
-      const tableName = this.constructor.viewName || this.constructor.tableName;
-      const preparedQuery = {
-        text: `SELECT * FROM "${tableName}" WHERE id=$1`,
-        values: [id],
-      };
-      const results = await client.query(preparedQuery);
-      return results.rows[0];
-    }
+  async findAll() {
+    logger.info(`${this.constructor.name} findAll`);
+    const tableName = this.constructor.viewName || this.constructor.tableName;
+    const preparedQuery = {
+      text: `SELECT * FROM "${tableName}" ORDER BY "id"`,
+    };
+    const results = await client.query(preparedQuery);
+    return results.rows;
+  }
 }

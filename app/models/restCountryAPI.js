@@ -1,4 +1,4 @@
-const logger = require('../../services/logger');
+const logger = require('../services/logger');
 
 async function fetchCountryData(isoCode) {
   const baseUrl = 'https://restcountries.com/v3.1/';

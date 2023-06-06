@@ -75,7 +75,6 @@ const logger = require('../app/services/logger');
 
       } catch (error) {
         logger.error(`Error inserting user ${index}`, error);
-        // instead of throwing error, just return to continue with the other users
         return;
       }
     });

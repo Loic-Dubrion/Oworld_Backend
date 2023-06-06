@@ -1,5 +1,5 @@
 TN:
-SF:app/controllers/services/radioAPI.js
+SF:app/models/radioAPI.js
 FN:4,fetchRadioData
 FNF:1
 FNH:1
@@ -39,7 +39,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:app/controllers/services/restCountryAPI.js
+SF:app/models/restCountryAPI.js
 FN:3,fetchCountryData
 FNF:1
 FNH:1
@@ -96,7 +96,7 @@ BRF:3
 BRH:1
 end_of_record
 TN:
-SF:app/controllers/services/worldBankApi.js
+SF:app/models/worldBankApi.js
 FN:18,fetchDataByCategory
 FN:73,fetchAndLogData
 FNF:2
