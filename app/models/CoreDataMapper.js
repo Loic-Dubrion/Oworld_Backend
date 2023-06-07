@@ -13,7 +13,6 @@ class CoreDataMapper {
     const preparedQuery = {
       text: `SELECT * FROM "${tableName}"`,
     };
-    logger.info(preparedQuery);
     const results = await client.query(preparedQuery);
     return results.rows;
   }
@@ -25,7 +24,18 @@ class CoreDataMapper {
       text: `SELECT * FROM "${tableName}" WHERE id=$1`,
       values: [id],
     };
-    logger.info(preparedQuery);
+    const results = await client.query(preparedQuery);
+    return results.rows[0];
+  }
+
+  async create(createObj) {
+    logger.info(`${this.constructor.name} create`);
+    const preparedQuery = {
+      text: `
+          SELECT * FROM create_post_from_json($1)
+        `,
+      values: [createObj],
+    };
     const results = await client.query(preparedQuery);
     return results.rows[0];
   }
