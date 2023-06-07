@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
@@ -40,9 +42,12 @@ class UserController extends CoreController {
   async addUser(request, response) {
     logger.info(`${this.constructor.name} addUser`);
     const dataUser = request.body;
-    console.log(dataUser);
-    // const results = await this.constructor.dataMapper.executeFunction('insert_favorite', dataUser);
-    // response.json(results);
+    const { password, ...userWithoutPassword } = dataUser;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const modifiedDataUser = { ...userWithoutPassword, password: hashedPassword };
+    console.log(modifiedDataUser);
+    const results = await this.constructor.dataMapper.executeFunction('insert_user', modifiedDataUser);
+    response.json(results);
   }
 }
 
