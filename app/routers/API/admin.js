@@ -20,6 +20,11 @@ const { adminController } = require('../../controllers/API');
  * @summary Get statistics
  * @tags Admin - management administration
  *
+ * @param {boolean} useView.query.required -
+ * Whether to use a SQL view or not.
+ * - ?useView=true -
+ * This parameter is required.
+ *
  * @return {array<object>} 200 - success response -
  * an array of objects where each object represents the statistics for a particular country
  * @property {string} country_origin - The country of origin
