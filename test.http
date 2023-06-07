@@ -17,3 +17,5 @@ GET {{baseUrl}}/oworld/FRA/category
 GET {{baseUrl}}/user/1
 ### Add Favorite ###
 POST {{baseUrl}}/user/1/FRA
+### Delete Favorite ###
+DELETE {{baseUrl}}/user/1/FRA

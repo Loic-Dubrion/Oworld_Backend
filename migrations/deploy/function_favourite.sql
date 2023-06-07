@@ -12,7 +12,7 @@ BEGIN
 
     INSERT INTO user_has_favorite (user_id, country_id) VALUES (userId, countryId);
 
-    response := '{"http status": 201, "message": "success"}';
+    response := '{"http status": 201, "message": "success !"}';
     
     RETURN response;
 END;

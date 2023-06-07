@@ -59,8 +59,8 @@ router.post(
 *
 */
 router.delete(
-  '/:userID/:countryID/',
-  // controllerHandler(userController.deleteFavorite.bind(userController)),
+  '/:userId/:countryISO/',
+  controllerHandler(userController.deleteFavorite.bind(userController)),
 );
 
 router.put(
