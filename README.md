@@ -1,6 +1,6 @@
 # projet-05-o-world-back
 
-- clone project
+- clone le projet
 - npm init
 
 - install sqitch
@@ -14,6 +14,15 @@
   sqitch config --user user.name 'John Doe'
   sqitch config --user user.email 'john@doe.org'
 ```
+
+- créer une BDD
+
+  ```
+  sudo -i -u postgres psql
+
+  CREATE DATABASE oworld OWNER oworld
+  :\q
+  ```
 
 - script:
 
