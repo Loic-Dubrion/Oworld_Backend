@@ -3,5 +3,7 @@
 BEGIN;
 
 DROP FUNCTION insert_user;
+DROP FUNCTION update_user;
+DROP FUNCTION delete_user;
 
 COMMIT;
