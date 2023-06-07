@@ -29,7 +29,17 @@ class CoreController {
     response.json(results);
   }
 
- 
+  /**
+   * create one entry in a table
+   *
+   * @param {Object} request
+   * @param {Object} response
+   */
+  async create(request, response) {
+    logger.info(`${this.constructor.name} create`);
+    const results = await this.constructor.dataMapper.create(request.body);
+    response.json(results);
+  }
 }
 
 module.exports = CoreController;

@@ -34,7 +34,7 @@ class CoreDataMapper {
       text: `SELECT * FROM ${functionName}($1)`,
       values: [param],
     };
-    console.log(preparedQuery);
+    logger.info(preparedQuery);
     const results = await client.query(preparedQuery);
     return results.rows;
   }

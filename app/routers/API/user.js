@@ -27,6 +27,19 @@ router.get(
   controllerHandler(userController.getFavoriteCountries.bind(userController)),
 );
 
+/**
+* POST /api/user/{userId}/{userCountry}
+*
+* @summary Post - add a new favourite
+* @tags Users -
+*
+* @param {integer} userId.path.required - The ID of the user
+* @param {string} countryIso3.path.required - The country Iso3
+*
+* @return {object} 200 - success response
+* @return {Error} 500 - Internal server error
+*
+*/
 router.post(
   '/:userID/:countryID/',
 );
