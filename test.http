@@ -7,7 +7,7 @@ GET {{baseUrl}}/admin/stat?useView=true
 ### ROUTES OWORLD ###
 ### Data world ###
 GET {{baseUrl}}/oworld?useView=false
-### Data world ###
+### List country ###
 GET {{baseUrl}}/oworld?useView=true
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
@@ -20,9 +20,9 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "JohnyBeGood5",
-  "email": "johndoe9@example.com",
-  "password": "&Oworld2023",
+  "username": "Johnood10",
+  "email": "johndo10@example.com",
+  "password": "123",
   "country_origin": 1,
   "birth_date": "1938-06-16"
 }
