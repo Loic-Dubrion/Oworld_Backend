@@ -3,6 +3,8 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const bodySanitizer = require('./services/sanitizer');
+
 const router = require('./routers');
 
 const swagger = require('./services/swagger');
@@ -17,6 +19,7 @@ const corsOptions = {
 };
 
 // Use bodySanitizer for all requests
+app.use(bodySanitizer);
 
 // Middlewares setup
 app.use(express.json());

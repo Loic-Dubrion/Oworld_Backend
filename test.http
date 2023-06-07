@@ -20,8 +20,8 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "JohnyBeGood",
-  "email": "johndoe@example.com",
+  "username": "JohnyBeGood3",
+  "email": "johndoe3@example.com",
   "password": "&Oworld2023",
   "country_origin": 1,
   "birth_date": "1938-06-16"
