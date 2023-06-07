@@ -45,7 +45,6 @@ class UserController extends CoreController {
     const { password, ...userWithoutPassword } = dataUser;
     const hashedPassword = await bcrypt.hash(password, 10);
     const modifiedDataUser = { ...userWithoutPassword, password: hashedPassword };
-    console.log(modifiedDataUser);
     const results = await this.constructor.dataMapper.executeFunction('insert_user', modifiedDataUser);
     response.json(results);
   }
