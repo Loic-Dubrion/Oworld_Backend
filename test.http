@@ -23,7 +23,7 @@ Content-Type: application/json
   "username": "JohnyBeGood",
   "email": "johndoe@example.com",
   "password": "&Oworld2023",
-  "country_origin": "Belgique",
+  "country_origin": 1,
   "birth_date": "1938-06-16"
 }
 ### Profile ###
