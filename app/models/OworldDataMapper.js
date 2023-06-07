@@ -5,6 +5,8 @@ const CoreDataMapper = require('./CoreDataMapper');
 class OworldDataMapper extends CoreDataMapper {
   static tableName = 'planets';
 
+  static viewName = 'country_list';
+
   /**
    * create a oWorld data mapper
    *

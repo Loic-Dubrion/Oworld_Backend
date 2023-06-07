@@ -23,6 +23,29 @@ router.get(
 );
 
 /**
+ * GET /api/oworld
+ *
+ * @summary Get a list of all countries
+ * @tags Oworld
+ *
+ * @param {boolean} useView.query.required -
+ * Whether to use a SQL view or not.
+ * - ?useView=true -
+ * This parameter is required.
+ *
+ * @return {array<object>} 200 - Success response
+ * - A list of all countries
+ * @return {Error} 500 - Internal server error
+ *
+ * @example Get statistics using a SQL view
+ *   GET /api/oworld/list?useView=true
+ */
+router.get(
+  '/',
+  controllerHandler(oworldController.getAll.bind(oworldController)),
+);
+
+/**
  * GET /api/oworld/{countryIso3}
  *
  * @summary Get data

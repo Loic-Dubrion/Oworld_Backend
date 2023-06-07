@@ -7,9 +7,9 @@ class CoreDataMapper {
 
   static viewName;
 
-  async findAll() {
+  async findAll(useView = false) {
     logger.info(`${this.constructor.name} findAll`);
-    const tableName = this.constructor.viewName || this.constructor.tableName;
+    const tableName = useView ? this.constructor.viewName : this.constructor.tableName;
     const preparedQuery = {
       text: `SELECT * FROM "${tableName}"`,
     };
@@ -28,17 +28,17 @@ class CoreDataMapper {
     return results.rows[0];
   }
 
-  async create(createObj) {
-    logger.info(`${this.constructor.name} create`);
-    const preparedQuery = {
-      text: `
-          SELECT * FROM create_post_from_json($1)
-        `,
-      values: [createObj],
-    };
-    const results = await client.query(preparedQuery);
-    return results.rows[0];
-  }
+  // async create(createObj) {
+  //   logger.info(`${this.constructor.name} create`);
+  //   const preparedQuery = {
+  //     text: `
+  //         SELECT * FROM create_post_from_json($1)
+  //       `,
+  //     values: [createObj],
+  //   };
+  //   const results = await client.query(preparedQuery);
+  //   return results.rows[0];
+  // }
 
   async executeFunction(functionName, ...params) {
     logger.info(`${this.constructor.name} executeFunction(${functionName}, ${params})`);

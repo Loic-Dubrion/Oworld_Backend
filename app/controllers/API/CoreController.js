@@ -8,11 +8,12 @@ class CoreController {
    * responds with all entries from a table
    *
    * @param {Object} _
-   * @param {Object} response
+   * @param {Object} request
    */
-  async getAll(_, response) {
+  async getAll(request, response) {
     logger.info(`${this.constructor.name} getAll`);
-    const results = await this.constructor.dataMapper.findAll();
+    const useView = request.query.useView === 'true';
+    const results = await this.constructor.dataMapper.findAll(useView);
     response.json(results);
   }
 
