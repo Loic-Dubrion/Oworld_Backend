@@ -6,9 +6,9 @@ GET {{baseUrl}}/admin/stat
 
 ### ROUTES OWORLD ###
 ### Data world ###
-GET {{baseUrl}}/oworld/
+GET {{baseUrl}}/oworld?useView=false
 ### Data world ###
-GET {{baseUrl}}/oworld/list?useView=true
+GET {{baseUrl}}/oworld?useView=true
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
 ### Categories by country ###
