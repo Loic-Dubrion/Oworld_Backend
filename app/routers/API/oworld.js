@@ -25,11 +25,12 @@ router.get(
 /**
  * GET /api/oworld
  *
- * @summary Get a list of all countries
+ * @summary Get a list of all countries or dataWorld
  * @tags Oworld
  *
  * @param {boolean} useView.query.required -
  * Whether to use a SQL view or not.
+ * if true = dataworld, else = country list
  * - ?useView=true -
  * This parameter is required.
  *
