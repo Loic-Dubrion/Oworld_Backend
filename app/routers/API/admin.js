@@ -6,6 +6,15 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { adminController } = require('../../controllers/API');
 
 /**
+ * a error type
+ *
+ * @typedef {object} Error
+ * @property {number} status - HTTP status code of the error
+ * @property {string} error - HTTP error message
+ * @property {string} message - Detailed error message
+ */
+
+/**
  * GET /api/admin/stat
  *
  * @summary Get statistics

@@ -26,6 +26,6 @@ swagger(app, path.join(__dirname, 'routers'));
 // Routers
 app.use(router);
 
-app.use('/docs', express.static('../documentation'));
+app.use('/docs', express.static(path.join(__dirname, '../documentation')));
 
 module.exports = app;

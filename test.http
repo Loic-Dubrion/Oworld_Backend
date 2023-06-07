@@ -4,7 +4,9 @@
 GET {{baseUrl}}/admin/stat
 ################################################################
 
-### ROUTES VISITORS ###
+### ROUTES OWORLD ###
+### Data world ###
+GET {{baseUrl}}/oworld/
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
 ### Categories by country ###
