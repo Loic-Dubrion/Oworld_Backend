@@ -9,7 +9,7 @@ const { userController } = require('../../controllers/API');
  * POST /api/user/
  *
  * @summary Create a new user in db
- * @tags Users - operations related to users
+ * @tags User - operations related to users
  *
  * @param {object} object.required - username, email, password, country_origin, birth_date
  *
@@ -17,16 +17,16 @@ const { userController } = require('../../controllers/API');
  * @return {Error} 500 - Internal server error
  *
  */
-router.get(
+router.post(
   '/',
-  // controllerHandler(userController.getFavoriteCountries.bind(userController)),
+  controllerHandler(userController.addUser.bind(userController)),
 );
 
 /**
  * GET /api/user/{userId}/
  *
  * @summary Get profil and favorite countries for a user
- * @tags Users - operations related to users
+ * @tags User
  *
  * @param {integer} userId.path.required - The ID of the user
  *
@@ -48,7 +48,7 @@ router.get(
 * POST /api/user/{userId}/{userCountry}
 *
 * @summary Post - add a new favourite
-* @tags Users -
+* @tags User
 *
 * @param {integer} userId.path.required - The ID of the user
 * @param {string} countryIso3.path.required - The country Iso3
@@ -66,7 +66,7 @@ router.post(
 * DELETE /api/user/{userId}/{userCountry}
 *
 * @summary Delete - add a new favourite
-* @tags Users -
+* @tags User
 *
 * @param {integer} userId.path.required - The ID of the user
 * @param {string} countryIso3.path.required - The country Iso3

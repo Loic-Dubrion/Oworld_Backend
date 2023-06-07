@@ -1,20 +1,31 @@
 @baseUrl = http://localhost:3000/api
 
 ### STAT ADMINS ###
-GET {{baseUrl}}/admin/stat
+GET {{baseUrl}}/admin/stat?useView=true
 ################################################################
 
 ### ROUTES OWORLD ###
 ### Data world ###
-GET {{baseUrl}}/oworld/
+GET {{baseUrl}}/oworld
 ### Data world ###
-GET {{baseUrl}}/oworld/list?useView=true
+GET {{baseUrl}}/oworld?useView=true
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
 ### Categories by country ###
 GET {{baseUrl}}/oworld/FRA/category
 
 ### ROUTES USERS ###
+### Add Favorite ###
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "username": "JohnyBeGood",
+  "email": "johndoe@example.com",
+  "password": "1234",
+  "country_origin": "Belgique",
+  "birth_date": "1938-06-16"
+}
 ### Profile ###
 GET {{baseUrl}}/user/1
 ### Add Favorite ###

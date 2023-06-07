@@ -28,20 +28,10 @@ class CoreDataMapper {
     return results.rows[0];
   }
 
-  // async create(createObj) {
-  //   logger.info(`${this.constructor.name} create`);
-  //   const preparedQuery = {
-  //     text: `
-  //         SELECT * FROM create_post_from_json($1)
-  //       `,
-  //     values: [createObj],
-  //   };
-  //   const results = await client.query(preparedQuery);
-  //   return results.rows[0];
-  // }
-
   async executeFunction(functionName, ...params) {
     logger.info(`${this.constructor.name} executeFunction(${functionName}, ${params})`);
+    // la syntaxe (_, i) est utilisée pour déstructurer les éléments du tableau params
+    // seul le deuxième argument i (index) est utilisé, tandis que le premier argument _ est ignoré.
     const preparedQuery = {
       text: `SELECT * FROM ${functionName}(${params.map((_, i) => `$${i + 1}`).join(', ')})`,
       values: params,
