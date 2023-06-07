@@ -22,7 +22,7 @@ Content-Type: application/json
 {
   "username": "JohnyBeGood",
   "email": "johndoe@example.com",
-  "password": "1234",
+  "password": "&Oworld2023",
   "country_origin": "Belgique",
   "birth_date": "1938-06-16"
 }

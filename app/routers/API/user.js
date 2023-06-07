@@ -5,6 +5,9 @@ const router = express.Router();
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const { userController } = require('../../controllers/API');
 
+const validate = require('../../validations/validate');
+const { createUserBody } = require('../../validations/schemas');
+
 /**
  * POST /api/user/
  *
@@ -12,13 +15,20 @@ const { userController } = require('../../controllers/API');
  * @tags User - operations related to users
  *
  * @param {object} object.required - username, email, password, country_origin, birth_date
- *
+ * {
+  username: 'JohnyBeGood',
+  email: 'johndoe@example.com',
+  password: '&Oworld2023',
+  country_origin: 1,
+  birth_date: '1938-06-16'
+  }
  * @return {object} 201 - success response
  * @return {Error} 500 - Internal server error
  *
  */
 router.post(
   '/',
+  validate(createUserBody, 'body'),
   controllerHandler(userController.addUser.bind(userController)),
 );
 

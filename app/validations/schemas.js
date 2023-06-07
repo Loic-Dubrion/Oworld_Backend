@@ -8,7 +8,7 @@ const createUserBody = Joi.object({
   email: Joi.string().pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/).required(),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/).required(),
   country_origin: Joi.number().required(),
-  birth_date: Joi.date.required(),
+  birth_date: Joi.date().required(),
 }).required();
 
 module.exports = {
