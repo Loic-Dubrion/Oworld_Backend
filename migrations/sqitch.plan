@@ -6,3 +6,4 @@ view_stat 2023-06-06T06:10:39Z Loic Dubrion <loic-dubrion@hotmail.fr> # create v
 function_favorite 2023-06-06T14:27:35Z Loic Dubrion <loic-dubrion@hotmail.fr> # add a function for user profil
 table_world 2023-06-07T05:47:51Z Loic Dubrion <loic-dubrion@hotmail.fr> # a_new_table
 function_favourite 2023-06-07T07:36:42Z Loic Dubrion <loic-dubrion@hotmail.fr> # function for favourite gestion
+view_country_list 2023-06-07T08:49:37Z Loic Dubrion <loic-dubrion@hotmail.fr> # create a view sql for a list of all countries
