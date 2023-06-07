@@ -9,7 +9,7 @@ const router = express.Router();
 /**
  * GET /api/oworld
  *
- * @summary Get statistics
+ * @summary Get data World
  * @tags Oworld
  *
  * @return {array<object>} 200 - Success response
@@ -23,7 +23,7 @@ router.get(
 );
 
 /**
- * GET /api/oworld
+ * GET /api/oworld/list
  *
  * @summary Get a list of all countries
  * @tags Oworld
@@ -41,7 +41,7 @@ router.get(
  *   GET /api/oworld/list?useView=true
  */
 router.get(
-  '/',
+  '/list',
   controllerHandler(oworldController.getAll.bind(oworldController)),
 );
 
