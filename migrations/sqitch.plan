@@ -7,3 +7,4 @@ function_favorite 2023-06-06T14:27:35Z Loic Dubrion <loic-dubrion@hotmail.fr> # 
 table_world 2023-06-07T05:47:51Z Loic Dubrion <loic-dubrion@hotmail.fr> # a_new_table
 function_favourite 2023-06-07T07:36:42Z Loic Dubrion <loic-dubrion@hotmail.fr> # function for favourite gestion
 view_country_list 2023-06-07T08:49:37Z Loic Dubrion <loic-dubrion@hotmail.fr> # create a view sql for a list of all countries
+function_user 2023-06-07T13:13:34Z Loic Dubrion <loic-dubrion@hotmail.fr> # function for create, update and delete a user
