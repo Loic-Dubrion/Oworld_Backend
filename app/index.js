@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const router = require('./routers');
 
-const cors = require('cors');
 const swagger = require('./services/swagger');
 
 const app = express();

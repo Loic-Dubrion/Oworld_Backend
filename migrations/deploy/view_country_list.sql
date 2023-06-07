@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE VIEW country_list AS 
-SELECT name 
+SELECT name, id, iso3, iso2 
 FROM country;
 
 COMMIT;
