@@ -36,14 +36,32 @@ router.get(
 * @param {integer} userId.path.required - The ID of the user
 * @param {string} countryIso3.path.required - The country Iso3
 *
-* @return {object} 200 - success response
+* @return {object} 201 - success response
 * @return {Error} 500 - Internal server error
 *
 */
 router.post(
-  '/:userID/:countryID/',
+  '/:userId/:countryISO/',
+  controllerHandler(userController.addFavorite.bind(userController)),
 );
-// - ajout d'un favoris
+
+/**
+* DELETE /api/user/{userId}/{userCountry}
+*
+* @summary Delete - add a new favourite
+* @tags Users -
+*
+* @param {integer} userId.path.required - The ID of the user
+* @param {string} countryIso3.path.required - The country Iso3
+*
+* @return {object} 200 - success response
+* @return {Error} 500 - Internal server error
+*
+*/
+router.delete(
+  '/:userID/:countryID/',
+  // controllerHandler(userController.deleteFavorite.bind(userController)),
+);
 
 router.put(
   '/:userID',

@@ -40,11 +40,11 @@ class CoreDataMapper {
     return results.rows[0];
   }
 
-  async executeFunction(functionName, param) {
-    logger.info(`${this.constructor.name} executeFunction(${functionName}, ${param})`);
+  async executeFunction(functionName, ...params) {
+    logger.info(`${this.constructor.name} executeFunction(${functionName}, ${params})`);
     const preparedQuery = {
-      text: `SELECT * FROM ${functionName}($1)`,
-      values: [param],
+      text: `SELECT * FROM ${functionName}(${params.map((_, i) => `$${i + 1}`).join(', ')})`,
+      values: params,
     };
     logger.info(preparedQuery);
     const results = await client.query(preparedQuery);

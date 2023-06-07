@@ -15,3 +15,5 @@ GET {{baseUrl}}/oworld/FRA/category
 ### ROUTES USERS ###
 ### Profile ###
 GET {{baseUrl}}/user/1
+### Add Favorite ###
+POST {{baseUrl}}/user/1/FRA
