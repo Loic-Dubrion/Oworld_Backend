@@ -6,6 +6,23 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { userController } = require('../../controllers/API');
 
 /**
+ * POST /api/user/
+ *
+ * @summary Create a new user in db
+ * @tags Users - operations related to users
+ *
+ * @param {object} object.required - username, email, password, country_origin, birth_date
+ *
+ * @return {object} 201 - success response
+ * @return {Error} 500 - Internal server error
+ *
+ */
+router.get(
+  '/',
+  // controllerHandler(userController.getFavoriteCountries.bind(userController)),
+);
+
+/**
  * GET /api/user/{userId}/
  *
  * @summary Get profil and favorite countries for a user
@@ -67,7 +84,6 @@ router.put(
   '/:userID',
 );
 // - Modifier le profil
-// - Modifier les pays pin
 
 router.delete(
   '/:userID',
