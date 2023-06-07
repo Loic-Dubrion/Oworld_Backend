@@ -2,6 +2,7 @@ const express = require('express');
 
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const externalApiController = require('../../controllers/API/externalApiController');
+const oworldController = require('../../controllers/API/OworldController');
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ const router = express.Router();
  */
 router.get(
   '/',
-  controllerHandler(externalApiController.testRestCountry),
+  controllerHandler(oworldController.getAll.bind(oworldController)),
 );
 
 /**

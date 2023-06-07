@@ -1,12 +1,12 @@
 const logger = require('../services/logger');
 const CoreDataMapper = require('./CoreDataMapper');
 
-/** Class representing a admin data mapper. */
-class AdminDataMapper extends CoreDataMapper {
-  static viewName = 'stat_admin';
+/** Class representing a oWorld data mapper. */
+class OworldDataMapper extends CoreDataMapper {
+  static tableName = 'planets';
 
   /**
-   * create a admin data mapper
+   * create a oWorld data mapper
    *
    * @augments CoreDataMapper
    */
@@ -16,4 +16,4 @@ class AdminDataMapper extends CoreDataMapper {
   }
 }
 
-module.exports = new AdminDataMapper();
+module.exports = new OworldDataMapper();
