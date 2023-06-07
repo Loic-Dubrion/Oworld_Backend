@@ -16,16 +16,24 @@ class UserController extends CoreController {
     logger.info('userController created');
   }
 
-  /**
-   * responds with favorite countries of a user
-   *
-   * @param {Object} request
-   * @param {Object} response
-   */
   async getFavoriteCountries(request, response) {
     logger.info(`${this.constructor.name} getFavoriteCountries`);
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('favorite_countries', userId);
+    response.json(results);
+  }
+
+  async addFavorite(request, response) {
+    logger.info(`${this.constructor.name} addFavorite`);
+    const { userId } = request.params;
+    const results = await this.constructor.dataMapper.executeFunction('insert_favorite', userId);
+    response.json(results);
+  }
+
+  async deleteFavorite(request, response) {
+    logger.info(`${this.constructor.name} deleteFavorite`);
+    const { userId } = request.params;
+    const results = await this.constructor.dataMapper.executeFunction('delete_favorite', userId);
     response.json(results);
   }
 }
