@@ -32,6 +32,15 @@ GET {{baseUrl}}/user/1
 POST {{baseUrl}}/user/1/FRA
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/1/FRA
+### Update User ###
+PUT {{baseUrl}}/user/601
+Content-Type: application/json
+
+{
+  "username": "Bob",
+  "email": "test@test1.com",
+  "password": "&Test1234"
+}
 ### Delete User ###
 DELETE {{baseUrl}}/user/1
 

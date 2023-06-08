@@ -96,18 +96,12 @@ router.delete(
 
 router.put(
   '/:userId',
+  controllerHandler(userController.updateUser.bind(userController)),
 );
-// - Modifier le profil
 
 router.delete(
   '/:userId',
   controllerHandler(userController.deleteUser.bind(userController)),
 );
-
-router.delete(
-  '/:userID/:countryID/',
-);
-// - supp d'un favoris
-
 
 module.exports = router;

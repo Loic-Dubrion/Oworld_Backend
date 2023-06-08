@@ -50,6 +50,14 @@ class UserController extends CoreController {
     response.json(results);
   }
 
+  async updateUser(request, response) {
+    const { userId } = request.params;
+    const { ...objData } = request.body;
+    logger.debug(objData);
+    const results = await this.constructor.dataMapper.executeFunction('update_user', userId, objData);
+    response.json(results);
+  }
+
   async deleteUser(request, response) {
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
