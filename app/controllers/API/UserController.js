@@ -14,34 +14,26 @@ class UserController extends CoreController {
   *
   * @augments CoreController
   */
-  constructor() {
-    super();
-    logger.info('userController created');
-  }
 
   async getFavoriteCountries(request, response) {
-    logger.info(`${this.constructor.name} getFavoriteCountries`);
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('favorite_countries', userId);
     response.json(results);
   }
 
   async addFavorite(request, response) {
-    logger.info(`${this.constructor.name} addFavorite`);
     const { userId, countryISO } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('insert_favorite', userId, countryISO);
     response.json(results);
   }
 
   async deleteFavorite(request, response) {
-    logger.info(`${this.constructor.name} deleteFavorite`);
     const { userId, countryISO } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('delete_favorite', userId, countryISO);
     response.json(results);
   }
 
   async addUser(request, response) {
-    logger.info(`${this.constructor.name} addUser`);
     const dataUser = request.body;
     const user = await UserController.dataMapper.findOneByField('username', dataUser.username);
     if (user) {
@@ -59,10 +51,7 @@ class UserController extends CoreController {
   }
 
   async deleteUser(request, response) {
-    logger.info(`${this.constructor.name} deleteUser`);
     const { userId } = request.params;
-    logger.debug(userId);
-    logger.debug(request.param);
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
     response.json(results);
   }
