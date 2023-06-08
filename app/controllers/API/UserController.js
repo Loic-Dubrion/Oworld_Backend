@@ -53,6 +53,12 @@ class UserController extends CoreController {
   async updateUser(request, response) {
     const { userId } = request.params;
     const { ...objData } = request.body;
+
+    if (objData.password) {
+      const hashedPassword = await bcrypt.hash(objData.password, 10);
+      objData.password = hashedPassword;
+    }
+
     logger.debug(objData);
     const results = await this.constructor.dataMapper.executeFunction('update_user', userId, objData);
     response.json(results);

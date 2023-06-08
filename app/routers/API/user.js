@@ -7,7 +7,7 @@ const auth = require('../../services/authentification');
 const { userController } = require('../../controllers/API');
 
 const validate = require('../../validations/validate');
-const { createUserBody } = require('../../validations/schemas');
+const { createUserBody, updateUserBody } = require('../../validations/schemas');
 
 router.use('/:userId', auth);
 
@@ -96,6 +96,7 @@ router.delete(
 
 router.put(
   '/:userId',
+  validate(updateUserBody, 'body'),
   controllerHandler(userController.updateUser.bind(userController)),
 );
 
