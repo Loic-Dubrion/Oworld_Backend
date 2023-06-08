@@ -25,8 +25,8 @@ class CoreController {
    */
   async getOne(request, response) {
     logger.info(`${this.constructor.name} getOne`);
-    const { id } = request.params;
-    const results = await this.constructor.dataMapper.findByPk(id);
+    const { field, value } = request.query;
+    const results = await this.constructor.dataMapper.findOneByField(field, value);
     response.json(results);
   }
 }

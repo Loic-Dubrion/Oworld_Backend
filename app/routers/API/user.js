@@ -3,10 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 const controllerHandler = require('../../controllers/services/controllerHandler');
+const auth = require('../../services/authentification');
 const { userController } = require('../../controllers/API');
 
 const validate = require('../../validations/validate');
 const { createUserBody } = require('../../validations/schemas');
+
+router.use('/:userId', auth);
 
 /**
  * POST /api/user/
@@ -104,5 +107,6 @@ router.delete(
   '/:userID/:countryID/',
 );
 // - supp d'un favoris
+
 
 module.exports = router;

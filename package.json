@@ -33,6 +33,7 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "express-jsdoc-swagger": "^1.8.0",
+    "express-session": "^1.17.3",
     "pg": "^8.11.0",
     "radio-browser": "^2.2.3",
     "sanitizer": "^0.1.3"

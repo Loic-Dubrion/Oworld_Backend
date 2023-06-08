@@ -17,14 +17,14 @@ class CoreDataMapper {
     return results.rows;
   }
 
-  async findByPk(id) {
-    logger.info(`${this.constructor.name} findByPk(${id})`);
-    const tableName = this.constructor.viewName || this.constructor.tableName;
-    const preparedQuery = {
-      text: `SELECT * FROM "${tableName}" WHERE id=$1`,
-      values: [id],
+  async findOneByField(field, value) {
+    logger.info(`${this.constructor.name} findOneByField`);
+    const tableName = this.constructor.tableName;
+    const query = {
+      text: `SELECT * FROM "${tableName}" WHERE ${field} = $1`,
+      values: [value],
     };
-    const results = await client.query(preparedQuery);
+    const results = await client.query(query);
     return results.rows[0];
   }
 

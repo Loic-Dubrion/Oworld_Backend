@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const bodySanitizer = require('./services/sanitizer');
+const session = require('express-session');
 
 const router = require('./routers');
 
@@ -12,7 +13,12 @@ const swagger = require('./services/swagger');
 const app = express();
 
 // Session setup
-
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === 'production' },
+}));
 // CORS setup
 const corsOptions = {
   origin: process.env.CORS_DOMAINS ?? '*',
