@@ -47,7 +47,7 @@ class UserController extends CoreController {
     const hashedPassword = await bcrypt.hash(password, 10);
     const modifiedDataUser = { ...userWithoutPassword, password: hashedPassword };
     const results = await this.constructor.dataMapper.executeFunction('insert_user', modifiedDataUser);
-    response.json(results);
+    response.status(201).json(results);
   }
 
   async updateUser(request, response) {
