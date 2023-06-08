@@ -20,9 +20,9 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Johnood10",
-  "email": "johndo10@example.com",
-  "password": "123",
+  "username": "test2",
+  "email": "test@test1.com",
+  "password": "&Test1234",
   "country_origin": 1,
   "birth_date": "1938-06-16"
 }
@@ -32,3 +32,13 @@ GET {{baseUrl}}/user/1
 POST {{baseUrl}}/user/1/FRA
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/1/FRA
+### Login to user ###
+POST {{baseUrl}}/log/in
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "&Test1234"
+}
+### Logout ###
+GET {{baseUrl}}/log/out

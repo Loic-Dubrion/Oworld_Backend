@@ -1,16 +1,17 @@
+/* eslint-disable no-await-in-loop */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const faker = require('faker');
 const client = require('../app/services/clientdb');
 const logger = require('../app/services/logger');
 
 /**
- *  This script generates 300 fictitious users,
+ *  This script generates 600 fictitious users,
  *  assigns roles to each user,
  *  and inserts them into the database.
  *
  *  @returns {Promise} A Promise that resolves when all users have been inserted into the database
  */
-(async function() {
+(async function generateFakeUsers() {
   let connectionEstablished = false;
   try {
     await client.connect();
@@ -22,13 +23,14 @@ const logger = require('../app/services/logger');
     const users = [];
 
     // Generate user data for 300 users
-    for (let i = 0; i < 300; i += 1) {
+    for (let i = 0; i < 600; i += 1) {
       const username = faker.internet.userName();
       const email = faker.internet.email();
       const password = faker.internet.password();
-      const countryOrigin = faker.datatype.number({ min: 1, max: 30 }); // Users are from 30 different countries
+      // Users are from 60 different countries
+      const countryOrigin = faker.datatype.number({ min: 1, max: 60 });
       const birthDate = faker.date.between(
-        new Date('1928-01-01'),
+        new Date('1945-01-01'),
         new Date('2008-01-01'),
       );
 
@@ -83,15 +85,15 @@ const logger = require('../app/services/logger');
         await client.query(roleQuery, [userRole.user_id, userRole.role_id]);
 
         // Insert favorite countries for each user
-        const favoriteCountriesCount = faker.datatype.number({ min: 0, max: 10 });
-        for (let i = 0; i < favoriteCountriesCount; i++) {
-          const countryId = faker.datatype.number({ min: 20, max: 50 }); // Each user has favorites from 30 different countries
+        const favoriteCountriesCount = faker.datatype.number({ min: 0, max: 20 });
+        for (let i = 0; i < favoriteCountriesCount; i += 1) {
+        // Each user has favorites from 80 different countries
+          const countryId = faker.datatype.number({ min: 10, max: 90 });
+
           await client.query(favQuery, [userId, countryId]);
         }
-
       } catch (error) {
         logger.error(`Error inserting user ${index}`, error);
-        return;
       }
     });
 
@@ -105,4 +107,4 @@ const logger = require('../app/services/logger');
     }
     process.exit();
   }
-})();
+}());
