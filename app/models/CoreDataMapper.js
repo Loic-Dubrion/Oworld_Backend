@@ -13,7 +13,6 @@ class CoreDataMapper {
     const preparedQuery = {
       text: `SELECT * FROM "${tableName}"`,
     };
-    console.log(preparedQuery);
     const results = await client.query(preparedQuery);
     return results.rows;
   }
