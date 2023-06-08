@@ -32,6 +32,10 @@ GET {{baseUrl}}/user/1
 POST {{baseUrl}}/user/1/FRA
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/1/FRA
+### Delete User ###
+DELETE {{baseUrl}}/user/1
+
+### ROUTES LOGIN/OUT ###
 ### Login to user ###
 POST {{baseUrl}}/log/in
 Content-Type: application/json

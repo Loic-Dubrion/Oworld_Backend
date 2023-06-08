@@ -57,6 +57,15 @@ class UserController extends CoreController {
     const results = await this.constructor.dataMapper.executeFunction('insert_user', modifiedDataUser);
     response.json(results);
   }
+
+  async deleteUser(request, response) {
+    logger.info(`${this.constructor.name} deleteUser`);
+    const { userId } = request.params;
+    logger.debug(userId);
+    logger.debug(request.param);
+    const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
+    response.json(results);
+  }
 }
 
 module.exports = new UserController();

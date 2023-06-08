@@ -95,12 +95,13 @@ router.delete(
 );
 
 router.put(
-  '/:userID',
+  '/:userId',
 );
 // - Modifier le profil
 
 router.delete(
-  '/:userID',
+  '/:userId',
+  controllerHandler(userController.deleteUser.bind(userController)),
 );
 
 router.delete(

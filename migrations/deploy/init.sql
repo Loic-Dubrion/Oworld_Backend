@@ -55,7 +55,7 @@ CREATE TABLE "authorisation" (
 
 CREATE TABLE "user_has_role" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "user_id" INTEGER REFERENCES "user"("id"),
+    "user_id" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
     "role_id" INTEGER REFERENCES "role"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
@@ -63,7 +63,7 @@ CREATE TABLE "user_has_role" (
 
 CREATE TABLE "role_has_authorisation" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "role_id" INTEGER REFERENCES "role"("id"),
+    "role_id" INTEGER REFERENCES "role"("id") ON DELETE CASCADE,
     "authorisation_id" INTEGER REFERENCES "authorisation"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
@@ -71,7 +71,7 @@ CREATE TABLE "role_has_authorisation" (
 
 CREATE TABLE "user_has_favorite" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "user_id" INTEGER REFERENCES "user"("id"),
+    "user_id" INTEGER REFERENCES "user"("id") ON DELETE CASCADE,
     "country_id" INTEGER REFERENCES "country"("id"),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
