@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const logger = require('../../services/logger');

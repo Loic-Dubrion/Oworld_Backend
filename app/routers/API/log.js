@@ -41,6 +41,6 @@ router.post('/in', controllerHandler(sessionController.login));
  * @return {BadRequestError} 400 - Invalid or non-existent session
  * @return {Error} 500 - internal server error
  */
-// router.get('/out', controllerHandler(sessionController.logout));
+router.get('/out', controllerHandler(sessionController.logout));
 
 module.exports = router;
