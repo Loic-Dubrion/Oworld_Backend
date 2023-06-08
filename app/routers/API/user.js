@@ -94,12 +94,38 @@ router.delete(
   controllerHandler(userController.deleteFavorite.bind(userController)),
 );
 
+/**
+ * PUT /api/user/{userId}
+ *
+ * @summary Update a user
+ * @tags User
+ *
+ * @param {integer} userId.path.required - The ID of the user
+ * @param {object} request.body.required - User info payload
+ * @param {string} request.body.username - User's username
+ * @param {string} request.body.email - User's email
+ * @param {string} request.body.password - User's password
+ *
+ * @return {object} 200 - Success response
+ * @return {Error} 500 - Internal server error
+ */
 router.put(
   '/:userId',
   validate(updateUserBody, 'body'),
   controllerHandler(userController.updateUser.bind(userController)),
 );
 
+/**
+ * DELETE /api/user/{userId}
+ *
+ * @summary Delete a user
+ * @tags User
+ *
+ * @param {integer} userId.path.required - The ID of the user
+ *
+ * @return {object} 200 - Success response
+ * @return {Error} 500 - Internal server error
+ */
 router.delete(
   '/:userId',
   controllerHandler(userController.deleteUser.bind(userController)),

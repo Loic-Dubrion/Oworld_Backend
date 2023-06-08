@@ -24,7 +24,7 @@ Content-Type: application/json
   "email": "test@test.com",
   "password": "&Test1234",
   "country_origin": 1,
-  "birth_date": "1938-06-16"
+  "birth_date": "1938-06-16",
 }
 ### Profile ###
 GET {{baseUrl}}/user/1

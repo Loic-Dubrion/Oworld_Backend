@@ -6,8 +6,6 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { adminController } = require('../../controllers/API');
 
 /**
- * a error type
- *
  * @typedef {object} Error
  * @property {number} status - HTTP status code of the error
  * @property {string} error - HTTP error message
@@ -15,24 +13,30 @@ const { adminController } = require('../../controllers/API');
  */
 
 /**
+ * @typedef {object} Statistics
+ * @property {string} country_origin - The country of origin.
+ * @property {string} iso2 - The ISO 2-letter country code.
+ * @property {string} iso3 - The ISO 3-letter country code.
+ * @property {number} average_age - The average age of users.
+ * @property {string} user_count - The count of users.
+ * @property {string} favorite_count - The count of favorites.
+ */
+
+/**
  * GET /api/admin/stat
  *
  * @summary Get statistics
- * @tags Admin - management administration
+ * @tags Admin - Management Administration
+ * @description
+ * This route returns user statistics data
  *
- * @param {boolean} useView.query.required -
- * Whether to use a SQL view or not.
- * - ?useView=true -
- * This parameter is required.
+ * @param {boolean} useView.query.required - Whether to use a SQL view or not.
+ * Use `?useView=true` as a required query parameter.
  *
- * @return {array<object>} 200 - success response -
- * an array of objects where each object represents the statistics for a particular country
- * @property {string} country_origin - The country of origin
- * @property {number} average_age - The average age of users
- * @property {string} user_count - The count of users
- * @property {string} favorite_count - The count of favorites
- * @return {Error} 500 - Internal server error
+ * @return {Array.<Statistics>} 200 - Success response.
+ * An array of objects where each object represents the statistics for a particular country.
  *
+ * @throws {Error} 500 - Internal server error.
  */
 
 router.get(

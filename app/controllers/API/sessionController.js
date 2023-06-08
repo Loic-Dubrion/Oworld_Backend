@@ -42,7 +42,7 @@ class SessionController extends CoreController {
       role: user.id_role,
     };
 
-    return response.status(200).json({ message: 'Utilisateur connecté avec succès', user: request.session.user });
+    return response.status(200).json({ httpCode: 401, message: 'successful connection', user: request.session.user });
   }
 
   logout(request, response) {
