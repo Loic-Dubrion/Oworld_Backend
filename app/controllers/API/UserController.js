@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
+const Error400 = require('../../errors/Error400');
 
 /** Class representing a user controller. */
 class UserController extends CoreController {
@@ -42,6 +43,14 @@ class UserController extends CoreController {
   async addUser(request, response) {
     logger.info(`${this.constructor.name} addUser`);
     const dataUser = request.body;
+    const user = await UserController.dataMapper.findOneByField('username', dataUser.username);
+    if (user) {
+      throw new Error400('existing user');
+    }
+    const email = await UserController.dataMapper.findOneByField('email', dataUser.email);
+    if (email) {
+      throw new Error400('existing email address');
+    }
     const { password, ...userWithoutPassword } = dataUser;
     const hashedPassword = await bcrypt.hash(password, 10);
     const modifiedDataUser = { ...userWithoutPassword, password: hashedPassword };

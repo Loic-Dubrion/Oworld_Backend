@@ -37,7 +37,7 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "test@test1.com",
   "password": "&Test1234"
 }
 ### Logout ###
