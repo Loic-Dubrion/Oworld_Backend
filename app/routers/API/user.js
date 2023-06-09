@@ -2,13 +2,21 @@ const express = require('express');
 
 const router = express.Router();
 
+// Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const auth = require('../../services/authentification');
 const { userController } = require('../../controllers/API');
 
+// validation of data received
 const validate = require('../../validations/validate');
 const { createUserBody, updateUserBody } = require('../../validations/schemas');
+const validateParam = require('../../services/validateParam');
 
+// Middleware function to check the validity of URL parameters
+router.param('userId', validateParam.validateId('userId'));
+router.param('countryISO', validateParam.validateIso('countryISO'));
+
+// Middleware function to authentication
 router.use('/:userId', auth);
 
 /**
@@ -17,14 +25,13 @@ router.use('/:userId', auth);
  * @summary Create a new user in db
  * @tags User - operations related to users
  *
- * @param {object} user.required - User details
- * @property {string} user.username - Username - eg: JohnyBeGood
- * @property {string} user.email - Email - eg: johndoe@test.com -
+  * @param {string} user.username.required - Username - eg: JohnyBeGood
+ * @param {string} user.email.required - Email - eg: johndoe@test.com -
  * regex: /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
- * @property {string} user.password - Password - eg: &Oworld2023 -
+ * @param {string} user.password.required - Password - eg: &Oworld2023 -
  * regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
- * @property {integer} user.country_origin - Country Origin - eg: 1
- * @property {string} user.birth_date - Birth Date - eg: 1938-06-16
+ * @param {integer} user.country_origin.required - Country Origin - eg: 1
+ * @param {string} user.birth_date.required - Birth Date - eg: 1938-06-16
  *
  * @return {object} 201 - success response
  * @return {Error} 500 - Internal server error

@@ -29,10 +29,13 @@ BEGIN
     INSERT INTO "user" (username, email, password, country_origin, birth_date)
     VALUES (usernameParam, emailParam, passwordParam, countryOriginParam, birthDateParam);
 
-    response := json_build_object('http status', 201, 'message', 'Success! ' || usernameParam || ' has been inserted');
-    
+    response := json_build_object(
+        'httpCode', 201,
+        'status', 'success',
+        'message', usernameParam || ' has been inserted'
+    );    
     RETURN response;
-END;
+    END;
 $$ LANGUAGE plpgsql;
 
 
@@ -65,8 +68,11 @@ BEGIN
         password = passwordParam
     WHERE id = userId;
 
-    response := json_build_object('http status', 200, 'message', 'Success! User ' || userId || ' has been updated');
-
+    response := json_build_object(
+        'httpCode', 200,
+        'status', 'success',
+        'message', usernameParam || ' has been updated'
+    ); 
     RETURN response;
 END;
 $$ LANGUAGE plpgsql;
@@ -81,8 +87,11 @@ BEGIN
     DELETE FROM "user" 
     WHERE id = userId;
     
-    response := json_build_object('http status', 200, 'message', 'Success! User ' || userId || ' has been deleted');
-
+    response := json_build_object(
+        'httpCode', 200,
+        'status', 'success',
+        'message', usernameParam || ' has been deleted'
+    ); 
     RETURN response;
 END;
 $$ LANGUAGE plpgsql;

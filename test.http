@@ -7,25 +7,29 @@ GET {{baseUrl}}/admin/stat?useView=true
 ### ROUTES OWORLD ###
 ### Data world ###
 GET {{baseUrl}}/oworld?useView=false
+
 ### List country ###
 GET {{baseUrl}}/oworld?useView=true
+
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
+
 ### Categories by country ###
 GET {{baseUrl}}/oworld/FRA/category
 
 ### ROUTES USERS ###
-### Add Favorite ###
+### Add User ###
 POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "test12",
-  "email": "te12st@test.com",
+  "username": "test2556",
+  "email": "te12jisnt@test.com",
   "password": "&Test1234",
   "country_origin": 1,
   "birth_date": "1938-06-16"
 }
+
 ### Profile ###
 GET {{baseUrl}}/user/1
 ### Add Favorite ###

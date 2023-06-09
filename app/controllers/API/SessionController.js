@@ -39,19 +39,19 @@ class SessionController extends CoreController {
     request.session.user = {
       id: user.id,
       username: user.username,
-      email: user.email,
       role: user.id_role,
     };
 
     response.setHeader('X-Session-Username', user.username);
-    response.setHeader('X-Session-Email', user.email);
     response.setHeader('Set-Cookie', 'Max-Age=3600');
-    return response.status(200).json({ httpCode: 200, message: 'successful connection', user: request.session.user });
+    return response.status(200).json({
+      httpCode: 200, status: 'success', message: 'successful connection', user: request.session.user,
+    });
   }
 
   logout(request, response) {
     request.session.user = null;
-    return response.status(200).json({ message: 'Déconnexion réussie' });
+    return response.status(200).json({ httpCode: 200, status: 'success', message: 'Déconnexion réussie' });
   }
 }
 
