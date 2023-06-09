@@ -42,10 +42,11 @@ class SessionController extends CoreController {
       role: user.id_role,
     };
 
-    response.setHeader('X-Session-Username', user.username);
-    response.setHeader('Set-Cookie', 'Max-Age=3600');
     return response.status(200).json({
-      httpCode: 200, status: 'success', message: 'successful connection', user: request.session.user,
+      httpCode: 200,
+      status: 'success',
+      message: 'successful connection',
+      session: request.session.user,
     });
   }
 
