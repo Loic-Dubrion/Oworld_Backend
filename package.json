@@ -9,6 +9,7 @@
     "db:create": "sqitch revert -y && sqitch deploy",
     "db:seed": "psql oworld -f data/seedingCountry.sql && psql oworld -f data/seedingRBAC.sql && node data/faker.js && psql oworld -f data/seedingWorld.sql",
     "db:reset": "npm run db:create && npm run db:seed | bunyan -o short",
+    "db:save": "nodemon app/services/pg_dump.js | bunyan -o short",
     "test": "jest",
     "docs": "jsdoc -c jsdoc.config.json"
   },
