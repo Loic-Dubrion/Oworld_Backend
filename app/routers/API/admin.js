@@ -48,7 +48,7 @@ router.use(checkRole('Admin'));
 
 router.get(
   '/stat',
-  checkPermission('read'),
+  checkPermission('View_stats'),
   controllerHandler(adminController.getAll.bind(adminController)),
 );
 

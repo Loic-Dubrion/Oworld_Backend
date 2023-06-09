@@ -26,7 +26,7 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "test",
+  "username": "Loic",
   "email": "test@test.com",
   "password": "&Test1234",
   "country_origin": 1,
@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ### Profile ###
-GET {{baseUrl}}/user/601
+GET {{baseUrl}}/user/602
 ### Add Favorite ###
 POST {{baseUrl}}/user/1/FRA
 ### Delete Favorite ###
@@ -44,8 +44,8 @@ PUT {{baseUrl}}/user/1
 Content-Type: application/json
 
 {
-  "username": "Bob",
-  "email": "test@test1.com",
+  "username": "Loïc",
+  "email": "test@test.com",
   "password": "&Test1234"
 }
 ### Delete User ###
@@ -57,7 +57,7 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@test1.com",
+  "email": "test@test.com",
   "password": "&Test1234"
 }
 ### Logout ###

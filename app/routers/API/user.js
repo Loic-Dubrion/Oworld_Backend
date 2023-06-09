@@ -18,7 +18,7 @@ router.param('userId', validateParam.validateId('userId'));
 router.param('countryISO', validateParam.validateIso('countryISO'));
 
 router.use('/:userId', auth);
-router.use(checkRole('User'));
+router.use('/:userId', checkRole('User'));
 
 /**
  * POST /api/user/
