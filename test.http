@@ -11,6 +11,9 @@ GET {{baseUrl}}/oworld?useView=false
 ### List country ###
 GET {{baseUrl}}/oworld?useView=true
 
+### List flags ###
+GET {{baseUrl}}/oworld/flags
+
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
 

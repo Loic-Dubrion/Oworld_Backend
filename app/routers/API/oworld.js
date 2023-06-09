@@ -1,11 +1,13 @@
 const express = require('express');
 
+// Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const externalApiController = require('../../controllers/API/externalApiController');
 const oworldController = require('../../controllers/API/OworldController');
 
 const router = express.Router();
 
+// Routes
 /**
  * GET /api/oworld
  *
@@ -23,6 +25,21 @@ router.get(
 );
 
 /**
+ * GET /api/oworld/flags
+ *
+ * @summary Get all flags
+ * @tags Oworld
+ * @return {array<object>} 200 - Success response
+ * - a list of the world's flags
+ * @return {Error} 500 - Internal server error
+ *
+ */
+router.get(
+  '/flags',
+  controllerHandler(externalApiController.restCountryFlags),
+);
+
+/**
  * GET /api/oworld/list
  *
  * @summary Get a list of all countries or dataWorld
@@ -37,9 +54,6 @@ router.get(
  * @return {array<object>} 200 - Success response
  * - A list of all countries
  * @return {Error} 500 - Internal server error
- *
- * @example Get statistics using a SQL view
- *   GET /api/oworld/list?useView=true
  */
 router.get(
   '/list',
