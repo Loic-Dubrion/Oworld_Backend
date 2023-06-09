@@ -7,17 +7,18 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const auth = require('../../services/authentification');
 const { userController } = require('../../controllers/API');
 
-// validation of data received
+// Import Middlewares
 const validate = require('../../validations/validate');
 const { createUserBody, updateUserBody } = require('../../validations/schemas');
 const validateParam = require('../../services/validateParam');
+const { checkRole } = require('../../services/checkRBAC');
 
-// Middleware function to check the validity of URL parameters
+// Check
 router.param('userId', validateParam.validateId('userId'));
 router.param('countryISO', validateParam.validateIso('countryISO'));
 
-// Middleware function to authentication
 router.use('/:userId', auth);
+router.use(checkRole('User'));
 
 /**
  * POST /api/user/

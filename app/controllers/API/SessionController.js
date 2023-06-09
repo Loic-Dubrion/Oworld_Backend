@@ -41,12 +41,6 @@ class SessionController extends CoreController {
       role: user.id_role,
     };
 
-    response.cookie('sessionID', request.session.id, {
-      httpOnly: true, // Empêche l'accès au cookie depuis JavaScript côté client
-      secure: false, // Utiliser uniquement sur HTTPS
-      sameSite: 'none'// Permet les requêtes cross-site depuis les clients tiers
-    });
-
     return response.status(200).json({
       httpCode: 200,
       status: 'success',

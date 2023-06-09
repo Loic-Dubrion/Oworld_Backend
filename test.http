@@ -34,13 +34,13 @@ Content-Type: application/json
 }
 
 ### Profile ###
-GET {{baseUrl}}/user/1
+GET {{baseUrl}}/user/601
 ### Add Favorite ###
 POST {{baseUrl}}/user/1/FRA
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/1/FRA
 ### Update User ###
-PUT {{baseUrl}}/user/601
+PUT {{baseUrl}}/user/1
 Content-Type: application/json
 
 {
@@ -57,7 +57,7 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "test@test1.com",
   "password": "&Test1234"
 }
 ### Logout ###

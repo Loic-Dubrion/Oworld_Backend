@@ -1,33 +1,56 @@
 const Error401 = require('../errors/Error401');
 const Error403 = require('../errors/Error403');
+const clientdb = require('./clientdb');
 
-/**
- * This file includes a function to check if users are logged in
- * @module authentification
- */
-
-/**
- * Auth middleware checks the user session, if it exists,
- * sets the local user to the session user. If not, sets it to false.
- * @param {Object} req - The request object coming from the client
- * @param {Object} res - The response object going to the client
- * @param {function} next - The callback to the next program handler
- */
-
-const auth = (req, res, next) => {
+const auth = async (req, res, next) => {
   const userId = Number(req.params.userId);
 
   if (!req.session.user) {
-    throw new Error401('Access forbidden - please login');
+    return next(new Error401('Access forbidden - please login'));
   }
 
   if (userId !== req.session.user.id) {
-    throw new Error403('Access forbidden');
+    return next(new Error403('Access forbidden'));
   }
 
-  res.locals.user = req.session.user;
-  next();
-  return true;
+  try {
+    const result = await clientdb.query(
+      `
+      SELECT 
+      role.name AS role_name, 
+      array_agg(authorisation.name) AS permissions
+    FROM 
+      "user" AS u
+    JOIN 
+      user_has_role ON u.id = user_has_role.user_id
+    JOIN 
+      role ON user_has_role.role_id = role.id
+    JOIN 
+      role_has_authorisation ON role.id = role_has_authorisation.role_id
+    JOIN 
+      authorisation ON role_has_authorisation.authorisation_id = authorisation.id
+    WHERE 
+      u.id = $1
+    GROUP BY 
+      role.name`,
+      [userId],
+    );
+
+    const userRolesAndPermissions = result.rows[0];
+
+    req.roles = [userRolesAndPermissions.role_name]; 
+    req.permissions = userRolesAndPermissions.permissions; 
+
+    console.log(req.roles[0]);
+    console.log(req.permissions);
+
+    res.locals.user = req.session.user;
+
+    next();
+  } catch (error) {
+    console.error(error);
+    return next(new Error403('Access forbidden'));
+  }
 };
 
 module.exports = auth;

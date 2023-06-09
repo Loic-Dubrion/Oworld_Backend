@@ -2,8 +2,15 @@ const express = require('express');
 
 const router = express.Router();
 
+// Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const { adminController } = require('../../controllers/API');
+
+// Middlewares
+const { checkRole, checkPermission } = require('../../services/checkRBAC');
+
+// Check Role
+router.use(checkRole('Admin'));
 
 /**
  * @typedef {object} Error
@@ -41,6 +48,7 @@ const { adminController } = require('../../controllers/API');
 
 router.get(
   '/stat',
+  checkPermission('read'),
   controllerHandler(adminController.getAll.bind(adminController)),
 );
 
