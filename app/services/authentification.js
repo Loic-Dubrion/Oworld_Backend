@@ -1,4 +1,6 @@
+const Error401 = require('../errors/Error401');
 const Error403 = require('../errors/Error403');
+
 /**
  * This file includes a function to check if users are logged in
  * @module authentification
@@ -13,8 +15,14 @@ const Error403 = require('../errors/Error403');
  */
 
 const auth = (req, res, next) => {
+  const userId = Number(req.params.userId);
+
   if (!req.session.user) {
-    return next(new Error403('Accès refusé. Veuillez vous connecter.'));
+    throw new Error401('Access forbidden - please login');
+  }
+
+  if (userId !== req.session.user.id) {
+    throw new Error403('Access forbidden');
   }
 
   res.locals.user = req.session.user;
