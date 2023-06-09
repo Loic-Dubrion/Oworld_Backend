@@ -1,5 +1,7 @@
 const adminController = require('./AdminController');
 const userController = require('./UserController');
+const oworldController = require('./OworldController');
+const sessionController = require('./SessionController');
 
 const apiController = {
   /**
@@ -14,4 +16,6 @@ const apiController = {
   },
 };
 
-module.exports = { apiController, adminController, userController };
+module.exports = {
+  apiController, adminController, userController, oworldController, sessionController,
+};

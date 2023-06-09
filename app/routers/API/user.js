@@ -19,7 +19,7 @@ router.use('/:userId', auth);
  *
  * @param {object} user.required - User details
  * @property {string} user.username - Username - eg: JohnyBeGood
- * @property {string} user.email - Email - eg: johndoe@example.com -
+ * @property {string} user.email - Email - eg: johndoe@test.com -
  * regex: /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
  * @property {string} user.password - Password - eg: &Oworld2023 -
  * regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/
