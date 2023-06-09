@@ -7,10 +7,16 @@ GET {{baseUrl}}/admin/stat?useView=true
 ### ROUTES OWORLD ###
 ### Data world ###
 GET {{baseUrl}}/oworld?useView=false
+
 ### List country ###
 GET {{baseUrl}}/oworld?useView=true
+
+### List flags ###
+GET {{baseUrl}}/oworld/flags
+
 ### One country ###
 GET {{baseUrl}}/oworld/FRA
+
 ### Categories by country ###
 GET {{baseUrl}}/oworld/FRA/category
 
