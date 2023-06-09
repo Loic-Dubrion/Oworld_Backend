@@ -2,33 +2,29 @@
 
 BEGIN;
 
-CREATE OR REPLACE FUNCTION favorite_countries(p_user_id INTEGER)
-RETURNS TEXT AS $$
-DECLARE
-    result TEXT;
+CREATE OR REPLACE FUNCTION favorite_countries(p_user_id integer)
+RETURNS TABLE (
+    username TEXT,
+    origin_country TEXT,
+    favorite_countries TEXT[],
+    favorite_country_percentage numeric
+) AS $$
 BEGIN
-    SELECT 
-        json_build_object(
-            'username', u.username,
-            'country_origin', u.country_origin,
-            'favorite', STRING_AGG(CONCAT('name: ', c.name, ', iso3: ', c.iso3, ', created_at: ', uf.created_at::TEXT), ', '),
-            'pourcentage', COUNT(DISTINCT c.id) * 100.0 / GREATEST((SELECT COUNT(*) FROM country), 1)
-        )::text 
-    INTO result
-    FROM
-        "user" u
-    LEFT JOIN
-        user_has_favorite uf ON u.id = uf.user_id
-    LEFT JOIN
-        country c ON uf.country_id = c.id
-    WHERE
-        u.id = p_user_id
-    GROUP BY
-        u.username,
-        u.country_origin;
-
-    RETURN result;
-END; $$
+RETURN QUERY
+SELECT 
+    u.username, 
+    c.name as origin_country, 
+    ARRAY_AGG(f.name || ', ' || f.iso3 || ', ' || uf.created_at),
+    (COUNT(DISTINCT f.id) * 100.0 / cnt.total) as favorite_country_percentage
+FROM "user" u
+JOIN country c ON u.country_origin = c.id
+LEFT JOIN user_has_favorite uf ON u.id = uf.user_id
+LEFT JOIN country f ON uf.country_id = f.id,
+(SELECT COUNT(*) as total FROM country) cnt
+WHERE u.id = p_user_id
+GROUP BY u.username, c.name, cnt.total;
+END;
+$$
 LANGUAGE plpgsql STABLE;
 
 
