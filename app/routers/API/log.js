@@ -3,8 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const controllerHandler = require('../../controllers/services/controllerHandler');
-const sessionController = require('../../controllers/API/sessionController');
-
+const { sessionController } = require('../../controllers/API');
 /**
  * @swagger
  * tags:

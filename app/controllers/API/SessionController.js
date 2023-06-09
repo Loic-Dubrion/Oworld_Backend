@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-extraneous-dependencies */
 const bcrypt = require('bcrypt');
 const session = require('express-session');
@@ -41,6 +42,10 @@ class SessionController extends CoreController {
       email: user.email,
       role: user.id_role,
     };
+
+    response.setHeader('X-Session-Username', user.username);
+    response.setHeader('X-Session-Email', user.email);
+    response.setHeader('Set-Cookie', 'Max-Age=3600');
 
     return response.status(200).json({ message: 'Utilisateur connecté avec succès', user: request.session.user });
   }
