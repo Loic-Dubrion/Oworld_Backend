@@ -11,6 +11,7 @@ DECLARE
     passwordParam TEXT;
     countryOriginParam INTEGER;
     birthDateParam DATE;
+    userId INTEGER;
     response JSON;
 BEGIN
     SELECT 
@@ -27,16 +28,21 @@ BEGIN
         birthDateParam;
     
     INSERT INTO "user" (username, email, password, country_origin, birth_date)
-    VALUES (usernameParam, emailParam, passwordParam, countryOriginParam, birthDateParam);
+    VALUES (usernameParam, emailParam, passwordParam, countryOriginParam, birthDateParam)
+    RETURNING id INTO userId;
+
+    INSERT INTO user_has_role (user_id, role_id)
+    VALUES (userId, 2);
 
     response := json_build_object(
         'httpCode', 201,
         'status', 'success',
-        'message', usernameParam || ' has been inserted'
+        'message', usernameParam || ' has been inserted with role user'
     );    
     RETURN response;
-    END;
+END;
 $$ LANGUAGE plpgsql;
+
 
 
 -- function for updating a user
