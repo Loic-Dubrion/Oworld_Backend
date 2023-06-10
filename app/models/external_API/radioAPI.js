@@ -1,5 +1,9 @@
 /* eslint-disable camelcase */
+// eslint-disable-next-line import/no-extraneous-dependencies
+const memoize = require('memoizee');
+
 const RadioBrowser = require('radio-browser');
+const client = require('../../services/clientdb');
 
 /**
  * Fetch radio station data for a specific country using the RadioBrowser API.
@@ -20,26 +24,39 @@ async function fetchRadioData(isoCode) {
   };
 
   try {
-    // Use array destructuring ([data]) to extract the first element of the returned array
-    const [data] = await RadioBrowser.getStations(filter);
+    const result = {};
 
-    // Use object destructuring to extract specific properties from the data object
-    const {
-      name, url, url_resolved, homepage,
-    } = data;
+    // Call RadioBrowser API and get radio station data
+    const [radioData] = await RadioBrowser.getStations(filter);
 
-    // Create a new object with the extracted data
-    const extractedData = {
-      name,
-      url,
-      url_resolved,
-      homepage,
-    };
+    if (radioData) {
+      result.radio = {
+        name: radioData.name,
+        url: radioData.url,
+        url_resolved: radioData.url_resolved,
+        homepage: radioData.homepage,
+      };
+    }
 
-    return (extractedData);
+    // Retrieve "insolite" from the database
+    const queryResult = await client.query('SELECT insolite FROM country WHERE iso3 = $1', [isoCode]);
+    if (queryResult.rows.length > 0) {
+      result.insolite = queryResult.rows[0].insolite;
+    }
+
+    return result;
   } catch (error) {
     return null;
   }
 }
 
+const memoizedFetchRadioData = memoize(
+  fetchRadioData,
+  { promise: true, maxAge: 60 * 60 * 1000 },
+);
+
+// Exporter les fonctions mémoïsées plutôt que les originales
+module.exports = {
+  fetchRadioData: memoizedFetchRadioData,
+};
 module.exports = fetchRadioData;

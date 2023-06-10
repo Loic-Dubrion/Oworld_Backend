@@ -1,6 +1,7 @@
 // Models
 const countryApi = require('../../models/external_API/restCountryAPI');
 const fetchWorldBankData = require('../../models/external_API/worldBankApi');
+const fetchRadio = require('../../models/external_API/radioAPI');
 
 /**
  * Controller for external API endpoints.
@@ -37,6 +38,17 @@ const externalApiController = {
   worldBank: async (request, response) => {
     const result = await fetchWorldBankData(request.params.countryIso3);
     response.json(result);
+  },
+
+  /**
+   * Fetches radio for a specific country from the radioBrowser API.
+   *
+   * @param {Object} request - The request object.
+   * @param {Object} response - The response object.
+   */
+  radio: async (request, response) => {
+    const radio = await fetchRadio(request.params.countryIso3);
+    response.json(radio);
   },
 };
 

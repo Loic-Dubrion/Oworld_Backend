@@ -90,4 +90,19 @@ router.get(
   controllerHandler(externalApiController.worldBank),
 );
 
+/**
+ * GET /api/oworld/{countryIso3}/wtf
+ *
+ * @summary Get a radio from the country
+ * @tags Oworld
+ *
+ * @param {string} countryIso3.path.required - The ISO3 code of the country
+ * @return {object} 200 - Success response - An object containing a radio
+ * @return {Error} 500 - Internal server error
+ */
+router.get(
+  '/:countryIso3/wtf',
+  controllerHandler(externalApiController.radio),
+);
+
 module.exports = router;

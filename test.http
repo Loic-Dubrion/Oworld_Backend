@@ -15,10 +15,13 @@ GET {{baseUrl}}/oworld?useView=true
 GET {{baseUrl}}/oworld/flags
 
 ### One country ###
-GET {{baseUrl}}/oworld/FRA
+GET {{baseUrl}}/oworld/BEL
 
 ### Categories by country ###
-GET {{baseUrl}}/oworld/FRA/category
+GET {{baseUrl}}/oworld/BEL/category
+
+### WTF by country ###
+GET {{baseUrl}}/oworld/FRA/wtf
 
 ### ROUTES USERS ###
 ### Add User ###

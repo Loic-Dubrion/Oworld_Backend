@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const memoize = require('memoizee');
 
 const Error503 = require('../../errors/Error503');
@@ -75,14 +76,13 @@ const countryApi = {
 };
 
 // Mémoïsation des fonctions fetchCountryData et fetchAllCountries
-// avec une durée de vie du cache de 48h
 const memoizedFetchCountryData = memoize(
   countryApi.fetchCountryData,
-  { promise: true, maxAge: 172800000 },
+  { promise: true, maxAge: 60 * 60 * 1000 },
 );
 const memoizedFetchAllCountries = memoize(
   countryApi.fetchAllCountries,
-  { promise: true, maxAge: 172800000 },
+  { promise: true, maxAge: 48 * 60 * 60 * 1000 },
 );
 
 // Exporter les fonctions mémoïsées plutôt que les originales
