@@ -75,14 +75,14 @@ const countryApi = {
 };
 
 // Mémoïsation des fonctions fetchCountryData et fetchAllCountries
-// avec une durée de vie du cache d'une heure (3600000 millisecondes)
+// avec une durée de vie du cache de 48h
 const memoizedFetchCountryData = memoize(
   countryApi.fetchCountryData,
-  { promise: true, maxAge: 3600000 },
+  { promise: true, maxAge: 172800000 },
 );
 const memoizedFetchAllCountries = memoize(
   countryApi.fetchAllCountries,
-  { promise: true, maxAge: 3600000 },
+  { promise: true, maxAge: 172800000 },
 );
 
 // Exporter les fonctions mémoïsées plutôt que les originales
