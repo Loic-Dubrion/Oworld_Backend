@@ -7,9 +7,11 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { adminController } = require('../../controllers/API');
 
 // Middlewares
+const auth = require('../../services/authentification');
 const { checkRole, checkPermission } = require('../../services/checkRBAC');
 
 // Check Role
+router.use('/:userId', auth);
 router.use(checkRole('Admin'));
 
 /**
@@ -47,7 +49,7 @@ router.use(checkRole('Admin'));
  */
 
 router.get(
-  '/stat',
+  '/:userId/stat',
   checkPermission('View_stats'),
   controllerHandler(adminController.getAll.bind(adminController)),
 );

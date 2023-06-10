@@ -1,8 +1,8 @@
+/* eslint-disable no-useless-constructor */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-extraneous-dependencies */
+
 const bcrypt = require('bcrypt');
-const session = require('express-session');
-const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
 const Error403 = require('../../errors/Error403');
@@ -19,23 +19,34 @@ class SessionController extends CoreController {
    */
   constructor() {
     super();
-    logger.info('SessionController created');
   }
 
+  /**
+   * Handles the login functionality.
+   *
+   * @param {Object} request - Object with email and password.
+   * @param {Object} response - The response object.
+   * @returns {Object} The response object.
+   * @throws {Error403} Throws an error if the user or password is incorrect.
+   */
   async login(request, response) {
     const { email, password } = request.body;
+
+    // checks that the email exists
     const user = await SessionController.dataMapper.findOneByField('email', email);
 
     if (!user) {
       throw new Error403('Utilisateur ou mot de passe incorrect');
     }
 
+    // checks that the password matches
     const isGoodPassword = await bcrypt.compare(password, user.password);
 
     if (!isGoodPassword) {
       throw new Error403('Utilisateur ou mot de passe incorrect');
     }
 
+    // retrieves roles and permissions
     const result = await clientdb.query(
       `
       SELECT 
@@ -75,9 +86,16 @@ class SessionController extends CoreController {
     });
   }
 
+  /**
+   * Handles the logout functionality.
+   *
+   * @param {Object} request
+   * @param {Object} response - The response object.
+   * @returns {Object} The response object.
+   */
   logout(request, response) {
     request.session.user = null;
-    return response.status(200).json({ httpCode: 200, status: 'success', message: 'Déconnexion réussie' });
+    return response.status(200).json({ httpCode: 200, status: 'success', message: 'Successful disconnection' });
   }
 }
 

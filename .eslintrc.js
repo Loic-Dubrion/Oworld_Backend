@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
+    'no-useless-constructor': 'off',
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',

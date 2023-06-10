@@ -17,14 +17,14 @@ if (env === 'production') {
     path: 'logs/oWorld.log',
     level: 'error',
     type: 'rotating-file',
-    period: '3000ms',
+    period: '12h',
     count: 10,
   });
 }
 
 const logger = bunyan.createLogger({
-  name: 'O\'World', // name of the logger ( because you can have several )
-  level: 'trace', // minimum level of errors to be displayed
+  name: 'O\'World',
+  level: 'trace',
   streams,
 });
 

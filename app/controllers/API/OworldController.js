@@ -1,4 +1,3 @@
-const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const oworldDataMapper = require('../../models/OworldDataMapper');
 
@@ -13,7 +12,6 @@ class OworldController extends CoreController {
   */
   constructor() {
     super();
-    logger.info('oworldController created');
   }
 }
 

@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/index.js</title>
+    <title>Code coverage report for app/models/external_API/radioAPI.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">app</a> index.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/models/external_API</a> radioAPI.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>43/45</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>43/45</span>
             </div>
         
             
@@ -103,7 +103,12 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -143,46 +148,56 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">require('dotenv').config();
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable camelcase */
+const RadioBrowser = require('radio-browser');
 &nbsp;
-const path = require('path');
-const express = require('express');
-const cors = require('cors');
-const bodySanitizer = require('./services/sanitizer');
-const session = require('express-session');
+/**
+ * Fetch radio station data for a specific country using the RadioBrowser API.
+ *
+ * The function makes a call to the RadioBrowser API and returns an object containing
+ * the name, url, url_resolved, and homepage of the radio station.
+ *
+ * @param {string} isoCode - The ISO code for the country of interest.
+ * @returns {Promise&lt;Object&gt;} A Promise that resolves to an object containing radio station data.
+ *
+ * @throws Will throw an error if the RadioBrowser API call fails.
+ */
+async function fetchRadioData(isoCode) {
+  const filter = {
+    limit: 1,
+    by: 'country',
+    searchterm: isoCode,
+  };
 &nbsp;
-const router = require('./routers');
+  try {
+    // Use array destructuring ([data]) to extract the first element of the returned array
+    const [data] = await RadioBrowser.getStations(filter);
 &nbsp;
-const swagger = require('./services/swagger');
+    // Use object destructuring to extract specific properties from the data object
+    const {
+      name, url, url_resolved, homepage,
+    } = data;
 &nbsp;
-const app = express();
+    // Create a new object with the extracted data
+    const extractedData = {
+      name,
+      url,
+      url_resolved,
+      homepage,
+    };
 &nbsp;
-// Session setup
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: process.env.NODE_ENV === 'production' },
-}));
-// CORS setup
-const corsOptions = {
-  origin: process.env.CORS_DOMAINS<span class="branch-0 cbranch-no" title="branch not covered" > ?? '*',</span>
-};
+    return (extractedData);
+  } <span class="branch-0 cbranch-no" title="branch not covered" >catch (error) {</span>
+<span class="cstat-no" title="statement not covered" >    return null;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+}
 &nbsp;
-// Use bodySanitizer for all requests
-app.use(bodySanitizer);
-&nbsp;
-// Middlewares setup
-app.use(express.json());
-app.use(cors(corsOptions));
-swagger(app, path.join(__dirname, 'routers'));
-&nbsp;
-// Routers
-app.use(router);
-&nbsp;
-app.use('/docs', express.static(path.join(__dirname, '../documentation')));
-&nbsp;
-module.exports = app;
+module.exports = fetchRadioData;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -192,14 +207,14 @@ module.exports = app;
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
                 at 2023-06-10T06:31:33.687Z
             </div>
-        <script src="../prettify.js"></script>
+        <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../../sorter.js"></script>
+        <script src="../../../block-navigation.js"></script>
     </body>
 </html>
     

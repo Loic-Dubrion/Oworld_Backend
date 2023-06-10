@@ -67,7 +67,7 @@ router.get(
 );
 
 /**
-* POST /api/user/{userId}/{userCountry}
+* POST /api/user/{userId}/{usercountryISO}
 *
 * @summary Post - add a new favourite
 * @tags User

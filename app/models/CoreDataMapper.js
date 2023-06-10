@@ -7,7 +7,7 @@ class CoreDataMapper {
 
   static viewName;
 
-  async findAll(useView = false) {
+  async findAll(useView) {
     logger.info(`${this.constructor.name} findAll`);
     const tableName = useView ? this.constructor.viewName : this.constructor.tableName;
     const preparedQuery = {

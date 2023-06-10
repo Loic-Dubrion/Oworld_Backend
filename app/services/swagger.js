@@ -19,11 +19,6 @@ const swaggerOptions = {
   exposeSwaggerUI: true,
 };
 
-/**
- * inject swaggerUI in application
- * @param {Object} app - express application
- * @param {string} baseDir - the beaseDir where to serach for docs
- */
 function injectSwagger(app, baseDir) {
   logger.info('swagger UI injected');
   swaggerOptions.baseDir = baseDir;

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/routers/API/oworld.js</title>
+    <title>Code coverage report for app/controllers/API/SessionController.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/routers/API</a> oworld.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/controllers/API</a> SessionController.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>97/102</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.09% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>93/93</span>
+                <span class='fraction'>97/102</span>
             </div>
         
             
@@ -156,7 +156,16 @@
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -176,6 +185,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -186,12 +197,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -241,107 +261,114 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable no-useless-constructor */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable import/no-extraneous-dependencies */
 &nbsp;
-// Controllers
-const controllerHandler = require('../../controllers/services/controllerHandler');
-const externalApiController = require('../../controllers/API/externalApiController');
-const oworldController = require('../../controllers/API/OworldController');
+const bcrypt = require('bcrypt');
+const CoreController = require('./CoreController');
+const userDataMapper = require('../../models/UserDataMapper');
+const Error403 = require('../../errors/Error403');
+const clientdb = require('../../services/clientdb');
 &nbsp;
-const router = express.Router();
+/** Class representing a session controller. */
+class SessionController extends CoreController {
+  static dataMapper = userDataMapper;
 &nbsp;
-// Routes
-/**
- * GET /api/oworld
- *
- * @summary Get data World
- * @tags Oworld
- *
- * @return {array&lt;object&gt;} 200 - Success response
- * - An array of objects earth details
- * @return {Error} 500 - Internal server error
- *
- */
-router.get(
-  '/',
-  controllerHandler(oworldController.getAll.bind(oworldController)),
-);
+  /**
+   * Create a session controller.
+   *
+   * @augments CoreController
+   */
+  constructor() {
+    super();
+  }
 &nbsp;
-/**
- * GET /api/oworld/flags
- *
- * @summary Get all flags
- * @tags Oworld
- * @return {array&lt;object&gt;} 200 - Success response
- * - a list of the world's flags
- * @return {Error} 500 - Internal server error
- *
- */
-router.get(
-  '/flags',
-  controllerHandler(externalApiController.restCountryFlags),
-);
+  /**
+   * Handles the login functionality.
+   *
+   * @param {Object} request - Object with email and password.
+   * @param {Object} response - The response object.
+   * @returns {Object} The response object.
+   * @throws {Error403} Throws an error if the user or password is incorrect.
+   */
+  async login(request, response) {
+    const { email, password } = request.body;
 &nbsp;
-/**
- * GET /api/oworld/list
- *
- * @summary Get a list of all countries or dataWorld
- * @tags Oworld
- *
- * @param {boolean} useView.query.required -
- * Whether to use a SQL view or not.
- * if true = dataworld, else = country list
- * - ?useView=true -
- * This parameter is required.
- *
- * @return {array&lt;object&gt;} 200 - Success response
- * - A list of all countries
- * @return {Error} 500 - Internal server error
- */
-router.get(
-  '/list',
-  controllerHandler(oworldController.getAll.bind(oworldController)),
-);
+    // checks that the email exists
+    const user = await SessionController.dataMapper.findOneByField('email', email);
 &nbsp;
-/**
- * GET /api/oworld/{countryIso3}
- *
- * @summary Get data
- * @tags Oworld - data world, country, categories
- * @return {array&lt;object&gt;} 200 - Success response
- * - An array of objects where each object represents the statistics for a particular country
- * @return {Error} 500 - Internal server error
- *
- */
-router.get(
-  '/:countryIso3',
-  controllerHandler(externalApiController.restCountry),
-);
+    if (!user) {
+      throw new Error403('Utilisateur ou mot de passe incorrect');
+    }
 &nbsp;
-/**
- * GET /api/oworld/{countryIso3}/category
- *
- * @summary Get country data by category
- * @tags Oworld
- *
- * @param {string} countryIso3.path.required - The ISO3 code of the country
- * @return {object} 200 - Success response - An object containing country data by category
- * @return {Error} 500 - Internal server error
- */
-router.get(
-  '/:countryIso3/category',
-  controllerHandler(externalApiController.worldBank),
-);
+    // checks that the password matches
+    const isGoodPassword = await bcrypt.compare(password, user.password);
 &nbsp;
-module.exports = router;
+    if (!isGoodPassword) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error403('Utilisateur ou mot de passe incorrect');</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+&nbsp;
+    // retrieves roles and permissions
+    const result = await clientdb.query(
+      `
+      SELECT 
+      array_agg(DISTINCT role.name) AS roles, 
+      array_agg(DISTINCT authorisation.name) AS permissions
+    FROM 
+      "user" AS u
+    JOIN 
+      user_has_role ON u.id = user_has_role.user_id
+    JOIN 
+      role ON user_has_role.role_id = role.id
+    JOIN 
+      role_has_authorisation ON role.id = role_has_authorisation.role_id
+    JOIN 
+      authorisation ON role_has_authorisation.authorisation_id = authorisation.id
+    WHERE 
+      u.id = $1`,
+      [user.id],
+    );
+&nbsp;
+    const userRolesAndPermissions = result.rows[0];
+&nbsp;
+    // Save roles and permissions in the session
+    request.session.user = {
+      id: user.id,
+      username: user.username,
+      role: user.id_role,
+      roles: userRolesAndPermissions.roles,
+      permissions: userRolesAndPermissions.permissions,
+    };
+&nbsp;
+    return response.status(200).json({
+      httpCode: 200,
+      status: 'success',
+      message: 'successful connection',
+      session: request.session.user,
+    });
+  }
+&nbsp;
+  /**
+   * Handles the logout functionality.
+   *
+   * @param {Object} request
+   * @param {Object} response - The response object.
+   * @returns {Object} The response object.
+   */
+<span class="fstat-no" title="function not covered" >  logout(request, response) {</span>
+<span class="cstat-no" title="statement not covered" >    request.session.user = null;</span>
+<span class="cstat-no" title="statement not covered" >    return response.status(200).json({ httpCode: 200, status: 'success', message: 'Successful disconnection' });</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+}
+&nbsp;
+module.exports = new SessionController();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

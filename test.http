@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:3000/api
 
 ### STAT ADMINS ###
-GET {{baseUrl}}/admin/stat?useView=true
+GET {{baseUrl}}/admin/601/stat?useView=true
 ################################################################
 
 ### ROUTES OWORLD ###
@@ -34,17 +34,17 @@ Content-Type: application/json
 }
 
 ### Profile ###
-GET {{baseUrl}}/user/602
+GET {{baseUrl}}/user/60
 ### Add Favorite ###
-POST {{baseUrl}}/user/1/FRA
+POST {{baseUrl}}/user/601/FRA
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/1/FRA
 ### Update User ###
-PUT {{baseUrl}}/user/1
+PUT {{baseUrl}}/user/601
 Content-Type: application/json
 
 {
-  "username": "Loïc",
+  "username": "Loic",
   "email": "test@test.com",
   "password": "&Test1234"
 }

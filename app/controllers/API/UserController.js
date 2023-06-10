@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const bcrypt = require('bcrypt');
 
+// Modules
 const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
@@ -10,39 +12,69 @@ class UserController extends CoreController {
   static dataMapper = userDataMapper;
 
   /**
-   * create a user controller
-  *
-  * @augments CoreController
-  */
+   * Create a user controller.
+   *
+   * @augments CoreController
+   */
+  constructor() {
+    super();
+  }
 
+  /**
+   * Get the favorite countries for a specific user.
+   *
+   * @param {Object} request - A country's iso3 code in the url
+   * @param {Object} response - General data about a country
+   */
   async getFavoriteCountries(request, response) {
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('favorite_countries', userId);
     response.json(results);
   }
 
+  /**
+   * Add a country to the favorites for a specific user.
+   *
+   * @param {Object} request - A country's iso3 code and a user ID in the url
+   * @param {Object} response - The response object.
+   */
   async addFavorite(request, response) {
     const { userId, countryISO } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('insert_favorite', userId, countryISO);
     response.json(results);
   }
 
+  /**
+   * Delete a country from the favorites for a specific user.
+   *
+   * @param {Object} request - A country's iso3 code and a user ID in the url
+   * @param {Object} response - The response object.
+   */
   async deleteFavorite(request, response) {
     const { userId, countryISO } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('delete_favorite', userId, countryISO);
     response.json(results);
   }
 
+  /**
+   * Add a new user.
+   *
+   * @param {Object} request - The request object, username, email, password, countryId, birth date.
+   * @param {Object} response - The response object.
+   */
   async addUser(request, response) {
     const dataUser = request.body;
+    // check for an identical user.
     const user = await UserController.dataMapper.findOneByField('username', dataUser.username);
     if (user) {
       throw new Error400('existing user');
     }
+    // check for an identical email
     const email = await UserController.dataMapper.findOneByField('email', dataUser.email);
     if (email) {
       throw new Error400('existing email address');
     }
+    // extract the password from the object and hash it
     const { password, ...userWithoutPassword } = dataUser;
     const hashedPassword = await bcrypt.hash(password, 10);
     const modifiedDataUser = { ...userWithoutPassword, password: hashedPassword };
@@ -50,20 +82,32 @@ class UserController extends CoreController {
     response.status(201).json(results);
   }
 
+  /**
+   * Update an existing user.
+   *
+   * @param {Object} request - 1, 2 or 3 parameters (username, email, password).
+   * @param {Object} response - The response object.
+   */
   async updateUser(request, response) {
     const { userId } = request.params;
     const { ...objData } = request.body;
 
+    // if new password hash
     if (objData.password) {
       const hashedPassword = await bcrypt.hash(objData.password, 10);
       objData.password = hashedPassword;
     }
 
-    logger.debug(objData);
     const results = await this.constructor.dataMapper.executeFunction('update_user', userId, objData);
     response.json(results);
   }
 
+  /**
+   * Delete a user.
+   *
+   * @param {Object} request - User Id in the URL.
+   * @param {Object} response - The response object.
+   */
   async deleteUser(request, response) {
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);

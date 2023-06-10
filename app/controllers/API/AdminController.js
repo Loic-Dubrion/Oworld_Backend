@@ -1,4 +1,3 @@
-const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const adminDataMapper = require('../../models/AdminDataMapper');
 
@@ -13,7 +12,6 @@ class AdminController extends CoreController {
   */
   constructor() {
     super();
-    logger.info('adminController created');
   }
 }
 
