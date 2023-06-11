@@ -21,7 +21,7 @@ GET {{baseUrl}}/oworld/BEL
 GET {{baseUrl}}/oworld/BEL/category
 
 ### WTF by country ###
-GET {{baseUrl}}/oworld/BEL/wtf
+GET {{baseUrl}}/oworld/BRA/wtf
 
 ### ROUTES USERS ###
 ### Add User ###
