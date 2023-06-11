@@ -1,11 +1,13 @@
+require('dotenv').config();
+
 const logger = require('./logger');
 const { createClient } = require('@redis/client');
 
 // Crée une nouvelle instance du client Redis
 const redisClient = createClient({
-  host: 'localhost',
-  port: 6379,
-  password: 'bouleau',
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD,
 });
 
 // Ajoute un gestionnaire d'erreur pour intercepter toute erreur émise par le client Redis
