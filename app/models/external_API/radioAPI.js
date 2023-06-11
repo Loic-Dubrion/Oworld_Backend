@@ -28,44 +28,44 @@ async function fetchRadioData(isoCode) {
     console.log('cache Value:', JSON.parse(cacheValue));
     await redisClient.quit();
     return JSON.parse(cacheValue);
-  } else {
-    // Si non, je déclenche ma requête
-    console.log(`Not cache Value: ${cacheKey}`);
+  }
+  // Si non, je déclenche ma requête
+  console.log(`Not cache Value: ${cacheKey}`);
 
-    const filter = {
-      limit: 1,
-      by: 'country',
-      searchterm: isoCode,
-    };
+  const filter = {
+    limit: 1,
+    by: 'country',
+    searchterm: isoCode,
+  };
 
-    try {
-      const result = {};
+  try {
+    const result = {};
 
-      // Call RadioBrowser API and get radio station data
-      const [radioData] = await RadioBrowser.getStations(filter);
+    // Call RadioBrowser API and get radio station data
+    const [radioData] = await RadioBrowser.getStations(filter);
 
-      if (radioData) {
-        result.radio = {
-          name: radioData.name,
-          url: radioData.url,
-          url_resolved: radioData.url_resolved,
-          homepage: radioData.homepage,
-        };
-      }
-
-      // Retrieve "insolite" from the database
-      const queryResult = await client.query('SELECT insolite FROM country WHERE iso3 = $1', [isoCode]);
-      if (queryResult.rows.length > 0) {
-        result.insolite = queryResult.rows[0].insolite;
-      }
-
-      await redisClient.set(cacheKey, JSON.stringify(result), 'EX', 600);
-      await redisClient.quit();
-
-      return result;
-    } catch (error) {
-      return null;
+    if (radioData) {
+      result.radio = {
+        name: radioData.name,
+        url: radioData.url,
+        url_resolved: radioData.url_resolved,
+        homepage: radioData.homepage,
+      };
     }
+
+    // Retrieve "insolite" from the database
+    const queryResult = await client.query('SELECT insolite FROM country WHERE iso3 = $1', [isoCode]);
+    if (queryResult.rows.length > 0) {
+      result.insolite = queryResult.rows[0].insolite;
+    }
+
+    await redisClient.set(cacheKey, JSON.stringify(result));
+    redisClient.expire(cacheKey, 100);
+    await redisClient.quit();
+
+    return result;
+  } catch (error) {
+    return null;
   }
 }
 
