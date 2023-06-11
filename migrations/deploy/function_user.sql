@@ -77,7 +77,7 @@ BEGIN
     response := json_build_object(
         'httpCode', 200,
         'status', 'success',
-        'message', usernameParam || ' has been updated'
+        'message', 'user has been updated'
     ); 
     RETURN response;
 END;
@@ -96,7 +96,7 @@ BEGIN
     response := json_build_object(
         'httpCode', 200,
         'status', 'success',
-        'message', usernameParam || ' has been deleted'
+        'message', 'user has been deleted'
     ); 
     RETURN response;
 END;

@@ -37,11 +37,11 @@ Content-Type: application/json
 }
 
 ### Profile ###
-GET {{baseUrl}}/user/60
+GET {{baseUrl}}/user/601
 ### Add Favorite ###
 POST {{baseUrl}}/user/601/FRA
 ### Delete Favorite ###
-DELETE {{baseUrl}}/user/1/FRA
+DELETE {{baseUrl}}/user/601/BEL
 ### Update User ###
 PUT {{baseUrl}}/user/601
 Content-Type: application/json
@@ -52,7 +52,7 @@ Content-Type: application/json
   "password": "&Test1234"
 }
 ### Delete User ###
-DELETE {{baseUrl}}/user/1
+DELETE {{baseUrl}}/user/601
 
 ### ROUTES LOGIN/OUT ###
 ### Login to user ###

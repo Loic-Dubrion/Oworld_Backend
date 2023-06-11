@@ -110,6 +110,7 @@ class UserController extends CoreController {
    */
   async deleteUser(request, response) {
     const { userId } = request.params;
+    console.log(userId, typeof (userId));
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
     response.json(results);
   }
