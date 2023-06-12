@@ -103,6 +103,8 @@ Lancer et tester le serveur
 - Tester le fonctionnement
 
   ```bash
+  redis-cli
+
   127.0.0.1:6397> ping
   PONG
 
