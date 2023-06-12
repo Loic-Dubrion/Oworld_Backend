@@ -76,3 +76,4 @@
 Test avec la query HON insert des valeurs null
 - [ ] Emêcher également l'insertion des doublons dans les favoris
 - [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
+- [ ] Faire une bdd dans les règles pour les planètes du système solaire
