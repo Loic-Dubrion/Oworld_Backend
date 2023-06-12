@@ -32,7 +32,7 @@ router.use(checkRole('Admin'));
  */
 
 /**
- * GET /api/admin/stat
+ * GET /api/admin/{userId}/stat
  *
  * @summary Get statistics
  * @tags Admin - Management Administration
