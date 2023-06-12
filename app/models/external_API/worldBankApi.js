@@ -48,7 +48,6 @@ async function fetchDataByCategory(country) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Convert response to JSON
       const data = await response.json();
 
       // Extract relevant data

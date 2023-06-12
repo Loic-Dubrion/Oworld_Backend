@@ -2,7 +2,7 @@ const Error401 = require('../errors/Error401');
 const Error403 = require('../errors/Error403');
 
 /**
- * Middleware for authentication and authorization.
+ * Middleware for authentication.
  *
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.

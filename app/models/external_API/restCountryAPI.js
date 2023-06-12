@@ -2,15 +2,16 @@ const Error503 = require('../../errors/Error503');
 const redisClient = require('../../services/clientRedis');
 
 /**
- * Objet contenant les fonctions pour récupérer les données des pays depuis l'API RestCountries.
+ * Object containing the functions for retrieving country data from the RestCountries API.
  */
 const countryApi = {
   /**
-   * Récupère les données d'un pays en utilisant le code ISO.
-   * @param {string} isoCode - Code ISO du pays (ex: FRA)
-   * @returns {Promise<Object|null>} - Les données du pays ou null en cas d'erreur.
+   * Retrieves data for a country using the ISO code.
+   * @param {string} isoCode - ISO country code (e.g. FRA)
+   * @returns {Promise<Object|null>} - Country data or null in case of error.
    */
   fetchCountryData: async (isoCode) => {
+    // Connection to redis to check presence in cache
     await redisClient.connect();
     const cacheKey = `restCountry:${isoCode}`;
 
@@ -53,6 +54,7 @@ const countryApi = {
       }
       const data = await response.json();
 
+      // Caching with Redis
       await redisClient.set(cacheKey, JSON.stringify(data));
       redisClient.expire(cacheKey, process.env.REDIS_TTL);
       await redisClient.quit();
@@ -64,8 +66,8 @@ const countryApi = {
   },
 
   /**
-   * Récupère les données de tous les pays.
-   * @returns {Promise<Object|null>} - Les données de tous les pays ou null en cas d'erreur.
+   * Retrieves data from all countries.
+   * @returns {Promise<Object|null>} - Data for all countries or null in the event of an error.
    */
   fetchAllCountries: async () => {
     await redisClient.connect();
@@ -104,5 +106,4 @@ const countryApi = {
   },
 };
 
-// Exporter les fonctions mémoïsées plutôt que les originales
 module.exports = countryApi;

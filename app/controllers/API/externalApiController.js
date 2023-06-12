@@ -41,7 +41,7 @@ const externalApiController = {
   },
 
   /**
-   * Fetches radio for a specific country from the radioBrowser API.
+   * Fetches a radio for a specific country from the radioBrowser API.
    *
    * @param {Object} request - The request object.
    * @param {Object} response - The response object.

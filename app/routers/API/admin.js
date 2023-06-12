@@ -22,16 +22,6 @@ router.use(checkRole('Admin'));
  */
 
 /**
- * @typedef {object} Statistics
- * @property {string} country_origin - The country of origin.
- * @property {string} iso2 - The ISO 2-letter country code.
- * @property {string} iso3 - The ISO 3-letter country code.
- * @property {number} average_age - The average age of users.
- * @property {string} user_count - The count of users.
- * @property {string} favorite_count - The count of favorites.
- */
-
-/**
  * GET /api/admin/{userId}/stat
  *
  * @summary Get statistics
@@ -42,7 +32,7 @@ router.use(checkRole('Admin'));
  * @param {boolean} useView.query.required - Whether to use a SQL view or not.
  * Use `?useView=true` as a required query parameter.
  *
- * @return {Array.<Statistics>} 200 - Success response.
+ * @return {object} 200 - Success response.
  * An array of objects where each object represents the statistics for a particular country.
  *
  * @throws {Error} 500 - Internal server error.
