@@ -18,19 +18,14 @@ const redisClient = require('../../services/clientRedis');
  */
 async function fetchRadioData(isoCode) {
   await redisClient.connect();
-  console.log('Connected to Redis');
   const cacheKey = `wtf:${isoCode}`;
 
   const cacheValue = await redisClient.get(cacheKey);
 
   if (cacheValue) {
-    // Si oui, je récupère le cache
-    console.log('cache Value:', JSON.parse(cacheValue));
     await redisClient.quit();
     return JSON.parse(cacheValue);
   }
-  // Si non, je déclenche ma requête
-  console.log(`Not cache Value: ${cacheKey}`);
 
   const filter = {
     limit: 1,
@@ -60,7 +55,7 @@ async function fetchRadioData(isoCode) {
     }
 
     await redisClient.set(cacheKey, JSON.stringify(result));
-    redisClient.expire(cacheKey, 100);
+    redisClient.expire(cacheKey, process.env.REDIS_TTL);
     await redisClient.quit();
 
     return result;

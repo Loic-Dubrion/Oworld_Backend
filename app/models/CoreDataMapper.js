@@ -1,3 +1,4 @@
+const memoizee = require('memoizee');
 const logger = require('../services/logger');
 const client = require('../services/clientdb');
 
@@ -6,6 +7,11 @@ class CoreDataMapper {
   static tableName;
 
   static viewName;
+
+  constructor() {
+    // Mémoiser la méthode findAll
+    this.findAll = memoizee(this.findAll.bind(this), { promise: true, maxAge: 30 * 1000 });
+  }
 
   async findAll(useView) {
     logger.info(`${this.constructor.name} findAll`);

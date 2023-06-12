@@ -1,7 +1,6 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const memoize = require('memoizee');
-
 const Error503 = require('../../errors/Error503');
+const redisClient = require('../../services/clientRedis');
+
 /**
  * Objet contenant les fonctions pour récupérer les données des pays depuis l'API RestCountries.
  */
@@ -12,6 +11,16 @@ const countryApi = {
    * @returns {Promise<Object|null>} - Les données du pays ou null en cas d'erreur.
    */
   fetchCountryData: async (isoCode) => {
+    await redisClient.connect();
+    const cacheKey = `restCountry:${isoCode}`;
+
+    const cacheValue = await redisClient.get(cacheKey);
+
+    if (cacheValue) {
+      await redisClient.quit();
+      return JSON.parse(cacheValue);
+    }
+
     const baseUrl = 'https://restcountries.com/v3.1/';
 
     const param = {
@@ -43,6 +52,11 @@ const countryApi = {
         throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
       }
       const data = await response.json();
+
+      await redisClient.set(cacheKey, JSON.stringify(data));
+      redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      await redisClient.quit();
+
       return data;
     } catch (error) {
       return null;
@@ -54,6 +68,16 @@ const countryApi = {
    * @returns {Promise<Object|null>} - Les données de tous les pays ou null en cas d'erreur.
    */
   fetchAllCountries: async () => {
+    await redisClient.connect();
+    const cacheKey = 'restCountry';
+
+    const cacheValue = await redisClient.get(cacheKey);
+
+    if (cacheValue) {
+      await redisClient.quit();
+      return JSON.parse(cacheValue);
+    }
+
     const baseUrl = 'https://restcountries.com/v3.1/';
 
     const param = {
@@ -68,6 +92,11 @@ const countryApi = {
         throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
       }
       const data = await response.json();
+
+      await redisClient.set(cacheKey, JSON.stringify(data));
+      redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      await redisClient.quit();
+
       return data;
     } catch (error) {
       return null;
@@ -75,18 +104,5 @@ const countryApi = {
   },
 };
 
-// Mémoïsation des fonctions fetchCountryData et fetchAllCountries
-const memoizedFetchCountryData = memoize(
-  countryApi.fetchCountryData,
-  { promise: true, maxAge: 60 * 60 * 1000 },
-);
-const memoizedFetchAllCountries = memoize(
-  countryApi.fetchAllCountries,
-  { promise: true, maxAge: 48 * 60 * 60 * 1000 },
-);
-
 // Exporter les fonctions mémoïsées plutôt que les originales
-module.exports = {
-  fetchCountryData: memoizedFetchCountryData,
-  fetchAllCountries: memoizedFetchAllCountries,
-};
+module.exports = countryApi;

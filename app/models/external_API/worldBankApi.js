@@ -1,3 +1,5 @@
+const redisClient = require('../../services/clientRedis');
+
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
 const categories = {
@@ -26,6 +28,16 @@ const size = 'per_page=150';
  * @throws Will throw an error if the World Bank API call fails.
  */
 async function fetchDataByCategory(country) {
+  await redisClient.connect();
+  const cacheKey = `WB:${country}`;
+
+  const cacheValue = await redisClient.get(cacheKey);
+
+  if (cacheValue) {
+    await redisClient.quit();
+    return JSON.parse(cacheValue);
+  }
+
   const transformedData = {};
 
   const promises = Object.keys(categories).map(async (category) => {
@@ -76,7 +88,13 @@ async function fetchDataByCategory(country) {
 
   await Promise.all(promises);
 
-  return { country: { id: country }, ...transformedData };
+  const finalData = { country: { id: country }, ...transformedData };
+
+  await redisClient.set(cacheKey, JSON.stringify(finalData));
+  redisClient.expire(cacheKey, process.env.REDIS_TTL);
+  await redisClient.quit();
+
+  return finalData;
 }
 
 /**
