@@ -80,3 +80,4 @@ Test avec la query HON insert des valeurs null
   - [ ] Ajout d'une table planet
   - [ ] Ajout d'une table lune
   - [ ] Ajout des clef étrangères
+- [ ] Refacto redis
