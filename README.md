@@ -17,7 +17,8 @@
 
 ### Installation de Sqitch
 
-Sous Linux
+<details>
+<summary>Sous Linux</summary>
 
 - Installation
 
@@ -39,9 +40,12 @@ Sous Linux
     sqitch config --get user.email
   ```
 
+</details>
+
 ### Installation de Redis
 
-Sous Linux
+<details>
+<summary>Sous Linux</summary>
 
 - Installation
 
@@ -50,7 +54,47 @@ Sous Linux
   sudo apt-get install redis-server
   ```
 
-- Lancer le server
+</details>
+
+<details >
+<summary>Sous Windows</summary>
+
+- Téléchargez la dernière version stable de Redis pour Windows à partir du site officiel de Redis (<https://redis.io/download>).
+  
+  Option 1
+- Extrayez les fichiers de l'archive téléchargée dans un répertoire de votre choix, par exemple C:\Redis.
+- Ouvrez une fenêtre de commande en tant qu'administrateur.
+- Accédez au répertoire dans lequel vous avez extrait les fichiers Redis à l'aide de la commande cd, par exemple cd C:\Redis.
+- Exécutez le fichier redis-server.exe pour démarrer le serveur Redis. Vous pouvez le faire en utilisant la commande redis-server.
+- Redis devrait maintenant être en cours d'exécution sur votre machine Windows.
+
+  Option 2
+Vous pouvez également exécuter Redis en tant que service Windows en suivant ces étapes supplémentaires :
+
+- Dans une fenêtre de commande en tant qu'administrateur, accédez au répertoire Redis (par exemple C:\Redis).
+- Exécutez la commande suivante pour installer Redis en tant que service Windows :
+
+```bash
+redis-server --service-install
+```
+
+Une fois l'installation terminée, vous pouvez démarrer le service Redis en utilisant la commande suivante :
+
+```bash
+redis-server --service-start
+```
+
+Vous pouvez également arrêter le service Redis en utilisant la commande suivante :
+
+```bash
+redis-server --service-stop
+```
+
+</details>
+
+Lancer et tester le serveur
+
+- Lancer le serveur
 
   ```bash
   redis-server
@@ -87,53 +131,8 @@ Sous Linux
   ```
   
 - Créer les fichier .env et sqitch.conf à la racine du projet à l'aide des exemples
-  
-  sqitch.conf
 
-  ```bash
-  [core]
-  engine = pg
-  top_dir = migrations
-  plan_file = migrations/sqitch.plan
-  [engine "pg"]
-  target = db:pg://user:password@server:5432/nameDataBase
-  registry = sqitch
-  client = psql
-  ```
-
-  .env
-
-  ```bash
-  # HTTP server port
-  PORT=BalanceTonPort
-
-  # Database 
-  ## Postgres
-  PGPORT=
-  PGHOST=
-  PGDATABASE=
-  PGUSER=
-  PGPASSWORD=
-
-  ## Redis
-  REDIS_HOST=
-  REDIS_PORT=
-  REDIS_PASSWORD=
-
-  # CORS
-  CORS_DOMAINS=
-
-  #Session configuration
-  SESSION_SECRET=
-
-  # Environment
-  NODE_ENV=development
-
-  # Docs
-  API_DOCUMENTATION_ROUTE=/docs
-  ```
-
-- Créer les tables et insérer les données
+- Créer les tables et insérer les données (modifiez les script en fonction de votre environnement)
 
   ```bash
     npm run db:create
