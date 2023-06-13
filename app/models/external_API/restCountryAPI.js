@@ -1,6 +1,6 @@
+const axios = require('axios');
 const Error503 = require('../../errors/Error503');
 const redisClient = require('../../services/clientRedis');
-const axios = require('axios');
 
 /**
  * Object containing the functions for retrieving country data from the RestCountries API.
@@ -53,7 +53,7 @@ const countryApi = {
     };
 
     const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
-    console.log( 'url =' + url);
+    console.log(`url =${url}`);
 
     try {
       const response = await axios.get(url);
@@ -72,7 +72,11 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
-      return error;
+      if (error.response.status === 503) {
+        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      } else {
+        return error;
+      }
     }
   },
 
