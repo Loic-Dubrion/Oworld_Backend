@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 
 // Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
@@ -76,7 +77,7 @@ router.get(
 // );
 router.get('/:country', async (req, res, next) => {
   const country = req.params;
-  const data = await fetch('https://restcountries.com/v3.1/alpha/FRA');
+  const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
   console.log(data.data, country);
   res.json(data.data);
 });
