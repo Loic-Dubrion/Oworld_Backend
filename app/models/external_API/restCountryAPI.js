@@ -70,15 +70,15 @@ const countryApi = {
    * @returns {Promise<Object|null>} - Data for all countries or null in the event of an error.
    */
   fetchAllCountries: async () => {
-    await redisClient.connect();
-    const cacheKey = 'restCountry';
+    // await redisClient.connect();
+    // const cacheKey = 'restCountry';
 
-    const cacheValue = await redisClient.get(cacheKey);
+    // const cacheValue = await redisClient.get(cacheKey);
 
-    if (cacheValue) {
-      await redisClient.quit();
-      return JSON.parse(cacheValue);
-    }
+    // if (cacheValue) {
+    //   await redisClient.quit();
+    //   return JSON.parse(cacheValue);
+    // }
 
     const baseUrl = 'https://restcountries.com/v3.1/';
 
@@ -95,9 +95,9 @@ const countryApi = {
       }
       const data = await response.json();
 
-      await redisClient.set(cacheKey, JSON.stringify(data));
-      redisClient.expire(cacheKey, process.env.REDIS_TTL);
-      await redisClient.quit();
+      // await redisClient.set(cacheKey, JSON.stringify(data));
+      // redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      // await redisClient.quit();
 
       return data;
     } catch (error) {
