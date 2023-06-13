@@ -42,7 +42,7 @@ router.post('/in', controllerHandler(sessionController.login));
 router.get('/out', controllerHandler(sessionController.logout));
 
 router.get('/test', async(req, res, next) => {
-  const data = await axios.get('https://reqres.in/api/users');
+  const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
   console.log(data.data);
   res.json(data.data);
 });
