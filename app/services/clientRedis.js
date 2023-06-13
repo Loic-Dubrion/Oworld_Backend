@@ -5,11 +5,7 @@ const { createClient } = require('@redis/client');
 const logger = require('./logger');
 
 // Creates a new instance of the Redis client
-const redisClient = createClient({
-  host: process.env.REDISHOST,
-  port: process.env.REDISPORT,
-  password: process.env.REDISPASSWORD,
-});
+const redisClient = createClient();
 
 redisClient.on('connect', () => {
   console.log('Connected to Redis');
