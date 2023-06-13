@@ -13,62 +13,66 @@ const countryApi = {
    */
   fetchCountryData: async (isoCode) => {
     // Connection to redis to check presence in cache
-    const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
-    console.log(data.data);
-    return data.data;
-  },
-  //   await redisClient.connect();
-  //   const cacheKey = `restCountry:${isoCode}`;
-
-  //   const cacheValue = await redisClient.get(cacheKey);
-
-  //   if (cacheValue) {
-  //     await redisClient.quit();
-  //     return JSON.parse(cacheValue);
-  //   }
-
-  //   const baseUrl = 'https://restcountries.com/v3.1/';
-
-  //   const param = {
-  //     service: 'alpha',
-  //     value: isoCode,
-  //     fields: [
-  //       'name',
-  //       'currencies',
-  //       'capital',
-  //       'subregion',
-  //       'region',
-  //       'languages',
-  //       'flags',
-  //       'coatOfArms',
-  //       'area',
-  //       'maps',
-  //       'population',
-  //       'car',
-  //       'timezone',
-  //       'continent',
-  //     ],
-  //   };
-
-  //   const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
-
-  //   try {
-  //     const response = await axios.get(url);
-  //     if (!response.ok) {
-  //       throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-  //     }
-  //     const data = await response.json();
-
-  //     // Caching with Redis
-  //     await redisClient.set(cacheKey, JSON.stringify(data));
-  //     redisClient.expire(cacheKey, process.env.REDIS_TTL);
-  //     await redisClient.quit();
-
-  //     return data;
-  //   } catch (error) {
-  //     return null;
-  //   }
+  //   const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
+  //   console.log(data.data);
+  //   return data.data;
   // },
+    await redisClient.connect();
+    const cacheKey = `restCountry:${isoCode}`;
+
+    const cacheValue = await redisClient.get(cacheKey);
+
+    if (cacheValue) {
+      await redisClient.quit();
+      return JSON.parse(cacheValue);
+    }
+
+    const baseUrl = 'https://restcountries.com/v3.1/';
+
+    const param = {
+      service: 'alpha',
+      value: isoCode,
+      fields: [
+        'name',
+        'currencies',
+        'capital',
+        'subregion',
+        'region',
+        'languages',
+        'flags',
+        'coatOfArms',
+        'area',
+        'maps',
+        'population',
+        'car',
+        'timezone',
+        'continent',
+      ],
+    };
+
+    const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
+
+    try {
+      const response = await axios.get(url);
+      if (!response.ok) {
+        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      }
+      //! Modif test
+      console.log(response.data);
+
+      //! Modif test
+      const data = await response.json();
+
+      // Caching with Redis
+      await redisClient.set(cacheKey, JSON.stringify(data));
+      redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      await redisClient.quit();
+
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 
   /**
    * Retrieves data from all countries.
