@@ -15,7 +15,7 @@ const countryApi = {
     // Connection to redis to check presence in cache
     const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
     console.log(data.data);
-    return data;
+    return data.data;
   },
   //   await redisClient.connect();
   //   const cacheKey = `restCountry:${isoCode}`;
