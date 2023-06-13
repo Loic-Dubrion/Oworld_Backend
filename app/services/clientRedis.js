@@ -8,11 +8,11 @@ const logger = require('./logger');
 // Creates a new instance of the Redis client
 const client = redis.createClient({
   socket: {
-    host: 'process.env.REDISHOST',
-    port: 'process.env.REDISPORT',
+    host: process.env.REDISHOST,
+    port: process.env.REDISPORT,
   },
-  username: 'process.env.REDISUSER',
-  password: 'process.env.REDISPASSWORD',
+  username: process.env.REDISUSER,
+  password: process.env.REDISPASSWORD,
 });
 
 client.on('error', (err) => console.log('Redis Server Error', err));
