@@ -12,15 +12,15 @@ const countryApi = {
    */
   fetchCountryData: async (isoCode) => {
     // Connection to redis to check presence in cache
-    await redisClient.connect();
-    const cacheKey = `restCountry:${isoCode}`;
+    // await redisClient.connect();
+    // const cacheKey = `restCountry:${isoCode}`;
 
-    const cacheValue = await redisClient.get(cacheKey);
+    // const cacheValue = await redisClient.get(cacheKey);
 
-    if (cacheValue) {
-      await redisClient.quit();
-      return JSON.parse(cacheValue);
-    }
+    // if (cacheValue) {
+    //   await redisClient.quit();
+    //   return JSON.parse(cacheValue);
+    // }
 
     const baseUrl = 'https://restcountries.com/v3.1/';
 
@@ -54,10 +54,10 @@ const countryApi = {
       }
       const data = await response.json();
 
-      // Caching with Redis
-      await redisClient.set(cacheKey, JSON.stringify(data));
-      redisClient.expire(cacheKey, process.env.REDIS_TTL);
-      await redisClient.quit();
+      // // Caching with Redis
+      // await redisClient.set(cacheKey, JSON.stringify(data));
+      // redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      // await redisClient.quit();
 
       return data;
     } catch (error) {
