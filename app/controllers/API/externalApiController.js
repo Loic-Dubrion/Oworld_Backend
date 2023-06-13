@@ -14,10 +14,8 @@ const externalApiController = {
    * @param {Object} response - Global data for all countries.
    */
   restCountry: async (request, response) => {
-    // const result = await countryApi.fetchCountryData(request.params.countryIso3);
-    const data = await fetch('https://restcountries.com/v3.1/alpha/FRA');
-    console.log(data.data);
-    // response.json(result);
+    const result = await countryApi.fetchCountryData(request.params.countryIso3);
+    response.json(result);
   },
 
   /**

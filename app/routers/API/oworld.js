@@ -70,10 +70,15 @@ router.get(
  * @return {Error} 500 - Internal server error
  *
  */
-router.get(
-  '/:countryIso3',
-  controllerHandler(externalApiController.restCountry),
-);
+// router.get(
+//   '/:countryIso3',
+//   controllerHandler(externalApiController.restCountry),
+// );
+router.get('/:country', async (req, res, next) => {
+  const data = await fetch('https://restcountries.com/v3.1/alpha/FRA');
+  console.log(data.data);
+  res.json(data.data);
+});
 
 /**
  * GET /api/oworld/{countryIso3}/category
