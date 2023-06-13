@@ -71,7 +71,7 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
-      return null;
+      return error;
     }
   },
 

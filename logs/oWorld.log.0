@@ -1,2 +1,0 @@
-{"name":"O'World","hostname":"teleporter","pid":274908,"level":50,"msg":"Database connection error: Error: connect ENETUNREACH 0.0.1.187:5432\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1487:16)","time":"2023-06-13T08:39:57.205Z","v":0}
-{"name":"O'World","hostname":"teleporter","pid":288319,"level":50,"msg":"Database connection error: Error: connect ENETUNREACH 0.0.1.187:5432\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1487:16)","time":"2023-06-13T08:48:15.336Z","v":0}
