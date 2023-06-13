@@ -19,13 +19,10 @@ const countryApi = {
   // },
     console.log('entre dans le datamapper');
     // await redisClient.connect();
-    console.log('passe la connexion redis');
 
     // const cacheKey = `restCountry:${isoCode}`;
-    console.log('cache key: ' + cacheKey);
 
     // const cacheValue = await redisClient.get(cacheKey);
-    console.log('cache value: ' + cacheValue);
 
     // if (cacheValue) {
     //   await redisClient.quit();
