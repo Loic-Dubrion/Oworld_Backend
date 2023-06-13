@@ -59,6 +59,7 @@ const countryApi = {
       const response = await axios.get(url);
       console.log('après le fetch: ', response.data);
       if (!response.ok) {
+        console.log('pourquoi tu rentre là?');
         throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
       }
 
