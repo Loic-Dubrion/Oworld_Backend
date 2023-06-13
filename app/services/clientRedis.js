@@ -6,8 +6,8 @@ const logger = require('./logger');
 
 // Creates a new instance of the Redis client
 const redisClient = createClient({
-  host: process.env.REDISHOST,
-  port: process.env.REDISPORT,
+  host: 'containers-us-west-33.railway.app',
+  port: 7179,
 });
 
 redisClient.on('connect', () => {
