@@ -23,6 +23,7 @@ const countryApi = {
       await redisClient.quit();
       return JSON.parse(cacheValue);
     }
+
     console.log('je passe la connexion redis');
 
     const baseUrl = 'https://restcountries.com/v3.1/';
@@ -49,14 +50,13 @@ const countryApi = {
     };
 
     const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
-    console.log(`Construction url OK`);
+
+    console.log('Construction url OK');
 
     try {
-      console.log('je requête');
+      console.log('je rentre dans le try/catch');
       const response = await axios.get(url);
       console.log('requete OK', response.data);
-      // const data = await response.data.json();
-      // console.log('data = ', data);
 
       // Caching with Redis
       await redisClient.set(cacheKey, JSON.stringify(response.data));

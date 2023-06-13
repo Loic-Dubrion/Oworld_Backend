@@ -8,7 +8,7 @@ const logger = require('./logger');
 const redisClient = createClient({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
-  // password: process.env.REDIS_PASSWORD,
+  password: process.env.REDIS_PASSWORD,
 });
 
 // Handler error
