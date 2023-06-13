@@ -2,21 +2,28 @@ require('dotenv').config();
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { createClient } = require('@redis/client');
+const redis = require('redis');
 const logger = require('./logger');
 
 // Creates a new instance of the Redis client
-const redisClient = createClient({
-  host: 'containers-us-west-33.railway.app',
-  port: 7179,
+const client = redis.createClient({
+  socket: {
+    host: '<hostname>',
+    port: '<port>',
+  },
+  username: '<username>',
+  password: '<password>',
 });
 
-redisClient.on('connect', () => {
+client.on('error', (err) => console.log('Redis Server Error', err));
+
+client.on('connect', () => {
   console.log('Connected to Redis');
 });
 
-redisClient.on('error', (err) => {
+client.on('error', (err) => {
   console.log('Redis Client Error: ', err);
   logger.warn('Redis Client Error', err);
 });
 
-module.exports = redisClient;
+module.exports = client;

@@ -13,7 +13,8 @@ const countryApi = {
    */
   fetchCountryData: async (isoCode) => {
     console.log('entre dans le datamapper');
-    const redisClient = redis.createClient(process.env.REDISPORT, process.env.REDISHOST, { auth_pass: process.env.REDISPASSWORD });
+    await redisClient.connect();
+
     const cacheKey = `restCountry:${isoCode}`;
 
     const cacheValue = await redisClient.get(cacheKey);
