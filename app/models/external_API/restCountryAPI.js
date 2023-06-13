@@ -50,10 +50,10 @@ const countryApi = {
 
     try {
       const response = await axios.get(url);
+      console.log(response.data);
       if (!response.ok) {
         throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
       }
-      console.log(response.data);
       const data = await response.json();
 
       // Caching with Redis
