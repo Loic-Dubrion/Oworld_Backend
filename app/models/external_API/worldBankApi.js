@@ -1,3 +1,5 @@
+require('dotenv').config();
+const axios = require('axios');
 const redisClient = require('../../services/clientRedis');
 
 const baseUrl = 'http://api.worldbank.org/v2/country';
@@ -43,15 +45,10 @@ async function fetchDataByCategory(country) {
   const promises = Object.keys(categories).map(async (category) => {
     const url = `${baseUrl}/${country}/indicator/${categories[category]}?${source}&${format}&${date}&${size}`;
     try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      const response = await axios.get(url);
 
       // Extract relevant data
-      const result = data[1];
+      const result = response.data[1];
 
       // Group data by indicator
       const groupedData = [];
@@ -81,7 +78,11 @@ async function fetchDataByCategory(country) {
       // Add transformed data to the main object
       transformedData[category] = transformedCategoryData;
     } catch (error) {
-      return null;
+      if (error.response && error.response.status === 503) {
+        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      } else {
+        return error;
+      }
     }
   });
 
@@ -114,7 +115,7 @@ async function fetchWorldBankData(iso3) {
     const transformedData = await fetchDataByCategory(country);
     return transformedData;
   } catch (error) {
-    return null;
+    return error;
   }
 }
 
