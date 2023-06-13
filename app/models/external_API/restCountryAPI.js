@@ -12,22 +12,18 @@ const countryApi = {
    * @returns {Promise<Object|null>} - Country data or null in case of error.
    */
   fetchCountryData: async (isoCode) => {
-    // Connection to redis to check presence in cache
-  //   const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
-  //   console.log(data.data);
-  //   return data.data;
-  // },
     console.log('entre dans le datamapper');
-    // await redisClient.connect();
+    await redisClient.connect();
 
-    // const cacheKey = `restCountry:${isoCode}`;
+    const cacheKey = `restCountry:${isoCode}`;
 
-    // const cacheValue = await redisClient.get(cacheKey);
+    const cacheValue = await redisClient.get(cacheKey);
 
-    // if (cacheValue) {
-    //   await redisClient.quit();
-    //   return JSON.parse(cacheValue);
-    // }
+    if (cacheValue) {
+      await redisClient.quit();
+      return JSON.parse(cacheValue);
+    }
+    console.log('je passe la connexion redis');
 
     const baseUrl = 'https://restcountries.com/v3.1/';
 
@@ -53,17 +49,21 @@ const countryApi = {
     };
 
     const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
-    console.log(`url =${url}`);
+    console.log(`Construction url OK`);
 
     try {
+      console.log('je requête');
       const response = await axios.get(url);
-
+      console.log('requete OK', response.data);
       // const data = await response.data.json();
       // console.log('data = ', data);
+
       // Caching with Redis
-      // await redisClient.set(cacheKey, JSON.stringify(data));
-      // redisClient.expire(cacheKey, process.env.REDIS_TTL);
-      // await redisClient.quit();
+      await redisClient.set(cacheKey, JSON.stringify(response.data));
+      redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      await redisClient.quit();
+
+      console.log('je quitte redis');
 
       return response.data;
     } catch (error) {
