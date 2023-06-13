@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 
 const router = express.Router();
 
@@ -39,5 +40,11 @@ router.post('/in', controllerHandler(sessionController.login));
  * @return {Error} 500 - internal server error
  */
 router.get('/out', controllerHandler(sessionController.logout));
+
+router.get('/test', async(req, res, next) => {
+  const data = await axios.get('https://reqres.in/api/users');
+  console.log(data.data);
+  res.json(data.data);
+});
 
 module.exports = router;
