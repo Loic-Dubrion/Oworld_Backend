@@ -54,19 +54,19 @@ const countryApi = {
     const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
 
     try {
-      const response = await axios.get(url);
-      console.log(response.data);
-      if (!response.ok) {
-        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-      }
-      const data = await response.json();
+      // const response = await axios.get(url);
+      // console.log(response.data);
+      // if (!response.ok) {
+      //   throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      // }
+      // const data = await response.json();
 
-      // Caching with Redis
-      await redisClient.set(cacheKey, JSON.stringify(data));
-      redisClient.expire(cacheKey, process.env.REDIS_TTL);
-      await redisClient.quit();
+      // // Caching with Redis
+      // await redisClient.set(cacheKey, JSON.stringify(data));
+      // redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      // await redisClient.quit();
 
-      return data;
+      // return data;
     } catch (error) {
       return null;
     }
