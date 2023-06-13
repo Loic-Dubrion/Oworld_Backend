@@ -62,14 +62,14 @@ const countryApi = {
         throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
       }
 
-      const data = await response.data.json();
-      console.log('data = ', data);
+      // const data = await response.data.json();
+      // console.log('data = ', data);
       // Caching with Redis
       // await redisClient.set(cacheKey, JSON.stringify(data));
       // redisClient.expire(cacheKey, process.env.REDIS_TTL);
       // await redisClient.quit();
 
-      return data;
+      return response.data;
     } catch (error) {
       return null;
     }
