@@ -75,8 +75,9 @@ router.get(
 //   controllerHandler(externalApiController.restCountry),
 // );
 router.get('/:country', async (req, res, next) => {
+  const country = req.params;
   const data = await fetch('https://restcountries.com/v3.1/alpha/FRA');
-  console.log(data.data);
+  console.log(data.data, country);
   res.json(data.data);
 });
 
