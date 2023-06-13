@@ -11,7 +11,7 @@ const countryApi = {
    * @returns {Promise<Object|null>} - Country data or null in case of error.
    */
   fetchCountryData: async (isoCode) => {
-    Connection to redis to check presence in cache
+    // Connection to redis to check presence in cache
     await redisClient.connect();
     const cacheKey = `restCountry:${isoCode}`;
 
