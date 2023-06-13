@@ -71,16 +71,10 @@ router.get(
  * @return {Error} 500 - Internal server error
  *
  */
-// router.get(
-//   '/:countryIso3',
-//   controllerHandler(externalApiController.restCountry),
-// );
-router.get('/:country', async (req, res, next) => {
-  const country = req.params;
-  const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
-  console.log(data.data, country);
-  res.json(data.data);
-});
+router.get(
+  '/:countryIso3',
+  controllerHandler(externalApiController.restCountry),
+);
 
 /**
  * GET /api/oworld/{countryIso3}/category
