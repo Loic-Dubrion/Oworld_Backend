@@ -12,7 +12,7 @@
   Installation de toutes les dépendances
 
   ```bash
-    npm init
+    npm install
   ```
 
 ### Installation de Sqitch
@@ -92,15 +92,20 @@ Lancer et tester le serveur
   ```bash
     sudo -i -u postgres psql
 
+    CREATE USER oworld WITH PASSWORD myPassword
     CREATE DATABASE oworld OWNER oworld
+    
     :\q
   ```
   
 - Créer les fichier .env et sqitch.conf à la racine du projet à l'aide des exemples
 
-- Créer les tables et insérer les données ( ! modifiez les script en fonction de votre environnement !)
+- Créer les tables et insérer les données
+** ! modifiez les script en fonction de votre environnement ! **
+** "psql -U <user> -d <myDataBase> -f data/seedingCountry.sql" **
 
   ```bash
+    sqitch deploy
     npm run db:create
     npm run db:seed
   ```
