@@ -17,10 +17,15 @@ const countryApi = {
   //   console.log(data.data);
   //   return data.data;
   // },
+  console.log('entre dans le datamapper');
     await redisClient.connect();
+    console.log('passe la connexion redis');
+
     const cacheKey = `restCountry:${isoCode}`;
+    console.log('cache key: ' + cacheKey);
 
     const cacheValue = await redisClient.get(cacheKey);
+    console.log('cache value: ' + cacheValue);
 
     if (cacheValue) {
       await redisClient.quit();
@@ -51,6 +56,7 @@ const countryApi = {
     };
 
     const url = `${baseUrl}/${param.service}/${param.value}?fields=${param.fields}`;
+    console.log(url);
 
     try {
       const response = await axios.get(url);
