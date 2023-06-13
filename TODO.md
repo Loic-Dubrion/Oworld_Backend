@@ -65,7 +65,7 @@
 - [X] Setting up logging (Bunyan)
 - [X] Setting up a backup of the database
 - [ ] Clean code and add comment
-- [ ] Cache management
+- [X] Cache management
 - [ ] Timer on external request
 - [ ] JWT
 - [ ] Deployment
@@ -76,8 +76,5 @@
 Test avec la query HON insert des valeurs null
 - [ ] Emêcher également l'insertion des doublons dans les favoris
 - [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
-- [ ] Faire une bdd dans les règles pour les planètes du système solaire
-  - [ ] Ajout d'une table planet
-  - [ ] Ajout d'une table lune
-  - [ ] Ajout des clef étrangères
+- [ ] Basculer la table planet sur Redis
 - [ ] Refacto redis
