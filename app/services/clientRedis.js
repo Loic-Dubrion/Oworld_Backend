@@ -12,6 +12,6 @@ const redisClient = createClient({
 });
 
 // Handler error
-redisClient.on('error', (err) => logger.warn('Redis Client Error', err));
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 module.exports = redisClient;
