@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 // Models
 const countryApi = require('../../models/external_API/restCountryAPI');
 const fetchWorldBankData = require('../../models/external_API/worldBankApi');
@@ -16,11 +14,8 @@ const externalApiController = {
    * @param {Object} response - Global data for all countries.
    */
   restCountry: async (request, response) => {
-    const data = await axios.get('https://restcountries.com/v3.1/alpha/FRA');
-    console.log(data.data);
-    response.json(data.data);
-    // const result = await countryApi.fetchCountryData(request.params.countryIso3);
-    // response.json(result);
+    const result = await countryApi.fetchCountryData(request.params.countryIso3);
+    response.json(result);
   },
 
   /**
