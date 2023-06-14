@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 
 // Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
@@ -22,7 +21,7 @@ const router = express.Router();
  */
 router.get(
   '/',
-  controllerHandler(oworldController.getAll.bind(oworldController)),
+  controllerHandler(oworldController.getPlanet.bind(oworldController)),
 );
 
 /**

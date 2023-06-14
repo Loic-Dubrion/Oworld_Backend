@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
   const userId = Number(req.params.userId);
 
   // Check if user is authenticated
+  console.log(req.session);
   if (!req.session.user) {
     return next(new Error401('Access forbidden - please login'));
   }

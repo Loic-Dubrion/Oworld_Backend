@@ -9,7 +9,7 @@ GET {{baseUrl}}/admin/601/stat?useView=true
 GET {{baseUrl}}/oworld?useView=false
 
 ### List country ###
-GET {{baseUrl}}/oworld?useView=true
+GET {{baseUrl}}/oworld/list?useView=true
 
 ### List flags ###
 GET {{baseUrl}}/oworld/flags
@@ -29,8 +29,8 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Loic",
-  "email": "test@test.com",
+  "username": "Loic1",
+  "email": "test@test1.com",
   "password": "&Test1234",
   "country_origin": 1,
   "birth_date": "1938-06-16"
@@ -60,8 +60,12 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "test@test1.com",
   "password": "&Test1234"
 }
 ### Logout ###
 GET {{baseUrl}}/log/out
+
+
+### TESTS
+GET {{baseUrl}}/oworld/

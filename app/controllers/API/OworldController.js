@@ -13,6 +13,11 @@ class OworldController extends CoreController {
   constructor() {
     super();
   }
+
+  async getPlanet(request, response) {
+    const results = await this.constructor.dataMapper.planet();
+    response.json(JSON.parse(results));
+  }
 }
 
 module.exports = new OworldController();
