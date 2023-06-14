@@ -20,7 +20,7 @@ describe('fetchCountryData', () => {
         'maps',
         'population',
         'car',
-      ])
+      ]),
     );
   });
 });

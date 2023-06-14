@@ -14,7 +14,6 @@ class CoreDataMapper {
   }
 
   async findAll(useView) {
-    logger.info(`${this.constructor.name} findAll`);
     const tableName = useView ? this.constructor.viewName : this.constructor.tableName;
     const preparedQuery = {
       text: `SELECT * FROM "${tableName}"`,
@@ -24,12 +23,13 @@ class CoreDataMapper {
   }
 
   async findOneByField(field, value) {
-    logger.info(`${this.constructor.name} findOneByField`);
-    const tableName = this.constructor.tableName;
+    const { tableName } = this.constructor;
+    console.log(tableName);
     const query = {
       text: `SELECT * FROM "${tableName}" WHERE ${field} = $1`,
       values: [value],
     };
+    console.log(query);
     const results = await client.query(query);
     return results.rows[0];
   }

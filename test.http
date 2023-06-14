@@ -18,7 +18,7 @@ GET {{baseUrl}}/oworld/flags
 GET {{baseUrl}}/oworld/FRA
 
 ### Categories by country ###
-GET {{baseUrl}}/oworld/BEL/category
+GET {{baseUrl}}/oworld/LUX/category
 
 ### WTF by country ###
 GET {{baseUrl}}/oworld/FRA/wtf
@@ -41,7 +41,7 @@ GET {{baseUrl}}/user/601
 ### Add Favorite ###
 POST {{baseUrl}}/user/601/FRA
 ### Delete Favorite ###
-DELETE {{baseUrl}}/user/601/BEL
+DELETE {{baseUrl}}/user/601/FRA
 ### Update User ###
 PUT {{baseUrl}}/user/601
 Content-Type: application/json

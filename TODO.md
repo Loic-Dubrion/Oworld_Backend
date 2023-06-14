@@ -64,9 +64,9 @@
 - [X] Validate with Joi
 - [X] Setting up logging (Bunyan)
 - [X] Setting up a backup of the database
-- [ ] Clean code and add comment
+- [X] Clean code and add comment
 - [X] Cache management
-- [ ] Timer on external request
+- [ ] Monitoring on external request
 - [ ] JWT
 - [X] Deployment
 

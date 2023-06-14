@@ -6,6 +6,7 @@ const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
 const Error400 = require('../../errors/Error400');
+const client = require('../../services/clientdb');
 
 /** Class representing a user controller. */
 class UserController extends CoreController {
@@ -40,6 +41,29 @@ class UserController extends CoreController {
    */
   async addFavorite(request, response) {
     const { userId, countryISO } = request.params;
+
+    // Step 1: Check if the country exists
+    const queryCountry = {
+      text: 'SELECT * FROM "country" WHERE iso3 = $1',
+      values: [countryISO],
+    };
+
+    const country = await client.query(queryCountry);
+    if (country.rows.length === 0) {
+      throw new Error400('this country does not exist');
+    }
+    const countryId = country.rows[0].id;
+    // Step 2: Check if the country is already a favorite
+    const queryFavorite = {
+      text: 'SELECT * FROM "user_has_favorite" WHERE country_id = $1',
+      values: [countryId],
+    };
+
+    const isFavorite = await client.query(queryFavorite);
+    if (isFavorite.rows.length > 0) {
+      throw new Error400('This country is already one of the favourites');
+    }
+
     const results = await this.constructor.dataMapper.executeFunction('insert_favorite', userId, countryISO);
     response.json(results);
   }
@@ -110,7 +134,6 @@ class UserController extends CoreController {
    */
   async deleteUser(request, response) {
     const { userId } = request.params;
-    console.log(userId, typeof (userId));
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
     response.json(results);
   }
