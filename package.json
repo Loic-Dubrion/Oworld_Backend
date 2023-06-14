@@ -7,7 +7,7 @@
     "dev": "nodemon index.js | bunyan -o short",
     "start": "node index.js",
     "db:create": "sqitch revert -y && sqitch deploy",
-    "db:seed": "psql -U spedata -d oworld -f data/seedingCountry.sql && psql -U spedata -d oworld -f data/seedingRBAC.sql && node data/faker.js && psql -U spedata -d oworld -f data/seedingWorld.sql",
+    "db:seed": "psql -U spedata -d oworld -f data/seedingCountry.sql && psql -U spedata -d oworld -f data/seedingRBAC.sql && node data/faker.js && node data/seedingPlanetRedis.js",
     "db:reset": "npm run db:create && npm run db:seed | bunyan -o short",
     "db:save": "nodemon app/services/pg_dump.js | bunyan -o short",
     "test": "jest",

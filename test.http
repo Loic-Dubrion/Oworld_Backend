@@ -29,9 +29,9 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Loic1",
-  "email": "test@test1.com",
-  "password": "&Test1234",
+  "username": "Loic12",
+  "email": "test@tet.com",
+  "password": "&Tets1234",
   "country_origin": 1,
   "birth_date": "1938-06-16"
 }
@@ -47,7 +47,7 @@ PUT {{baseUrl}}/user/601
 Content-Type: application/json
 
 {
-  "username": "Loic",
+  "username": "Loic25",
   "email": "test@test.com",
   "password": "&Test1234"
 }
@@ -60,7 +60,7 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@test1.com",
+  "email": "test@tes.com",
   "password": "&Test1234"
 }
 ### Logout ###
