@@ -36,14 +36,14 @@ class SessionController extends CoreController {
     const user = await SessionController.dataMapper.findOneByField('email', email);
 
     if (!user) {
-      throw new Error403('Utilisateur ou mot de passe incorrect');
+      throw new Error403('Incorrect user or password');
     }
 
     // checks that the password matches
     const isGoodPassword = await bcrypt.compare(password, user.password);
 
     if (!isGoodPassword) {
-      throw new Error403('Utilisateur ou mot de passe incorrect');
+      throw new Error403('Incorrect user or password');
     }
 
     // retrieves roles and permissions

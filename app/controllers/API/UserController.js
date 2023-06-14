@@ -50,7 +50,7 @@ class UserController extends CoreController {
 
     const country = await client.query(queryCountry);
     if (country.rows.length === 0) {
-      throw new Error400('this country does not exist');
+      throw new Error400('This country does not exist');
     }
     const countryId = country.rows[0].id;
     // Step 2: Check if the country is already a favorite
@@ -91,12 +91,12 @@ class UserController extends CoreController {
     // check for an identical user.
     const user = await UserController.dataMapper.findOneByField('username', dataUser.username);
     if (user) {
-      throw new Error400('existing user');
+      throw new Error400('Existing user');
     }
     // check for an identical email
     const email = await UserController.dataMapper.findOneByField('email', dataUser.email);
     if (email) {
-      throw new Error400('existing email address');
+      throw new Error400('Existing email address');
     }
     // extract the password from the object and hash it
     const { password, ...userWithoutPassword } = dataUser;

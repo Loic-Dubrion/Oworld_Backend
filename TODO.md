@@ -76,5 +76,5 @@
 Test avec la query HON insert des valeurs null
 - [X] Empêcher également l'insertion des doublons dans les favoris
 - [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
-- [ ] Basculer la table planet sur Redis
+- [X] Basculer la table planet sur Redis
 - [X] Refacto redis

@@ -67,7 +67,6 @@ async function fetchRadioData(isoCode) {
         'X-Api-Key': 'LBuPMzuZ+Tv29IU9UUkd5g==FoQKpOaRaopey9eV',
       },
     });
-    console.log(responseCelebrity.data);
     if (responseCelebrity.data && responseCelebrity.data.length > 0) {
       result.celebrity = responseCelebrity.data;
     }
