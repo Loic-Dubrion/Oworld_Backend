@@ -15,13 +15,13 @@ GET {{baseUrl}}/oworld/list?useView=true
 GET {{baseUrl}}/oworld/flags
 
 ### One country ###
-GET {{baseUrl}}/oworld/FRA
+GET {{baseUrl}}/oworld/ABC
 
 ### Categories by country ###
 GET {{baseUrl}}/oworld/LUX/category
 
 ### WTF by country ###
-GET {{baseUrl}}/oworld/POR/wtf
+GET {{baseUrl}}/oworld/ITA/wtf
 
 ### ROUTES USERS ###
 ### Add User ###
@@ -29,7 +29,7 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Loic1",
+  "username": "Loic",
   "email": "test@test.com",
   "password": "&Tets1234",
   "country_origin": 1,
@@ -39,7 +39,7 @@ Content-Type: application/json
 ### Profile ###
 GET {{baseUrl}}/user/601
 ### Add Favorite ###
-POST {{baseUrl}}/user/601/FRA
+POST {{baseUrl}}/user/601/BEL
 ### Delete Favorite ###
 DELETE {{baseUrl}}/user/601/FRA
 ### Update User ###
@@ -47,7 +47,7 @@ PUT {{baseUrl}}/user/601
 Content-Type: application/json
 
 {
-  "username": "Loic25",
+  "username": "Loic",
   "email": "test@test.com",
   "password": "&Test1234"
 }
@@ -60,8 +60,8 @@ POST {{baseUrl}}/log/in
 Content-Type: application/json
 
 {
-  "email": "test@tes.com",
-  "password": "&Test1234"
+  "email": "test@test.com",
+  "password": "&Tets1234"
 }
 ### Logout ###
 GET {{baseUrl}}/log/out
