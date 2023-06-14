@@ -1,11 +1,15 @@
 const express = require('express');
 
+const validateParam = require('../../services/validateParam');
+
 // Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const externalApiController = require('../../controllers/API/externalApiController');
 const oworldController = require('../../controllers/API/OworldController');
 
 const router = express.Router();
+
+router.param('countryIso3', validateParam.validateIso('countryISO'));
 
 // Routes
 /**

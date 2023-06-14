@@ -21,7 +21,7 @@ GET {{baseUrl}}/oworld/FRA
 GET {{baseUrl}}/oworld/LUX/category
 
 ### WTF by country ###
-GET {{baseUrl}}/oworld/ITA/wtf
+GET {{baseUrl}}/oworld/POR/wtf
 
 ### ROUTES USERS ###
 ### Add User ###
@@ -29,7 +29,7 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Loic",
+  "username": "Loic1",
   "email": "test@test.com",
   "password": "&Tets1234",
   "country_origin": 1,
