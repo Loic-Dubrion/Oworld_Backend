@@ -68,7 +68,7 @@
 - [X] Cache management
 - [ ] Timer on external request
 - [ ] JWT
-- [ ] Deployment
+- [X] Deployment
 
 ## Finitions
 
@@ -77,4 +77,4 @@ Test avec la query HON insert des valeurs null
 - [ ] Emêcher également l'insertion des doublons dans les favoris
 - [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
 - [ ] Basculer la table planet sur Redis
-- [ ] Refacto redis
+- [X] Refacto redis
