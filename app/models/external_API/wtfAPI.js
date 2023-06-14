@@ -56,9 +56,20 @@ async function fetchRadioData(isoCode) {
     }
 
     // Retrieve "insolite" from the database
-    const queryResult = await client.query('SELECT insolite FROM country WHERE iso3 = $1', [isoCode]);
-    if (queryResult.rows.length > 0) {
-      result.insolite = queryResult.rows[0].insolite;
+    const country = await client.query('SELECT insolite, iso2 FROM country WHERE iso3 = $1', [isoCode]);
+    if (country.rows.length > 0) {
+      result.insolite = country.rows[0].insolite;
+    }
+    const { iso2 } = country.rows[0];
+
+    const responseCelebrity = await axios.get(`https://api.api-ninjas.com/v1/celebrity?nationality=${iso2}`, {
+      headers: {
+        'X-Api-Key': 'LBuPMzuZ+Tv29IU9UUkd5g==FoQKpOaRaopey9eV',
+      },
+    });
+    console.log(responseCelebrity.data);
+    if (responseCelebrity.data && responseCelebrity.data.length > 0) {
+      result.celebrity = responseCelebrity.data;
     }
 
     await redisClient.set(cacheKey, JSON.stringify(result));

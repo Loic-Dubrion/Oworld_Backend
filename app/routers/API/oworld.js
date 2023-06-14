@@ -102,7 +102,7 @@ router.get(
  */
 router.get(
   '/:countryIso3/wtf',
-  controllerHandler(externalApiController.radio),
+  controllerHandler(externalApiController.wtf),
 );
 
 module.exports = router;
