@@ -4,6 +4,7 @@
 const axios = require('axios');
 const client = require('../../services/clientdb');
 const redisClient = require('../../services/clientRedis');
+const RadioBrowser = require('radio-browser');
 const Error503 = require('../../errors/Error503');
 
 /**
