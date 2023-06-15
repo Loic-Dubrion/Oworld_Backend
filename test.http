@@ -49,7 +49,7 @@ Content-Type: application/json
 {
   "username": "Loic",
   "email": "test@test.com",
-  "password": "&Test1234"
+  "password": "Test&1234"
 }
 ### Delete User ###
 DELETE {{baseUrl}}/user/601
@@ -61,11 +61,16 @@ Content-Type: application/json
 
 {
   "email": "test@test.com",
-  "password": "&Tets1234"
+  "password": "Test&1234"
 }
+
 ### Logout ###
 GET {{baseUrl}}/log/out
 
 
 ### TESTS
-GET {{baseUrl}}/oworld/
+### Login to user ###
+POST {{baseUrl}}/log/in
+content-type: application/x-www-form-urlencoded
+
+username=Loic&password=Test%261234

@@ -5,6 +5,11 @@ const router = express.Router();
 
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const { sessionController } = require('../../controllers/API');
+
+//! JWT
+const jwtController = require('../../controllers/API/jwtController');
+
+
 /**
  * POST /api/log/in
  *
@@ -25,7 +30,7 @@ const { sessionController } = require('../../controllers/API');
  * @throws {Error} 403 - Invalid email or password
  * @throws {Error} 500 - Internal server error
  */
-router.post('/in', controllerHandler(sessionController.login));
+router.post('/in', jwtController.logUser);
 
 /** GET /api/logout
  *
