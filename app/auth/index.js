@@ -7,6 +7,38 @@ const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
 const auth = {
+
+  // Récupère les rôles et fonctions
+  async getUserRolesAndPermissions(userId) {
+    console.log('**** Fonction getUserRolesAndPermissions *****');
+
+    const query = `
+      SELECT 
+        array_agg(DISTINCT role.name) AS roles, 
+        array_agg(DISTINCT authorisation.name) AS permissions
+      FROM 
+        "user" AS u
+      JOIN 
+        user_has_role ON u.id = user_has_role.user_id
+      JOIN 
+        role ON user_has_role.role_id = role.id
+      JOIN 
+        role_has_authorisation ON role.id = role_has_authorisation.role_id
+      JOIN 
+        authorisation ON role_has_authorisation.authorisation_id = authorisation.id
+      WHERE 
+        u.id = $1
+    `;
+    const values = [userId];
+    const result = await client.query(query, values);
+
+    if (result.rows.length > 0) {
+      const { roles, permissions } = result.rows[0];
+      return { roles, permissions };
+    }
+    return null;
+  },
+
   //! OK POUR CETTE FONCTION
   // Vérifie si l'utilisateur existe avec le bon mot de passe retourne true or false
   async authentify(username, password) {
@@ -16,20 +48,21 @@ const auth = {
     const values = [username];
     const result = await client.query(query, values);
 
-    // Vérification qu'un utilisateur a été trouvé
     if (result.rows.length > 0) {
       const foundUser = result.rows[0];
 
-      // Si j'ai un user je check le mot de passe
       if (foundUser) {
         console.log('foundUser est true');
-
-        // Compare le mot de passe fourni avec le hash enregistré dans la base de données
         const isGoodPassword = await bcrypt.compare(password, foundUser.password);
 
         if (isGoodPassword) {
           console.log('password est true');
-          return true;
+
+          // get user roles and permissions
+          const rolesAndPermissions = await this.getUserRolesAndPermissions(foundUser.id);
+
+          // return user info along with roles and permissions
+          return { ...foundUser, ...rolesAndPermissions };
         }
       }
     }
@@ -38,14 +71,15 @@ const auth = {
   },
 
   // Génère le token d'accès stocke l'ip et le pseudo
-  generateAccessToken(ip, username) {
+  generateAccessToken(ip, user) {
     console.log('******* Fonction generateAccessToken *******');
-    // Codage du token et valeur de retour avec TTL
     return jwt.sign(
       {
         data: {
           ip,
-          username,
+          username: user.username,
+          roles: user.roles,
+          permissions: user.permissions,
         },
       },
       JWT_SECRET,
@@ -54,29 +88,21 @@ const auth = {
   },
 
   // Génère le token de refresh avec juste le pseudo en param
-  async generateRefreshToken(username) {
+  async generateRefreshToken(user) {
     console.log('****** Fonction generateRefreshToken ********');
 
-    const query = 'SELECT * FROM "user" WHERE username=$1';
-    const values = [username];
-    const result = await client.query(query, values);
-
-    if (result.rows.length > 0) {
-      const foundUser = result.rows[0];
-      const refreshToken = jwt.sign(
-        {
-          data: {
-            id: foundUser.id,
-          },
+    const refreshToken = jwt.sign(
+      {
+        data: {
+          id: user.id,
         },
-        JWT_REFRESH_SECRET,
-        { expiresIn: REFRESH_TOKEN_EXPIRATION },
-      );
-      foundUser.refreshToken = refreshToken;
-      return refreshToken;
-    }
+      },
+      JWT_REFRESH_SECRET,
+      { expiresIn: REFRESH_TOKEN_EXPIRATION },
+    );
+    user.refreshToken = refreshToken;
+    return refreshToken;
   },
-
 
   authorize(request, response, next) {
     console.log('authorize');
