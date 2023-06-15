@@ -21,7 +21,7 @@ GET {{baseUrl}}/oworld/ABC
 GET {{baseUrl}}/oworld/LUX/category
 
 ### WTF by country ###
-GET {{baseUrl}}/oworld/ITA/wtf
+GET {{baseUrl}}/oworld/CHN/wtf
 
 ### ROUTES USERS ###
 ### Add User ###

@@ -2,9 +2,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 const axios = require('axios');
+const RadioBrowser = require('radio-browser');
 const client = require('../../services/clientdb');
 const redisClient = require('../../services/clientRedis');
-const RadioBrowser = require('radio-browser');
 const Error503 = require('../../errors/Error503');
 const Error400 = require('../../errors/Error400');
 
@@ -35,7 +35,9 @@ async function fetchRadioData(isoCode) {
     // Check if ISO code exists in the database
     const countryQuery = await client.query('SELECT iso3 FROM country WHERE iso3 = $1', [isoCode]);
     if (countryQuery.rows.length === 0) {
+      await redisClient.quit();
       throw new Error400(`ISO code '${isoCode}' not found in the database.`);
+      return;
     }
 
     const filter = {
@@ -93,7 +95,7 @@ async function fetchRadioData(isoCode) {
       throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     } else {
       console.error(error);
-      throw error;
+      return error;
     }
   }
 }
