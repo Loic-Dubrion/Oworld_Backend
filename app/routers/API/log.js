@@ -46,4 +46,6 @@ router.post('/in', jwtController.logUser);
  */
 router.get('/out', controllerHandler(sessionController.logout));
 
+router.post('/refresh-token', jwtController.refreshToken);
+
 module.exports = router;

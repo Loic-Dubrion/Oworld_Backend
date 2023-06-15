@@ -68,13 +68,19 @@ Content-Type: application/json
 GET {{baseUrl}}/log/out
 
 
-### TESTS
+### TESTS JWT
 ### Login to user ###
 POST {{baseUrl}}/log/in
 content-type: application/x-www-form-urlencoded
 
 username=Loic&password=Test%261234
 
-### Profile ###
+### Check authorization ###
 GET {{baseUrl}}/user/601
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlwIjoiOjpmZmZmOjEyNy4wLjAuMSIsInVzZXJuYW1lIjoiTG9pYyIsInJvbGVzIjpbIlVzZXIiXSwicGVybWlzc2lvbnMiOlsiRGVsZXRlIiwiUmVhZCIsIlVwZGF0ZSJdfSwiaWF0IjoxNjg2ODMyOTkxLCJleHAiOjE2ODY4MzM4OTF9.I75HHJiMW8KwwG-XUUJC7ZQUsBsocu3cM5i6Ii2cX9M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlwIjoiOjpmZmZmOjEyNy4wLjAuMSIsInVzZXJuYW1lIjoiTG9pYyIsInJvbGVzIjpbIlVzZXIiXSwicGVybWlzc2lvbnMiOlsiRGVsZXRlIiwiUmVhZCIsIlVwZGF0ZSJdfSwiaWF0IjoxNjg2ODM2MjY5LCJleHAiOjE2ODY4MzcxNjl9.1GT2j58AYAfsE3xUhrD9sa0NbM7ho9wUoMkLmbbrFFk
+
+### Get Token refresh ###
+POST {{baseUrl}}/log/in
+content-type: application/x-www-form-urlencoded
+
+username=Loic&password=Test%261234

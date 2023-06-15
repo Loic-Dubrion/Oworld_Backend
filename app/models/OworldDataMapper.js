@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-const logger = require('../services/logger');
 const CoreDataMapper = require('./CoreDataMapper');
 const client = require('../services/clientRedis');
 
@@ -14,7 +13,6 @@ class OworldDataMapper extends CoreDataMapper {
    */
   constructor() {
     super();
-    logger.info('admin data mapper created');
   }
 
   async planet() {

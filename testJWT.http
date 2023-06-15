@@ -1,0 +1,23 @@
+@baseUrl = http://localhost:3000/api
+@accessToken = {{login.response.body.$.data.accessToken}}
+@refreshToken = {{login.response.body.$.data.refreshToken}}
+
+# @name login
+POST {{baseUrl}}/log/in
+content-type: application/x-www-form-urlencoded
+
+username=Loic&password=Test%261234
+
+### Marche pas
+GET {{baseUrl}}/user/601
+
+### Marche
+GET {{baseUrl}}/user/601
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/log/refresh-token
+Authorization: Bearer {{accessToken}}
+content-type: application/x-www-form-urlencoded
+
+refreshToken={{refreshToken}}

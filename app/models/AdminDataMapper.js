@@ -1,4 +1,3 @@
-const logger = require('../services/logger');
 const CoreDataMapper = require('./CoreDataMapper');
 
 /** Class representing a admin data mapper. */
@@ -12,7 +11,6 @@ class AdminDataMapper extends CoreDataMapper {
    */
   constructor() {
     super();
-    logger.info('admin data mapper created');
   }
 }
 
