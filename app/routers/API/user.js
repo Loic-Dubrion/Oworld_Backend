@@ -4,21 +4,22 @@ const router = express.Router();
 
 // Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
-const auth = require('../../services/authentification');
+// const auth = require('../../services/authentification');
 const { userController } = require('../../controllers/API');
 
 // Import Middlewares
 const validate = require('../../validations/validate');
 const { createUserBody, updateUserBody } = require('../../validations/schemas');
 const validateParam = require('../../services/validateParam');
-const { checkRole } = require('../../services/checkRBAC');
+// const { checkRole } = require('../../services/checkRBAC');
+const { authorize } = require('../../auth');
 
 // Check
 router.param('userId', validateParam.validateId('userId'));
 router.param('countryISO', validateParam.validateIso('countryISO'));
 
-router.use('/:userId', auth);
-router.use('/:userId', checkRole('User'));
+router.use('/:userId', authorize);
+// router.use('/:userId', checkRole('User'));
 
 /**
  * POST /api/user/

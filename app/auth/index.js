@@ -7,7 +7,7 @@ const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
 const auth = {
-
+  //! OK POUR CETTE FONCTION
   // Récupère les rôles et fonctions
   async getUserRolesAndPermissions(userId) {
     console.log('**** Fonction getUserRolesAndPermissions *****');
@@ -70,6 +70,7 @@ const auth = {
     return false;
   },
 
+  //! OK POUR CETTE FONCTION
   // Génère le token d'accès stocke l'ip et le pseudo
   generateAccessToken(ip, user) {
     console.log('******* Fonction generateAccessToken *******');
@@ -87,6 +88,7 @@ const auth = {
     );
   },
 
+  //! OK POUR CETTE FONCTION
   // Génère le token de refresh avec juste le pseudo en param
   async generateRefreshToken(user) {
     console.log('****** Fonction generateRefreshToken ********');
@@ -104,12 +106,14 @@ const auth = {
     return refreshToken;
   },
 
+  //! OK POUR CETTE FONCTION
   authorize(request, response, next) {
-    console.log('authorize');
+    console.log('**** Fonction authorize ****');
     try {
-      // try to get token
+      // Récupère la partie du token via la fonction ** getAccessJWT **
       const token = auth.getAccessJWT(request);
-      debug(token);
+      console.log('TOKEN = ', token);
+      // Vérifie l'intégrité du Token
       const decodedToken = jwt.verify(token, JWT_SECRET);
       // if token is valid, check for matching authentification and request ip
       if (decodedToken.data.ip === request.ip) {
@@ -136,19 +140,18 @@ const auth = {
     return user;
   },
 
-  /**
-   * gets access JWT
-   *
-   * @param {*} request
-   * @returns {(string | false)} the JWT or false if there is no jwt
-   */
+  //! OK POUR CETTE FONCTION
+  // Vérifie si j'ai bien un header dans la requête
   getAccessJWT(request) {
+    console.log('***** Fonction getAccessJWT *****');
+    // Récupère le token
     const authHeader = request.headers.authorization;
     if (authHeader) {
+      // Isole la partie du token qui nous intéresse
       const token = authHeader.split('Bearer ')[1];
       return token;
     }
-    throw (new Error('jwt must be provided'));
+    throw (new Error('Vous ne passerez pas !!!'));
   },
 
   /**

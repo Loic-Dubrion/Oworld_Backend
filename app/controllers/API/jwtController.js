@@ -1,11 +1,6 @@
 const auth = require('../../auth/index');
 
 const jwtController = {
-  getHomePage(request, response) {
-    console.log('getHomePage');
-    response.render('home');
-  },
-
   async logUser(request, response) {
     const { username, password } = request.body;
     console.log('logUser', request.body);
@@ -30,6 +25,9 @@ const jwtController = {
     console.log('getAuthorizedInfo');
     response.json({ status: 'success', data: 'You are officialy authorized to see this content' });
   },
+
+
+  
 
   refreshToken(request, response) {
     console.log('refreshToken');

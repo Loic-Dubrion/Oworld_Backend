@@ -74,3 +74,7 @@ POST {{baseUrl}}/log/in
 content-type: application/x-www-form-urlencoded
 
 username=Loic&password=Test%261234
+
+### Profile ###
+GET {{baseUrl}}/user/601
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlwIjoiOjpmZmZmOjEyNy4wLjAuMSIsInVzZXJuYW1lIjoiTG9pYyIsInJvbGVzIjpbIlVzZXIiXSwicGVybWlzc2lvbnMiOlsiRGVsZXRlIiwiUmVhZCIsIlVwZGF0ZSJdfSwiaWF0IjoxNjg2ODMyOTkxLCJleHAiOjE2ODY4MzM4OTF9.I75HHJiMW8KwwG-XUUJC7ZQUsBsocu3cM5i6Ii2cX9M
