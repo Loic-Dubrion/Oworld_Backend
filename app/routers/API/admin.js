@@ -7,12 +7,11 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { adminController } = require('../../controllers/API');
 
 // Middlewares
-const auth = require('../../services/authentification');
-const { checkRole, checkPermission } = require('../../services/checkRBAC');
+const { checkRole, checkPermission } = require('../../authentication/checkRBAC');
+const { authorize } = require('../../authentication/jwtService');
 
 // Check Role
-router.use('/:userId', auth);
-router.use(checkRole('Admin'));
+router.use('/:userId', authorize);
 
 /**
  * @typedef {object} Error
@@ -40,6 +39,7 @@ router.use(checkRole('Admin'));
 
 router.get(
   '/:userId/stat',
+  checkRole('admin'),
   checkPermission('View_stats'),
   controllerHandler(adminController.getAll.bind(adminController)),
 );

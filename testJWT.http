@@ -12,8 +12,19 @@ username=Loic&password=Test%261234
 GET {{baseUrl}}/user/601
 
 ### Marche
-GET {{baseUrl}}/user/601
+GET {{baseUrl}}/user/601/
 Authorization: Bearer {{accessToken}}
+### Add Favorite ###
+POST {{baseUrl}}/user/600/ITA
+Authorization: Bearer {{accessToken}}
+### Delete Favorite ###
+DELETE {{baseUrl}}/user/601/ITA
+Authorization: Bearer {{accessToken}}
+
+### STAT ADMINS ###
+GET {{baseUrl}}/admin/601/stat?useView=true
+Authorization: Bearer {{accessToken}}
+################################################################
 
 ###
 POST {{baseUrl}}/log/refresh-token

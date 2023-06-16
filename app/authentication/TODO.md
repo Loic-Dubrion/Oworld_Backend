@@ -1,10 +1,10 @@
 # JWT
 
 - [X] Créer une migration squitch pour ajouter une colonne à la BDD
-- [ ] Modifier la route de login
-- [ ] Supprimmer le logout et le session controller
-- [ ] Ajouter une route de refresh Token
-- [ ] Créer un dossier authentification
+- [X] Modifier la route de login
+- [X] Supprimmer le logout et le session controller
+- [X] Ajouter une route de refresh Token
+- [X] Créer un dossier authentification
   - [ ] Ajouter un controller
   - [ ] Ajouter un service (un fichier par fonction ? approche microService )
   - [ ] Ajouter un datamapper

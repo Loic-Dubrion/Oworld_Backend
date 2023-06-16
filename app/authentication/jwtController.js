@@ -1,14 +1,14 @@
-const auth = require('./index');
-const logger = require('../services/logger');
+const auth = require('./jwtService');
 
 const jwtController = {
   async logUser(request, response) {
     const { username, password } = request.body;
+    console.log(username + ':' + password);
 
     const user = await auth.authentify(username, password);
 
     if (user) {
-      const accessToken = auth.generateAccessToken(request.ip, user);
+      const accessToken = await auth.generateAccessToken(request.ip, user);
       const refreshToken = await auth.generateRefreshToken(user);
 
       return response.status(200).json({

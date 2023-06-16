@@ -42,8 +42,6 @@ const auth = {
 
   // Vérifie si l'utilisateur existe avec le bon mot de passe retourne true or false
   async authentify(username, password) {
-    logger.info('***** Auth Fonction authentify *****');
-
     const query = 'SELECT * FROM "user" WHERE username=$1';
     const values = [username];
     const result = await client.query(query, values);
