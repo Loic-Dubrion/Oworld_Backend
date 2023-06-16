@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 
 const router = express.Router();
 
@@ -7,7 +6,7 @@ const controllerHandler = require('../../controllers/services/controllerHandler'
 const { sessionController } = require('../../controllers/API');
 
 //! JWT
-const jwtController = require('../../controllers/API/jwtController');
+const jwtController = require('../../authentication/jwtController');
 
 
 /**
@@ -30,22 +29,8 @@ const jwtController = require('../../controllers/API/jwtController');
  * @throws {Error} 403 - Invalid email or password
  * @throws {Error} 500 - Internal server error
  */
-router.post('/in', jwtController.logUser);
+router.post('/in', controllerHandler(jwtController.logUser));
 
-/** GET /api/logout
- *
- * @summary Logout a user and destroy the session
- * @tags Authentication
- * @description
- * This route is used to logout a user.
- * It destroys the session associated with the user and returns a 200 status code.
- * If the session is not valid or doesn't exist, it returns a 400 status code.
- * @return {Message} 200 - successful logout response
- * @return {BadRequestError} 400 - Invalid or non-existent session
- * @return {Error} 500 - internal server error
- */
-router.get('/out', controllerHandler(sessionController.logout));
-
-router.post('/refresh-token', jwtController.refreshToken);
+router.post('/refresh-token', controllerHandler(jwtController.refreshToken));
 
 module.exports = router;

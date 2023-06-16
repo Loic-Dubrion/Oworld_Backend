@@ -59,7 +59,6 @@ const auth = {
           const rolesAndPermissions = await this.getUserRolesAndPermissions(foundUser.id);
 
           // return user info along with roles and permissions
-          logger.info('authentify Return :', { ...foundUser, ...rolesAndPermissions });
           return { ...foundUser, ...rolesAndPermissions };
         }
       }
