@@ -8,7 +8,7 @@ const createUserBody = Joi.object({
   email: Joi.string().pattern(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/).required(),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/).required(),
   country_origin: Joi.number().required(),
-  birth_date: Joi.date().required(),
+  birth_date: Joi.date().max('now').required(),
 }).required();
 
 const updateUserBody = Joi.object({

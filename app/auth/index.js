@@ -8,7 +8,6 @@ const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
 const auth = {
-  //! OK POUR CETTE FONCTION
   // Récupère les rôles et fonctions
   async getUserRolesAndPermissions(userId) {
     logger.info('***** Auth Fonction getUserRolesAndPermissions *****');
@@ -41,7 +40,6 @@ const auth = {
     return null;
   },
 
-  //! OK POUR CETTE FONCTION
   // Vérifie si l'utilisateur existe avec le bon mot de passe retourne true or false
   async authentify(username, password) {
     logger.info('***** Auth Fonction authentify *****');
@@ -69,7 +67,6 @@ const auth = {
     return false;
   },
 
-  //! OK POUR CETTE FONCTION
   // Génère le token d'accès stocke l'ip et le pseudo
   generateAccessToken(ip, user) {
     logger.info('***** Auth Fonction generateAccessToken *****');
@@ -89,7 +86,6 @@ const auth = {
     return token;
   },
 
-  //! OK POUR CETTE FONCTION
   // Génère le token de refresh avec juste le pseudo en param
   async generateRefreshToken(user) {
     logger.info('***** Fonction generateRefreshToken *****');
@@ -103,12 +99,15 @@ const auth = {
       JWT_REFRESH_SECRET,
       { expiresIn: REFRESH_TOKEN_EXPIRATION },
     );
-    user.refreshToken = refreshToken;
-    logger.info('TokenRefresh généré :', refreshToken);
+    // mise à jour du refresh_token dans la base de données
+    const query = 'UPDATE "user" SET refresh_token=$1 WHERE id=$2';
+    const values = [refreshToken, user.id];
+    await client.query(query, values);
+
+    logger.info('TokenRefresh généré et stocké en base :', refreshToken);
     return refreshToken;
   },
 
-  //! OK POUR CETTE FONCTION
   authorize(request, response, next) {
     logger.info('**** Fonction authorize ****');
     try {
@@ -129,7 +128,6 @@ const auth = {
     }
   },
 
-  //! OK POUR CETTE FONCTION
   async getAccessTokenUser(request) {
     console.log('**** Début de Auth getAccessTokenUser ****');
     // Je récupère le Token
@@ -158,7 +156,6 @@ const auth = {
     return user;
   },
 
-  //! OK POUR CETTE FONCTION
   // Vérifie si j'ai bien un header dans la requête
   getAccessJWT(request) {
     console.log('***** Début de Auth getAccessJWT *****');
@@ -173,7 +170,6 @@ const auth = {
     throw (new Error('Vous ne passerez pas !!!'));
   },
 
-  //! OK POUR CETTE FONCTION
   // Vérifie la validation du token de refresh
   async isValidRefreshToken(request, user) {
     console.log('***** Début de la fonction Auth isValidRefreshToken *****');
@@ -204,9 +200,9 @@ const auth = {
     // S'il y a match
     if (result.rows.length > 0) {
       const foundUser = result.rows[0];
-      logger.warn('Je check également :', refreshToken, 'et ', foundUser.refreshToken);
+      logger.warn('Je check également :', refreshToken, 'et ', foundUser.refresh_token);
       // Je check le pseudo et le token de refresh
-      if (foundUser.username === user.username && refreshToken === foundUser.refreshToken) {
+      if (foundUser.username === user.username && refreshToken === foundUser.refresh_token) {
         logger.info('Return : true');
         logger.warn('Je check l\'id avec la bdd et je retourne true');
         return true;
