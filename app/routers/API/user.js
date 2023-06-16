@@ -12,7 +12,7 @@ const validate = require('../../validations/validate');
 const { createUserBody, updateUserBody } = require('../../validations/schemas');
 const validateParam = require('../../services/validateParam');
 // const { checkRole } = require('../../services/checkRBAC');
-const { authorize } = require('../../auth');
+const { authorize } = require('../../authentication/index');
 
 // Check
 router.param('userId', validateParam.validateId('userId'));
