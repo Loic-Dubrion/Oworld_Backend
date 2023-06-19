@@ -105,7 +105,6 @@ const auth = {
 
       const tokenIPSegments = decodedToken.data.ip.split('.').slice(0, 3);
       const requestIPSegments = request.ip.split('.').slice(0, 3);
-      console.log(tokenIPSegments.join('.'), requestIPSegments.join('.'));
       if (tokenIPSegments.join('.') === requestIPSegments.join('.')) {
         return next();
       }
@@ -138,6 +137,7 @@ const auth = {
 
   getAccessJWT(request) {
     const authHeader = request.headers.authorization;
+    console.log(request.headers.authorization);
     if (authHeader) {
       const token = authHeader.split('Bearer ')[1];
       return token;
