@@ -67,7 +67,7 @@ const auth = {
       {
         data: {
           ip,
-          id: user.name,
+          id: user.id,
           username: user.username,
           roles: user.roles,
           permissions: user.permissions,
