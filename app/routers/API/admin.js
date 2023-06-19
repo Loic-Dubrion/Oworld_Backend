@@ -40,7 +40,7 @@ router.use('/:userId', authorize);
 
 router.get(
   '/:userId/stat',
-  checkRole('admin'),
+  checkRole('Admin'),
   checkPermission('View_stats'),
   controllerHandler(adminController.getAll.bind(adminController)),
 );

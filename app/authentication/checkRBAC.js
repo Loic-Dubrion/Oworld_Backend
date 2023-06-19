@@ -27,7 +27,6 @@ const checkRole = (roleNeeded) => async (req, res, next) => {
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const user = decodedToken.data; // Obtenez les données de l'utilisateur à partir du token décodé
-
     if (!user.roles || !user.roles.includes(roleNeeded)) {
       throw new Error403('Forbidden');
     }
