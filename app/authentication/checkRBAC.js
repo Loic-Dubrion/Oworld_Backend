@@ -6,12 +6,13 @@ const Error403 = require('../errors/Error401');
 
 const checkUserId = async (req, res, next) => {
   try {
+    console.log('Je rentre dans checkUserId');
     const user = await auth.getAccessTokenUser(req);
-
+    console.log('Je récupère user (token) => ', user, 'et userId(params) => ', Number(req.params.userId));
     if (!user || user.id !== Number(req.params.userId)) {
       throw new Error403('Forbidden');
     }
-
+    console.log('ckeck userId je passe!!!!');
     return next();
   } catch (error) {
     return next(error);

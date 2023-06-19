@@ -100,16 +100,18 @@ const auth = {
 
   authorize(request, response, next) {
     try {
-      console.log('fonjction autorize');
+      console.log('fonction autorize');
       const token = auth.getAccessJWT(request);
-      console.log(token);
+      console.log('fonction autorize - token ', token);
 
       const decodedToken = jwt.verify(token, JWT_SECRET);
       if (decodedToken.data.ip === request.ip) {
+        console.log('fonction autorize - ip ', decodedToken.data.ip, request.ip);
         return next();
       }
       throw new Error401('Invalid token');
     } catch (err) {
+      console.log('401 de fonction authorize');
       throw new Error401(err.message);
     }
   },
