@@ -102,16 +102,20 @@ const auth = {
     try {
       const token = auth.getAccessJWT(request);
       const decodedToken = jwt.verify(token, JWT_SECRET);
-      // Get the first three segments of the IP address
-      const tokenIPSegments = decodedToken.data.ip.split('.').slice(0, 3);
-      const requestIPSegments = request.ip.split('.').slice(0, 3);
 
-      // If the first three segments match, consider it a pass.
-      if (tokenIPSegments.join('.') === requestIPSegments.join('.')) {
-        return next();
+      // const tokenIPSegments = decodedToken.data.ip.split('.').slice(0, 3);
+      // const requestIPSegments = request.ip.split('.').slice(0, 3);
+      // if (tokenIPSegments.join('.') === requestIPSegments.join('.')) {
+      //   return next();
+      // }
+
+      if (decodedToken) {
+        next();
+      } else {
+        throw new Error('401: Invalid token');
       }
 
-      throw new Error401('Invalid token');
+      // throw new Error401('Invalid token');
     } catch (err) {
       throw new Error401(err.message);
     }
