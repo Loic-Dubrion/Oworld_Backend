@@ -4,6 +4,9 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const bodySanitizer = require('./services/sanitizer');
+const scheduleTasks = require('./services/mailer/scheduler');
+
+scheduleTasks();
 
 const router = require('./routers');
 
