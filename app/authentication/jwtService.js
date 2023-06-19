@@ -10,7 +10,6 @@ const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 const auth = {
   // Récupère les rôles et fonctions
   async getUserRolesAndPermissions(userId) {
-    logger.info('***** Auth Fonction getUserRolesAndPermissions *****');
 
     const query = `
       SELECT 
@@ -34,7 +33,6 @@ const auth = {
 
     if (result.rows.length > 0) {
       const { roles, permissions } = result.rows[0];
-      logger.info('Return :', { roles, permissions });
       return { roles, permissions };
     }
     return null;
@@ -66,7 +64,6 @@ const auth = {
 
   // Génère le token d'accès stocke l'ip et le pseudo
   generateAccessToken(ip, user) {
-    logger.info('***** Auth Fonction generateAccessToken *****');
     const token = jwt.sign(
       {
         data: {
@@ -79,13 +76,11 @@ const auth = {
       JWT_SECRET,
       { expiresIn: ACCESS_TOKEN_EXPIRATION },
     );
-    logger.info('Token d\'accès  :', token);
     return token;
   },
 
   // Génère le token de refresh avec juste le pseudo en param
   async generateRefreshToken(user) {
-    logger.info('***** Fonction generateRefreshToken *****');
 
     const refreshToken = jwt.sign(
       {
@@ -101,12 +96,10 @@ const auth = {
     const values = [refreshToken, user.id];
     await client.query(query, values);
 
-    logger.info('TokenRefresh généré et stocké en base :', refreshToken);
     return refreshToken;
   },
 
   authorize(request, response, next) {
-    logger.info('**** Fonction authorize ****');
     try {
       // Récupère la partie du token via la fonction ** getAccessJWT **
       const token = auth.getAccessJWT(request);
@@ -115,7 +108,6 @@ const auth = {
       // if token is valid, check for matching authentification and request ip
       if (decodedToken.data.ip === request.ip) {
         // it's a go, you are now authorized !
-        logger.info('Return next(), c\'est juste un checkpoint');
         return next();
       }
       throw (new Error('invalid token'));
@@ -126,16 +118,11 @@ const auth = {
   },
 
   async getAccessTokenUser(request) {
-    console.log('**** Début de Auth getAccessTokenUser ****');
     // Je récupère le Token
-    logger.warn('2- Je déclenche getAccesJWT(request)');
     const token = auth.getAccessJWT(request);
     // Je le décode en forçant pour ne pas tenir compte de l'expiration
-    logger.warn('3- Je décode le token');
     const decodedToken = jwt.verify(token, JWT_SECRET, { ignoreExpiration: true });
-    logger.warn('le token décodé = ', decodedToken);
-    // Je check en bdd l'user correspondant à l'id
-    logger.warn('4- Je cherche le user en bdd');
+
     const query = 'SELECT * FROM "user" WHERE username=$1';
     const values = [decodedToken.data.username];
     const result = await client.query(query, values);
@@ -149,19 +136,16 @@ const auth = {
     if (decodedToken.data.username !== user.username) {
       throw new Error('Mismatching usernames');
     }
-    logger.info('Je retourne le user : ', user);
     return user;
   },
 
   // Vérifie si j'ai bien un header dans la requête
   getAccessJWT(request) {
-    console.log('***** Début de Auth getAccessJWT *****');
     // Récupère le token
     const authHeader = request.headers.authorization;
     if (authHeader) {
       // Isole la partie du token qui nous intéresse
       const token = authHeader.split('Bearer ')[1];
-      logger.warn('getAccesJWT me retourne le playload du token  : ', token);
       return token;
     }
     throw (new Error('Vous ne passerez pas !!!'));
@@ -169,8 +153,6 @@ const auth = {
 
   // Vérifie la validation du token de refresh
   async isValidRefreshToken(request, user) {
-    console.log('***** Début de la fonction Auth isValidRefreshToken *****');
-
     // Récupère le token de refresh dans le body
     const { refreshToken } = request.body;
     // Si pas de token de refresh on stop
@@ -188,7 +170,6 @@ const auth = {
       throw new Error('Invalid refresh token');
     }
 
-    logger.warn('Je récupère le refresh token : ', decodedRefreshToken);
     // Je check en bdd l'user correspondant à l'id
     const query = 'SELECT * FROM "user" WHERE id=$1';
     const values = [decodedRefreshToken.data.id];
@@ -197,11 +178,8 @@ const auth = {
     // S'il y a match
     if (result.rows.length > 0) {
       const foundUser = result.rows[0];
-      logger.warn('Je check également :', refreshToken, 'et ', foundUser.refresh_token);
       // Je check le pseudo et le token de refresh
       if (foundUser.username === user.username && refreshToken === foundUser.refresh_token) {
-        logger.info('Return : true');
-        logger.warn('Je check l\'id avec la bdd et je retourne true');
         return true;
       }
 

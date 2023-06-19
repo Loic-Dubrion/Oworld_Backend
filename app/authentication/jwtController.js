@@ -3,7 +3,6 @@ const auth = require('./jwtService');
 const jwtController = {
   async logUser(request, response) {
     const { username, password } = request.body;
-    console.log(username + ':' + password);
 
     const user = await auth.authentify(username, password);
 
