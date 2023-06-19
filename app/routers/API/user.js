@@ -17,8 +17,8 @@ const { authorize } = require('../../authentication/jwtService');
 router.param('userId', validateParam.validateId('userId'));
 router.param('countryISO', validateParam.validateIso('countryISO'));
 
-router.use('/:userId', authorize);
-router.use('/:userId', checkUserId);
+// router.use('/:userId', authorize);
+// router.use('/:userId', checkUserId);
 
 /**
  * POST /api/user/
