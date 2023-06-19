@@ -3,7 +3,6 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session');
 const bodySanitizer = require('./services/sanitizer');
 
 const router = require('./routers');
@@ -12,16 +11,6 @@ const swagger = require('./services/swagger');
 
 const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-
-// Session setup
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: process.env.NODE_ENV === 'production' },
-}));
 // CORS setup
 const corsOptions = {
   origin: process.env.CORS_DOMAINS ?? '*',
