@@ -28,6 +28,7 @@ class UserController extends CoreController {
    * @param {Object} response - General data about a country
    */
   async getFavoriteCountries(request, response) {
+    console("je rentre dans le controller");
     console.log(request);
     console.log(request.params);
     console.log(request.header.authorization);
