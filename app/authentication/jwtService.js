@@ -100,7 +100,10 @@ const auth = {
 
   authorize(request, response, next) {
     try {
+      console.log('fonjction autorize')
       const token = auth.getAccessJWT(request);
+      console.log(token);
+
       const decodedToken = jwt.verify(token, JWT_SECRET);
       if (decodedToken.data.ip === request.ip) {
         return next();
