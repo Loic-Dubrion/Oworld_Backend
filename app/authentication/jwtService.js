@@ -100,7 +100,7 @@ const auth = {
 
   authorize(request, response, next) {
     try {
-      console.log('fonjction autorize')
+      console.log('fonjction autorize');
       const token = auth.getAccessJWT(request);
       console.log(token);
 
