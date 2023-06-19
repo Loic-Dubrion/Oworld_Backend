@@ -27,6 +27,7 @@ router.use('/:userId', authorize);
  * @tags Admin - Management Administration
  * @description
  * This route returns user statistics data
+ * **Requires authentication and role with permission.**
  *
  * @param {boolean} useView.query.required - Whether to use a SQL view or not.
  * Use `?useView=true` as a required query parameter.
@@ -34,7 +35,7 @@ router.use('/:userId', authorize);
  * @return {object} 200 - Success response.
  * An array of objects where each object represents the statistics for a particular country.
  *
- * @throws {Error} 500 - Internal server error.
+ * @throws {Error}
  */
 
 router.get(
