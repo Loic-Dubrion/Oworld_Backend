@@ -32,3 +32,11 @@ Authorization: Bearer {{accessToken}}
 content-type: application/x-www-form-urlencoded
 
 refreshToken={{refreshToken}}
+
+###
+POST {{baseUrl}}/log/reset-password
+content-type: application/json
+
+{
+  "email":"test@test.com"
+}

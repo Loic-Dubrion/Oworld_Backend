@@ -3,11 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const controllerHandler = require('../../controllers/services/controllerHandler');
-const { sessionController } = require('../../controllers/API');
 
-//! JWT
 const jwtController = require('../../authentication/jwtController');
-
 
 /**
  * POST /api/log/in
@@ -32,5 +29,7 @@ const jwtController = require('../../authentication/jwtController');
 router.post('/in', controllerHandler(jwtController.logUser));
 
 router.post('/refresh-token', controllerHandler(jwtController.refreshToken));
+
+router.post('/reset-password', controllerHandler(jwtController.resetPassword));
 
 module.exports = router;

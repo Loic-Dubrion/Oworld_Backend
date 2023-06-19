@@ -1,6 +1,11 @@
+const jwt = require('jsonwebtoken');
+
 const auth = require('./jwtService');
+const sendReset = require('./sendPasswordReset');
+const Error400 = require('../errors/Error400');
 const Error403 = require('../errors/Error403');
-const Error401 = require('../errors/Error401');
+
+const UserDataMapper = require('../models/UserDataMapper');
 
 const jwtController = {
   async logUser(request, response) {
@@ -17,29 +22,46 @@ const jwtController = {
         data: { accessToken, refreshToken },
       });
     }
-
     throw new Error403('Forbidden');
   },
 
   async refreshToken(request, response) {
-    try {
-      const user = await auth.getAccessTokenUser(request);
-      if (user && (await auth.isValidRefreshToken(request, user))) {
-        const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
-        const accessToken = auth.generateAccessToken(
-          request.ip,
-          { ...user, ...rolesAndPermissions },
-        );
-        const refreshToken = await auth.generateRefreshToken(user);
-        auth.generateRefreshToken(user);
-        response.status(200).json({
-          status: 'success',
-          data: { accessToken, refreshToken },
-        });
-      }
-    } catch (err) {
-      throw new Error401(err.message);
+    const user = await auth.getAccessTokenUser(request);
+    if (user && (await auth.isValidRefreshToken(request, user))) {
+      const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
+      const accessToken = auth.generateAccessToken(
+        request.ip,
+        { ...user, ...rolesAndPermissions },
+      );
+      const refreshToken = await auth.generateRefreshToken(user);
+      auth.generateRefreshToken(user);
+      response.status(200).json({
+        status: 'success',
+        data: { accessToken, refreshToken },
+      });
     }
+  },
+
+  async resetPassword(request, response) {
+    const { email } = request.body;
+
+    const user = await UserDataMapper.findOneByField('email', email);
+    if (email !== user.email) {
+      throw new Error400('Email not valide');
+    }
+
+    // Generate a password reset token
+    const resetToken = jwt.sign({}, process.env.JWT_SECRET, {
+      subject: user.id.toString(),
+      expiresIn: '20m',
+    });
+
+    await sendReset(user.email, resetToken);
+
+    response.status(200).json({
+      status: 'success',
+      message: 'Password reset email sent',
+    });
   },
 };
 
