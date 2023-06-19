@@ -137,7 +137,6 @@ const auth = {
 
   getAccessJWT(request) {
     const authHeader = request.headers.authorization;
-    console.log(request.headers.authorization);
     if (authHeader) {
       const token = authHeader.split('Bearer ')[1];
       return token;
