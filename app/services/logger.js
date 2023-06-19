@@ -17,8 +17,8 @@ if (env === 'production') {
     path: 'logs/oWorld.log',
     level: 'error',
     type: 'rotating-file',
-    period: '12h',
-    count: 10,
+    period: '1d',
+    count: 1,
   });
 }
 

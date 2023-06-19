@@ -1,6 +1,9 @@
-require('dotenv').config();
 const { exec } = require('child_process');
+const dotenv = require('dotenv');
 const logger = require('./logger');
+const sendEmailWithAttachment = require('./mailer/sender');
+
+dotenv.config();
 
 const dumpDatabase = () => {
   const dumpCommand = `PGPASSWORD="${process.env.PGPASSWORD}"
@@ -8,7 +11,7 @@ const dumpDatabase = () => {
 
   exec(dumpCommand, (error, stdout, stderr) => {
     if (error) {
-      logger.info(`Erreur lors de l'exécution de la commande : ${error.message}`);
+      logger.info(`Error during command execution : ${error.message}`);
       return;
     }
 
@@ -16,9 +19,19 @@ const dumpDatabase = () => {
       logger.info(`Erreur standard : ${stderr}`);
       return;
     }
-    logger.info(`Sortie standard : ${stdout}`);
-    logger.info('Sauvegarde terminée avec succès !');
+
+    logger.info(`Standard error : ${stdout}`);
+    logger.info('Backup successfully completed!');
+
+    sendEmailWithAttachment(
+      'Sauvegarde de la base de données',
+      'Pièce jointe : sauvegarde de la base de données.',
+      'data/dbSave/db.tar',
+      'db.tar',
+    );
   });
 };
 
 dumpDatabase();
+
+module.exports = dumpDatabase;
