@@ -28,6 +28,9 @@ class UserController extends CoreController {
    * @param {Object} response - General data about a country
    */
   async getFavoriteCountries(request, response) {
+    console.log(request);
+    console.log(request.params);
+    console.log(request.header.authorization);
     const { userId } = request.params;
     const results = await this.constructor.dataMapper.executeFunction('favorite_countries', userId);
     response.json(results);
