@@ -105,8 +105,8 @@ const auth = {
       console.log('fonction autorize - token ', token);
 
       const decodedToken = jwt.verify(token, JWT_SECRET);
+      console.log('fonction autorize - ip ', decodedToken.data.ip, request.ip);
       if (decodedToken.data.ip === request.ip) {
-        console.log('fonction autorize - ip ', decodedToken.data.ip, request.ip);
         return next();
       }
       throw new Error401('Invalid token');
