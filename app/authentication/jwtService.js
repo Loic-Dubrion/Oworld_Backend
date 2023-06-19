@@ -100,18 +100,19 @@ const auth = {
 
   authorize(request, response, next) {
     try {
-      console.log('fonction autorize');
       const token = auth.getAccessJWT(request);
-      console.log('fonction autorize - token ', token);
-
       const decodedToken = jwt.verify(token, JWT_SECRET);
-      console.log('fonction autorize - ip ', decodedToken.data.ip, request.ip);
-      if (decodedToken.data.ip === request.ip) {
+      // Get the first three segments of the IP address
+      const tokenIPSegments = decodedToken.data.ip.split('.').slice(0, 3);
+      const requestIPSegments = request.ip.split('.').slice(0, 3);
+
+      // If the first three segments match, consider it a pass.
+      if (tokenIPSegments.join('.') === requestIPSegments.join('.')) {
         return next();
       }
+
       throw new Error401('Invalid token');
     } catch (err) {
-      console.log('401 de fonction authorize');
       throw new Error401(err.message);
     }
   },
