@@ -11,8 +11,15 @@ const bodySanitizer = require('./services/sanitizer');
 const router = require('./routers');
 
 const swagger = require('./services/swagger');
+const { incrementCounter, exposeMetrics } = require('./services/prometheus/metrics');
 
 const app = express();
+
+// Configure prom-client
+app.use((req, res, next) => {
+  incrementCounter();
+  next();
+});
 
 // CORS setup
 const corsOptions = {
@@ -27,6 +34,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 swagger(app, path.join(__dirname, 'routers'));
+
+// Setting out the metrics
+app.get('/metrics', exposeMetrics);
 
 // Routers
 app.use(router);
