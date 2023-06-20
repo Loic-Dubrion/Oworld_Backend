@@ -12,7 +12,7 @@ const router = require('./routers');
 
 const swagger = require('./services/swagger');
 const {
-  incrementTotalRequests, incrementSuccessfulRequests, startTimer, exposeMetrics,
+  incrementTotalRequests, incrementSuccessfulRequests, startTimer, exposeMetrics, updateMemoryUsage,
 } = require('./services/prometheus/metrics');
 
 const app = express();
@@ -51,5 +51,8 @@ app.get('/metrics', exposeMetrics);
 app.use(router);
 
 app.use('/docs', express.static(path.join(__dirname, '../documentation')));
+
+// Update memory usage every second (1000 milliseconds)
+setInterval(updateMemoryUsage, 1000);
 
 module.exports = app;
