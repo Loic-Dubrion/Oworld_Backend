@@ -21,6 +21,16 @@ router.use('/:userId', authorize);
  */
 
 /**
+ * @typedef {object} Stat
+ * @property {string} country_origin - Country of origin
+ * @property {string} iso2 - ISO 2-letter country code
+ * @property {string} iso3 - ISO 3-letter country code
+ * @property {number} average_age - Average age
+ * @property {string} user_count - Number of users
+ * @property {string} favorite_count - Number of favorites
+ */
+
+/**
  * GET /api/admin/{userId}/stat
  *
  * @summary Get statistics
@@ -32,7 +42,7 @@ router.use('/:userId', authorize);
  * @param {boolean} useView.query.required - Whether to use a SQL view or not.
  * Use `?useView=true` as a required query parameter.
  *
- * @return {object} 200 - Success response.
+ * @return {Array.<Stat>} 200 - Success response.
  * An array of objects where each object represents the statistics for a particular country.
  *
  * @throws {Error}

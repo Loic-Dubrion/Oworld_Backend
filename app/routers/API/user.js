@@ -26,7 +26,7 @@ router.use('/:userId', checkUserId);
  * @summary Create a new user in db
  * @tags User - operations related to users
  *
-  * @param {string} user.username.required - Username - eg: JohnyBeGood
+ * @param {string} user.username.required - Username - eg: JohnyBeGood
  * @param {string} user.email.required - Email - eg: johndoe@test.com -
  * regex: /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
  * @param {string} user.password.required - Password - eg: &Oworld2023 -

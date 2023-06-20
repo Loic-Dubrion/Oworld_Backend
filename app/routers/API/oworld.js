@@ -11,13 +11,15 @@ const router = express.Router();
 
 router.param('countryIso3', validateParam.validateIso('countryISO'));
 
-// Routes
 /**
- * GET /api/oworld
+ * GET /api/oworld?useView=false
  *
  * @summary Get data World
  * @tags Oworld
  *
+ * @description
+ * This route returns all the information about planet Earth and the other planets.
+ * Test me!
  * @return {array<object>} 200 - Success response
  * - An array of objects earth details
  * @return {Error} 500 - Internal server error
@@ -33,6 +35,11 @@ router.get(
  *
  * @summary Get all flags
  * @tags Oworld
+ *
+ * @description
+ * This route returns a list of the world's flags
+ * Test me!
+ *
  * @return {array<object>} 200 - Success response
  * - a list of the world's flags
  * @return {Error} 500 - Internal server error
@@ -48,6 +55,11 @@ router.get(
  *
  * @summary Get a list of all countries or dataWorld
  * @tags Oworld
+ *
+ * @description
+ * This route returns a list of all countries with their iso codes.
+ * applies true to useView
+ * Test me!
  *
  * @param {boolean} useView.query.required -
  * Whether to use a SQL view or not.
@@ -69,6 +81,11 @@ router.get(
  *
  * @summary Get data
  * @tags Oworld - data world, country, categories
+ *
+ * @description
+ * represents the statistics for a particular country
+ * Test me!
+ *
  * @return {array<object>} 200 - Success response
  * - An array of objects where each object represents the statistics for a particular country
  * @return {Error} 500 - Internal server error
@@ -85,6 +102,10 @@ router.get(
  * @summary Get country data by category
  * @tags Oworld
  *
+ * @description
+ * Returns details by category for each country using World Bank data * Test me!
+ * Test me !
+ *
  * @param {string} countryIso3.path.required - The ISO3 code of the country
  * @return {object} 200 - Success response - An object containing country data by category
  * @return {Error} 500 - Internal server error
@@ -99,6 +120,10 @@ router.get(
  *
  * @summary Get a radio from the country
  * @tags Oworld
+ *
+ * @description
+ * Return a local radio station, an anecdote and a list of celebrities
+ * Test me !
  *
  * @param {string} countryIso3.path.required - The ISO3 code of the country
  * @return {object} 200 - Success response - An object containing a radio
