@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.09% </span>
+                <span class="strong">47.91% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/44</span>
+                <span class='fraction'>23/48</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.09% </span>
+                <span class="strong">47.91% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/44</span>
+                <span class='fraction'>23/48</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,7 +107,11 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -117,29 +121,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -150,8 +146,21 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const logger = require('../services/logger');
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const memoizee = require('memoizee');
+const logger = require('../services/logger');
 const client = require('../services/clientdb');
 &nbsp;
 /** Class representing an abstract data mapper. */
@@ -160,8 +169,12 @@ class CoreDataMapper {
 &nbsp;
   static viewName;
 &nbsp;
+  constructor() {
+    // Mémoiser la méthode findAll
+    this.findAll = memoizee(this.findAll.bind(this), { promise: true, maxAge: 30 * 1000 });
+  }
+&nbsp;
 <span class="fstat-no" title="function not covered" >  async findAll(useView) {</span>
-<span class="cstat-no" title="statement not covered" >    logger.info(`${this.constructor.name} findAll`);</span>
 <span class="cstat-no" title="statement not covered" >    const tableName = useView ? this.constructor.viewName : this.constructor.tableName;</span>
 <span class="cstat-no" title="statement not covered" >    const preparedQuery = {</span>
 <span class="cstat-no" title="statement not covered" >      text: `SELECT * FROM "${tableName}"`,</span>
@@ -170,16 +183,15 @@ class CoreDataMapper {
 <span class="cstat-no" title="statement not covered" >    return results.rows;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  async findOneByField(field, value) {
-    logger.info(`${this.constructor.name} findOneByField`);
-    const tableName = this.constructor.tableName;
-    const query = {
-      text: `SELECT * FROM "${tableName}" WHERE ${field} = $1`,
-      values: [value],
-    };
-    const results = await client.query(query);
-    return results.rows[0];
-  }
+<span class="fstat-no" title="function not covered" >  async findOneByField(field, value) {</span>
+<span class="cstat-no" title="statement not covered" >    const { tableName } = this.constructor;</span>
+<span class="cstat-no" title="statement not covered" >    const query = {</span>
+<span class="cstat-no" title="statement not covered" >      text: `SELECT * FROM "${tableName}" WHERE ${field} = $1`,</span>
+<span class="cstat-no" title="statement not covered" >      values: [value],</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+<span class="cstat-no" title="statement not covered" >    const results = await client.query(query);</span>
+<span class="cstat-no" title="statement not covered" >    return results.rows[0];</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  async executeFunction(functionName, ...params) {</span>
 <span class="cstat-no" title="statement not covered" >    logger.info(`${this.constructor.name} executeFunction(${functionName}, ${params})`);</span>
@@ -202,7 +214,7 @@ module.exports = CoreDataMapper;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-10T06:31:33.687Z
+                at 2023-06-20T12:41:46.297Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
