@@ -66,8 +66,8 @@
 - [X] Setting up a backup of the database
 - [X] Clean code and add comment
 - [X] Cache management
-- [ ] Monitoring on external request
-- [ ] JWT
+- [X] Monitoring on external request
+- [X] JWT
 - [X] Deployment
 
 ## Finitions
