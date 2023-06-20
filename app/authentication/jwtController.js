@@ -68,11 +68,10 @@ const refreshToken = async (request, response) => {
 
 /**
  * Controller function for resetting a user's password.
- * @param {object} request - The request object.
  * @param {object} request.body - The request body.
  * @param {string} request.body.email - The user's email.
  * @param {object} response - The response object.
- * @returns {Promise} A promise that resolves to the response indicating 
+ * @returns {Promise} A promise that resolves to the response indicating
  * the success of the password reset email.
  * @throws {Error400} - Bad request error if the email is not valid.
  */
