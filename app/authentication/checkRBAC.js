@@ -70,7 +70,7 @@ const checkPermission = (permissionNeeded) => async (req, res, next) => {
 
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    const user = decodedToken.data; // Get user data from the decoded token
+    const user = decodedToken.data;
 
     if (!user.permissions || !user.permissions.includes(permissionNeeded)) {
       throw new Error403('Forbidden');
