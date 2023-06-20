@@ -10,8 +10,8 @@ const { userController } = require('../../controllers/API');
 const validate = require('../../validations/validate');
 const { createUserBody, updateUserBody } = require('../../validations/schemas');
 const validateParam = require('../../services/validateParam');
-const { checkUserId } = require('../../authentication/checkRBAC');
-const { authorize } = require('../../authentication/jwtService');
+const { checkUserId } = require('../../controllers/services/checkRBAC');
+const { authorize } = require('../../controllers/services/jwtService');
 
 // Check
 router.param('userId', validateParam.validateId('userId'));

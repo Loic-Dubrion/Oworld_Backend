@@ -6,8 +6,8 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const auth = require('./jwtService');
-const Error401 = require('../errors/Error401');
-const Error403 = require('../errors/Error401');
+const Error401 = require('../../errors/Error401');
+const Error403 = require('../../errors/Error401');
 
 /**
  * Middleware to check if the request's userId matches the authenticated user.

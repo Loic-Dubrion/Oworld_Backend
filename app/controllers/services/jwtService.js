@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const client = require('../services/clientdb');
+const client = require('../../services/clientdb');
 
 const { JWT_SECRET, JWT_REFRESH_SECRET } = process.env;
 const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
-const Error401 = require('../errors/Error401');
-const Error403 = require('../errors/Error403');
+const Error401 = require('../../errors/Error401');
+const Error403 = require('../../errors/Error403');
 
-const UserDataMapper = require('../models/UserDataMapper');
+const UserDataMapper = require('../../models/UserDataMapper');
 
 const auth = {
   /**

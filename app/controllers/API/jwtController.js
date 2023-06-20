@@ -5,12 +5,12 @@
 
 const jwt = require('jsonwebtoken');
 
-const auth = require('./jwtService');
-const sendReset = require('./sendPasswordReset');
-const Error400 = require('../errors/Error400');
-const Error403 = require('../errors/Error403');
+const auth = require('../services/jwtService');
+const sendReset = require('../services/sendPasswordReset');
+const Error400 = require('../../errors/Error400');
+const Error403 = require('../../errors/Error403');
 
-const UserDataMapper = require('../models/UserDataMapper');
+const UserDataMapper = require('../../models/UserDataMapper');
 
 /**
  * Controller function for authenticating a user and generating access and refresh tokens.
