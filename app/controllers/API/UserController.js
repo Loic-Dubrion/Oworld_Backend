@@ -2,7 +2,6 @@
 const bcrypt = require('bcrypt');
 
 // Modules
-const logger = require('../../services/logger');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
 const Error400 = require('../../errors/Error400');

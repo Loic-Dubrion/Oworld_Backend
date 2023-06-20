@@ -9,3 +9,4 @@ function_favourite 2023-06-07T07:36:42Z Loic Dubrion <loic-dubrion@hotmail.fr> #
 view_country_list 2023-06-07T08:49:37Z Loic Dubrion <loic-dubrion@hotmail.fr> # create a view sql for a list of all countries
 function_user 2023-06-07T13:13:34Z Loic Dubrion <loic-dubrion@hotmail.fr> # function for create, update and delete a user
 refresh_token 2023-06-16T08:27:00Z Loic Dubrion <loic-dubrion@hotmail.fr> # add column refresh_token
+rbac 2023-06-20T18:35:45Z Loic Dubrion <loic-dubrion@hotmail.fr> # function for role and permission
