@@ -4,4 +4,5 @@ Loic
 conception
 sqitch.conf
 .env
+.env.railway
 data/dbSave
