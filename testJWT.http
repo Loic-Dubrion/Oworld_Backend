@@ -6,7 +6,7 @@
 POST {{baseUrl}}/log/in
 content-type: application/x-www-form-urlencoded
 
-username=Loic&password=Test%261234
+username=Loic&password=%26Tets1234
 
 ### Marche pas
 GET {{baseUrl}}/user/601
@@ -15,10 +15,10 @@ GET {{baseUrl}}/user/601
 GET {{baseUrl}}/user/601/
 Authorization: Bearer {{accessToken}}
 ### Add Favorite ###
-POST {{baseUrl}}/user/600/ITA
+POST {{baseUrl}}/user/601/FRA
 Authorization: Bearer {{accessToken}}
 ### Delete Favorite ###
-DELETE {{baseUrl}}/user/601/ITA
+DELETE {{baseUrl}}/user/601/FRA
 Authorization: Bearer {{accessToken}}
 
 ### STAT ADMINS ###

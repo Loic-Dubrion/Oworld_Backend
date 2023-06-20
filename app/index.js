@@ -4,20 +4,29 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const bodySanitizer = require('./services/sanitizer');
-const scheduleTasks = require('./services/mailer/scheduler');
+// const scheduleTasks = require('./services/mailer/scheduler');
 
-scheduleTasks();
+// scheduleTasks();
 
 const router = require('./routers');
 
 const swagger = require('./services/swagger');
-const { incrementCounter, exposeMetrics } = require('./services/prometheus/metrics');
+const {
+  incrementTotalRequests, incrementSuccessfulRequests, startTimer, exposeMetrics,
+} = require('./services/prometheus/metrics');
 
 const app = express();
 
-// Configure prom-client
+// Configure prom-client to count total requests
 app.use((req, res, next) => {
-  incrementCounter();
+  incrementTotalRequests();
+  const end = startTimer(); // start the timer
+
+  res.on('finish', () => { // When the response is sent, stop the timer and increment successful requests
+    end();
+    incrementSuccessfulRequests();
+  });
+
   next();
 });
 

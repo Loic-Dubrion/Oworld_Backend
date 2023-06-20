@@ -23,4 +23,8 @@ client.on('error', (err) => {
   logger.warn('Redis Client Error', err);
 });
 
+client.on('end', () => {
+  logger.info('Redis Client Connection Closed');
+});
+
 module.exports = client;

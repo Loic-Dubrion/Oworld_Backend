@@ -1,7 +1,6 @@
 const adminController = require('./AdminController');
 const userController = require('./UserController');
 const oworldController = require('./OworldController');
-const sessionController = require('./SessionController');
 
 /**
  * Controller for API endpoints.
@@ -24,5 +23,4 @@ module.exports = {
   adminController,
   userController,
   oworldController,
-  sessionController,
 };

@@ -16,7 +16,7 @@ const sendEmailWithAttachment = (subject, text, attachmentPath, attachmentFilena
 
   const mailOptions = {
     from: process.env.MAILER_USER,
-    to: process.env.MAILER_USER,
+    to: process.env.MAILER_RECEIVER,
     subject,
     text,
     attachments: [

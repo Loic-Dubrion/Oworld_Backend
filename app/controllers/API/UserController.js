@@ -55,8 +55,8 @@ class UserController extends CoreController {
     const countryId = country.rows[0].id;
     // Step 2: Check if the country is already a favorite
     const queryFavorite = {
-      text: 'SELECT * FROM "user_has_favorite" WHERE country_id = $1',
-      values: [countryId],
+      text: 'SELECT * FROM "user_has_favorite" WHERE country_id = $1 and user_id = $2',
+      values: [countryId, userId],
     };
 
     const isFavorite = await client.query(queryFavorite);
