@@ -4,7 +4,7 @@ const logger = require('../logger');
 
 dotenv.config();
 
-const sendLog = (subject, text, attachmentPath, attachmentFilename) => {
+const sendEmail = (subject, text, attachmentPath, attachmentFilename) => {
   const transporter = nodemailer.createTransport({
     host: process.env.MAILER_HOST,
     port: process.env.MAILER_PORT,
@@ -36,5 +36,4 @@ const sendLog = (subject, text, attachmentPath, attachmentFilename) => {
   });
 };
 
-
-module.exports = sendLog;
+module.exports = sendEmail;

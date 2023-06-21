@@ -2,6 +2,8 @@ require('dotenv').config();
 const axios = require('axios');
 const redisClient = require('../../services/clientRedis');
 
+const Error503 = require('../../errors/Error503');
+
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
 const categories = {
@@ -78,11 +80,7 @@ async function fetchDataByCategory(country) {
       // Add transformed data to the main object
       transformedData[category] = transformedCategoryData;
     } catch (error) {
-      if (error.response && error.response.status === 503) {
-        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-      } else {
-        return error;
-      }
+      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     }
   });
 

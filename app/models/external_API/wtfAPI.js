@@ -37,7 +37,6 @@ async function fetchRadioData(isoCode) {
     if (countryQuery.rows.length === 0) {
       await redisClient.quit();
       throw new Error400(`ISO code '${isoCode}' not found in the database.`);
-      return;
     }
 
     const filter = {
@@ -91,12 +90,7 @@ async function fetchRadioData(isoCode) {
 
     return result;
   } catch (error) {
-    if (error.response && error.response.status === 503) {
-      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-    } else {
-      console.error(error);
-      return error;
-    }
+    throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
   }
 }
 

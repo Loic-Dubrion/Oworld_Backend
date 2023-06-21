@@ -59,11 +59,7 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
-      if (error.response.status === 503) {
-        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-      } else {
-        return error;
-      }
+      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     }
   },
 
@@ -100,11 +96,7 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
-      if (error.response.status === 503) {
-        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-      } else {
-        return error;
-      }
+      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     }
   },
 };

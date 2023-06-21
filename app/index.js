@@ -8,12 +8,12 @@ const cors = require('cors');
 
 // necessary modules
 const bodySanitizer = require('./services/sanitizer');
-const scheduleTasks = require('./services/mailer/scheduler');
+// const scheduleTasks = require('./services/mailer/scheduler');
 const swagger = require('./services/swagger');
 const router = require('./routers');
 
 // triggers database backup scheduling
-scheduleTasks();
+// scheduleTasks();
 
 // configure the app
 const app = express();

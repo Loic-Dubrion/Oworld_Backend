@@ -15,7 +15,7 @@ GET {{baseUrl}}/oworld/list?useView=true
 GET {{baseUrl}}/oworld/flags
 
 ### One country ###
-GET {{baseUrl}}/oworld/ABC
+GET {{baseUrl}}/oworld/ITA
 
 ### Categories by country ###
 GET {{baseUrl}}/oworld/LUX/category
