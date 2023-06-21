@@ -1,5 +1,5 @@
+/* eslint-disable class-methods-use-this */
 const memoizee = require('memoizee');
-const logger = require('../services/logger');
 const client = require('../services/clientdb');
 
 /** Class representing an abstract data mapper. */
@@ -33,7 +33,6 @@ class CoreDataMapper {
   }
 
   async executeFunction(functionName, ...params) {
-    logger.info(`${this.constructor.name} executeFunction(${functionName}, ${params})`);
     // la syntaxe (_, i) est utilisée pour déstructurer les éléments du tableau params
     // seul le deuxième argument i (index) est utilisé, tandis que le premier argument _ est ignoré.
     const preparedQuery = {
