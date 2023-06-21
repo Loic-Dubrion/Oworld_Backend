@@ -1,18 +1,28 @@
-/* eslint-disable class-methods-use-this */
 const memoizee = require('memoizee');
 const client = require('../services/clientdb');
 
-/** Class representing an abstract data mapper. */
+/**
+ * Class representing an abstract data mapper. This class should be extended by other
+ * data mapper classes, and it contains common CRUD operations.
+ *
+ * @property {string} tableName - The name of the table that this data mapper operates on.
+ * @property {string} viewName - The name of the view that this data mapper operates on.
+ */
 class CoreDataMapper {
-  static tableName;
-
-  static viewName;
-
   constructor() {
-    // Mémoiser la méthode findAll
+    /**
+     * Constructs a new instance of the CoreDataMapper class and memoizes the findAll method
+     * to improve performance.
+     */
     this.findAll = memoizee(this.findAll.bind(this), { promise: true, maxAge: 30 * 1000 });
   }
 
+  /**
+   * Fetches all records from a table or view.
+   *
+   * @param {boolean} useView - If true, selects from the view, otherwise selects from the table.
+   * @returns {Promise<Array>} The result set from the database query.
+   */
   async findAll(useView) {
     const tableName = useView ? this.constructor.viewName : this.constructor.tableName;
     const preparedQuery = {
@@ -22,6 +32,13 @@ class CoreDataMapper {
     return results.rows;
   }
 
+  /**
+   * Fetches a single record from the table based on a specific field and value.
+   *
+   * @param {string} field - The field to filter on.
+   * @param {string|number} value - The value to search for in the specified field.
+   * @returns {Promise<Object>} The first matching record from the database query.
+   */
   async findOneByField(field, value) {
     const { tableName } = this.constructor;
     const query = {
@@ -32,9 +49,14 @@ class CoreDataMapper {
     return results.rows[0];
   }
 
+  /**
+   * Executes a sql function with the provided parameters.
+   *
+   * @param {string} functionName - The name of the database function to execute.
+   * @param {...*} params - The parameters to pass to the database function.
+   * @returns {Promise<Array>} The result set from the database function.
+   */
   async executeFunction(functionName, ...params) {
-    // la syntaxe (_, i) est utilisée pour déstructurer les éléments du tableau params
-    // seul le deuxième argument i (index) est utilisé, tandis que le premier argument _ est ignoré.
     const preparedQuery = {
       text: `SELECT * FROM ${functionName}(${params.map((_, i) => `$${i + 1}`).join(', ')})`,
       values: params,
