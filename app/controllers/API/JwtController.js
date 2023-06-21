@@ -56,7 +56,6 @@ class JwtController extends CoreController {
 
   /**
    * Controller function for refreshing the access token using a valid refresh token.
-   * @param {object} request - The request object.
    * @param {object} request.headers - The request headers.
    * @param {string} request.headers.authorization - The authorization token.
    * @param {object} response - The response object.
@@ -65,7 +64,7 @@ class JwtController extends CoreController {
    */
   async refreshToken(request, response) {
     const user = await auth.getAccessTokenUser(request);
-    if (user && (await auth.isValidRefreshToken(request, user))) {
+    if (user && (auth.isValidRefreshToken(request, user))) {
       const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
       const accessToken = auth.generateAccessToken(
         request.ip,

@@ -29,11 +29,11 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "username": "Loic",
-  "email": "test@test.com",
+  "username": "Loic2",
+  "email": "test@test2.com",
   "password": "&Tets1234",
   "country_origin": 1,
-  "birth_date": "1938-06-16"
+  "birth_date": "2024-06-16"
 }
 
 ### Profile ###

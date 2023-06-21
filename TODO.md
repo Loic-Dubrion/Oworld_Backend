@@ -48,7 +48,7 @@
   - [X] Oworld
 - [X] Test all routes
   - [ ] External API
-  - [X] Admin
+  - [ ] Admin
   - [ ] User
   - [ ] Oworld
 
@@ -73,8 +73,8 @@
 ## Finitions
 
 - [X] Empêcher l'insertion d'une valeur null dans les favoris
-Test avec la query HON insert des valeurs null
 - [X] Empêcher également l'insertion des doublons dans les favoris
 - [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
 - [X] Basculer la table planet sur Redis
 - [X] Refacto redis
+- [X] Refacto Jwt

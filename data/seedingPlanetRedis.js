@@ -152,4 +152,4 @@ const planets = {
   const key = 'planet';
   await client.set(key, JSON.stringify(planets));
   await client.quit();
-})().catch((error) => console.error(error));
+})().catch((error) => logger.error(error));
