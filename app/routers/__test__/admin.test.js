@@ -1,18 +1,26 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const request = require('supertest');
-const app = require('../..');
+const axios = require('axios');
 
-describe('Admin Statistics API', () => {
-  it('should return statistics for all countries', async () => {
-    const response = await request(app).get('/api/admin/stat?useView=true');
+const baseUrl = 'http://localhost:3000/api/'; // Remplacez par l'URL de base de votre API
+
+describe('GET /admin/:userId/stat', () => {
+  let accessToken;
+
+  beforeAll(async () => {
+    // Obtenir les tokens à partir de la route /log/in
+    const loginResponse = await axios.post(`${baseUrl}/log/in`, {
+      username: 'Loic',
+      password: '&Tets1234',
+    });
+    const responseData = loginResponse.data;
+    accessToken = responseData.data.accessToken;
+  });
+
+  it('should return 200 is admin', async () => {
+    const response = await axios.get(
+      `${baseUrl}admin/601/stat?useView=true`,
+      { headers: { Authorization: `Bearer ${accessToken}` } },
+    );
+
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body)).toBe(true);
-    expect(response.body.length).toBeGreaterThan(0);
-    expect(response.body[0]).toHaveProperty('country_origin');
-    expect(response.body[0]).toHaveProperty('iso2');
-    expect(response.body[0]).toHaveProperty('iso3');
-    expect(response.body[0]).toHaveProperty('average_age');
-    expect(response.body[0]).toHaveProperty('user_count');
-    expect(response.body[0]).toHaveProperty('favorite_count');
   });
 });

@@ -47,10 +47,10 @@
   - [X] Log
   - [X] Oworld
 - [X] Test all routes
-  - [ ] External API
-  - [ ] Admin
+  - [X] External API
+  - [X] Admin
   - [ ] User
-  - [ ] Oworld
+  - [X] Oworld
 
 - [X] Create doc with Swagger and JSDoc
 
@@ -64,17 +64,19 @@
 - [X] Validate with Joi
 - [X] Setting up logging (Bunyan)
 - [X] Setting up a backup of the database
+  - [X] Schedule the backup to be sent by email
 - [X] Clean code and add comment
 - [X] Cache management
 - [X] Monitoring on external request
 - [X] JWT
 - [X] Deployment
 
-## Finitions
+## Finishes
 
-- [X] Empêcher l'insertion d'une valeur null dans les favoris
-- [X] Empêcher également l'insertion des doublons dans les favoris
-- [X] Modifier les valeurs de retour des fonction d'insertion et de suppression de favoris
-- [X] Basculer la table planet sur Redis
+- [X] Prevent insertion of a null value in favourites
+- [X] Prevent duplicates from being inserted into bookmarks too
+- [X] Modify the return values of the bookmark insertion and deletion functions
+- [X] Switch planet table to redis
 - [X] Refacto redis
 - [X] Refacto Jwt
+- [X] Check JSDoc and Swagger
