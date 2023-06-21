@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.02% </span>
+                <span class="strong">87.8% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/41</span>
+                <span class='fraction'>36/41</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.02% </span>
+                <span class="strong">87.8% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/41</span>
+                <span class='fraction'>36/41</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,31 +118,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Error400 = require('./Error400');
@@ -159,31 +159,31 @@ const logger = require('../services/logger');
  * @param {Object} __req - The request object (unused).
  * @param {Object} res - The response object.
  */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function apiErrorHandler(err, __req, res) {</span></span>
-<span class="cstat-no" title="statement not covered" >  logger.error(err);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  // Check the type of error and handle accordingly</span>
-<span class="cstat-no" title="statement not covered" >  if (</span>
-<span class="cstat-no" title="statement not covered" >    err instanceof Error400 // Bad Request error</span>
-<span class="cstat-no" title="statement not covered" >    || err instanceof Error401 // Unauthorized error</span>
-<span class="cstat-no" title="statement not covered" >    || err instanceof Error403 // Forbidden error</span>
-<span class="cstat-no" title="statement not covered" >    || err instanceof Error404 // Not Found error</span>
-<span class="cstat-no" title="statement not covered" >    || err instanceof Error409 // Conflict error</span>
-<span class="cstat-no" title="statement not covered" >  ) {</span>
+function apiErrorHandler(err, __req, res) {
+  logger.error(err);
+&nbsp;
+  // Check the type of error and handle accordingly
+  if (
+    err instanceof Error400 // Bad Request error
+    || err instanceof Error401 // Unauthorized error
+    || err instanceof Error403 // Forbidden error
+    || err instanceof Error404 // Not Found error
+    || err instanceof Error409 // Conflict error
+  ) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >    res.status(err.httpStatusCode).json({</span>
 <span class="cstat-no" title="statement not covered" >      httpCode: err.httpStatusCode,</span>
 <span class="cstat-no" title="statement not covered" >      status: 'error',</span>
 <span class="cstat-no" title="statement not covered" >      message: err.message,</span>
 <span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >  } else {</span>
-<span class="cstat-no" title="statement not covered" >    // Handle other types of errors with a generic 500 Internal Server Error response</span>
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
-<span class="cstat-no" title="statement not covered" >      httpCode: 500,</span>
-<span class="cstat-no" title="statement not covered" >      status: 'error',</span>
-<span class="cstat-no" title="statement not covered" >      message: 'Internal Server Error',</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+  } else {
+    // Handle other types of errors with a generic 500 Internal Server Error response
+    res.status(500).json({
+      httpCode: 500,
+      status: 'error',
+      message: 'Internal Server Error',
+    });
+  }
+}
 &nbsp;
 module.exports = apiErrorHandler;
 &nbsp;</pre></td></tr></table></pre>
@@ -193,7 +193,7 @@ module.exports = apiErrorHandler;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-20T12:41:46.297Z
+                at 2023-06-21T14:38:40.684Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
