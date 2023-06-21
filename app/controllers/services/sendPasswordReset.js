@@ -16,10 +16,10 @@ async function sendPasswordResetEmail(userEmail, resetToken) {
     to: userEmail,
     subject: 'Password Reset',
     text: `
-      You are receiving this because you (or someone else) have requested the reset of the password for your account.
+      You are receiving this because you have requested the reset of the password for your account.
       Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it:
       ${process.env.FRONTEND_URL}/reset-password/${resetToken}
-      If you did not request this, please ignore this email and your password will remain unchanged.
+      If you did not request this, please ignore this email.
     `,
   };
 

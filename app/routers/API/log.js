@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const controllerHandler = require('../../controllers/services/controllerHandler');
-const jwtController = require('../../controllers/API/jwtController');
+const jwtController = require('../../controllers/API/JwtController');
 
 /**
  * @typedef {object} AuthResponse
