@@ -1,6 +1,17 @@
+// import environment variables
 require('dotenv').config();
+
+// Import libraries
 const nodemailer = require('nodemailer');
 
+/**
+ * Sends a password reset email to a user.
+ *
+ * @param {string} userEmail - The email address of the user.
+ * @param {string} resetToken - The password reset token.
+ * @returns {Promise} A Promise that resolves when the email has been sent.
+ * @throws {Error} Throws an error if an issue occurred while sending the email.
+ */
 async function sendPasswordResetEmail(userEmail, resetToken) {
   const transporter = nodemailer.createTransport({
     host: process.env.MAILER_HOST,

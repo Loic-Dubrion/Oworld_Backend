@@ -1,6 +1,8 @@
 const adminController = require('./AdminController');
 const userController = require('./UserController');
 const oworldController = require('./OworldController');
+const jwtController = require('./JwtController');
+const externalApiController = require('./externalApiController');
 
 /**
  * Controller for API endpoints.
@@ -23,4 +25,6 @@ module.exports = {
   adminController,
   userController,
   oworldController,
+  jwtController,
+  externalApiController,
 };

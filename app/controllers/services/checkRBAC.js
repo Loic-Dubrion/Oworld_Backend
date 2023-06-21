@@ -1,13 +1,12 @@
-/**
- * @fileoverview Middleware for authentication and authorization.
- * @module auth
- */
-
+// Import environment variables
 require('dotenv').config();
+
+// Import libraries
 const jwt = require('jsonwebtoken');
 const auth = require('./jwtService');
-const Error401 = require('../../errors/Error401');
-const Error403 = require('../../errors/Error401');
+
+// Import errors
+const { Error401, Error403 } = require('../../errors');
 
 /**
  * Middleware to check if the request's userId matches the authenticated user.

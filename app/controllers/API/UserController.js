@@ -41,7 +41,7 @@ class UserController extends CoreController {
   async addFavorite(request, response) {
     const { userId, countryISO } = request.params;
 
-    // Step 1: Check if the country exists
+    // Check if the country exists
     const queryCountry = {
       text: 'SELECT * FROM "country" WHERE iso3 = $1',
       values: [countryISO],
@@ -52,7 +52,7 @@ class UserController extends CoreController {
       throw new Error400('This country does not exist');
     }
     const countryId = country.rows[0].id;
-    // Step 2: Check if the country is already a favorite
+    // Check if the country is already a favorite
     const queryFavorite = {
       text: 'SELECT * FROM "user_has_favorite" WHERE country_id = $1 and user_id = $2',
       values: [countryId, userId],
