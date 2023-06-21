@@ -1,17 +1,12 @@
 /* eslint-disable class-methods-use-this */
-/**
- * @fileoverview Controller for JWT-related operations.
- * @module jwtController
- */
-
 const jwt = require('jsonwebtoken');
 
 const auth = require('../services/jwtService');
 const sendReset = require('../services/sendPasswordReset');
-const Error400 = require('../../errors/Error400');
-const Error403 = require('../../errors/Error403');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
+
+const { Error400, Error403 } = require('../../errors');
 
 /** Class representing a user controller. */
 class JwtController extends CoreController {
@@ -28,8 +23,6 @@ class JwtController extends CoreController {
 
   /**
    * Controller function for authenticating a user and generating access and refresh tokens.
-   * @param {object} request - The request object.
-   * @param {object} request.body - The request body.
    * @param {string} request.body.username - The user's username.
    * @param {string} request.body.password - The user's password.
    * @param {object} response - The response object.

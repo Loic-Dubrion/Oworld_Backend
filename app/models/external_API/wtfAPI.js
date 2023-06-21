@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 const axios = require('axios');
 const RadioBrowser = require('radio-browser');
+
 const client = require('../../services/clientdb');
 const redisClient = require('../../services/clientRedis');
-const Error503 = require('../../errors/Error503');
-const Error400 = require('../../errors/Error400');
+
+const { Error400, Error503 } = require('../../errors');
 
 /**
  * Fetch radio station data for a specific country using the RadioBrowser API.
@@ -21,6 +20,7 @@ const Error400 = require('../../errors/Error400');
  *  fails or if the ISO code is not found in the database.
  */
 async function fetchRadioData(isoCode) {
+  // Redis caching
   await redisClient.connect();
   const cacheKey = `wtf:${isoCode}`;
 

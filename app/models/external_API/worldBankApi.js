@@ -1,9 +1,11 @@
 require('dotenv').config();
+
 const axios = require('axios');
 const redisClient = require('../../services/clientRedis');
 
-const Error503 = require('../../errors/Error503');
+const { Error503 } = require('../../errors');
 
+// variables for building the query
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
 const categories = {
@@ -32,6 +34,7 @@ const size = 'per_page=150';
  * @throws Will throw an error if the World Bank API call fails.
  */
 async function fetchDataByCategory(country) {
+  // Redis caching
   await redisClient.connect();
   const cacheKey = `WB:${country}`;
 
@@ -44,6 +47,7 @@ async function fetchDataByCategory(country) {
 
   const transformedData = {};
 
+  // Fetch
   const promises = Object.keys(categories).map(async (category) => {
     const url = `${baseUrl}/${country}/indicator/${categories[category]}?${source}&${format}&${date}&${size}`;
     try {
