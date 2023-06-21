@@ -1,4 +1,5 @@
 const axios = require('axios');
+
 const baseUrl = 'http://localhost:3000/api'; // Remplacez par l'URL de base de votre API
 
 describe('POST api/log/in', () => {
