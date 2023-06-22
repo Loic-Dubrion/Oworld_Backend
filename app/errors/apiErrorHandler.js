@@ -18,7 +18,6 @@ const logger = require('../services/logger');
  */
 function apiErrorHandler(err, __req, res) {
   logger.error(err);
-  console.log(err);
 
   // Check the type of error and handle accordingly
   if (
