@@ -1,7 +1,9 @@
 const expressSwagger = require('express-jsdoc-swagger');
 const logger = require('./logger');
 
-// swagger setup
+/**
+ * Configuring swagger
+ */
 const swaggerOptions = {
   servers: [
     {
