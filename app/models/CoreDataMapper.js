@@ -1,5 +1,5 @@
 const memoizee = require('memoizee');
-const client = require('../services/clientdb');
+const client = require('../services/clientDB/clientPostgres');
 
 /**
  * Class representing an abstract data mapper. This class should be extended by other

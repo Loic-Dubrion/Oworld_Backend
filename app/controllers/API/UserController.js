@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
 const Error400 = require('../../errors/Error400');
-const client = require('../../services/clientdb');
+const client = require('../../services/clientDB/clientPostgres');
 
 /** Class representing a user controller. */
 class UserController extends CoreController {

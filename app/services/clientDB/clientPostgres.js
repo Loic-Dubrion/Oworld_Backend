@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const { Pool } = require('pg');
-const logger = require('./logger');
+const logger = require('../logger');
 
 /**
  * Initialize a new connection pool to the PostgreSQL database.

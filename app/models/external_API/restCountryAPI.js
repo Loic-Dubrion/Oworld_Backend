@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const axios = require('axios');
 const { Error503 } = require('../../errors');
-const redisClient = require('../../services/clientRedis');
+const redisClient = require('../../services/clientDB/clientRedis');
 
 const countryApi = {
   /**

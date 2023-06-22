@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const redis = require('redis');
-const logger = require('./logger');
+const logger = require('../logger');
 
 /**
  * Create a new instance of the Redis client with the specified configurations.

@@ -1,7 +1,7 @@
 // import libraries
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const client = require('../../services/clientdb');
+const client = require('../../services/clientDB/clientPostgres');
 
 // import environment variables
 const { JWT_SECRET, JWT_REFRESH_SECRET } = process.env;

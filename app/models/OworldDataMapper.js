@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 const CoreDataMapper = require('./CoreDataMapper');
-const client = require('../services/clientRedis');
+const client = require('../services/clientDB/clientRedis');
 
 /** Class representing a oWorld data mapper. */
 class OworldDataMapper extends CoreDataMapper {

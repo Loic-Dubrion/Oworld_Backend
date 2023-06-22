@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 const dotenv = require('dotenv');
-const logger = require('./logger');
-const sendEmailWithAttachment = require('./mailer/sender');
+const logger = require('../logger');
+const sendEmailWithAttachment = require('../mailer/sender');
 
 dotenv.config();
 
