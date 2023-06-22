@@ -14,7 +14,7 @@ const createUserBody = Joi.object({
 const updateUserBody = Joi.object({
   id: Joi.number(),
   old_password: Joi.string(),
-  username: Joi.string().alphanum().max(20),
+  username: Joi.string().max(20),
   email: Joi.string().pattern(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/),
 }).or('username', 'email', 'password', 'old_password').required();
