@@ -1,11 +1,11 @@
 require('dotenv').config();
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-const { createClient } = require('@redis/client');
 const redis = require('redis');
 const logger = require('./logger');
 
-// Creates a new instance of the Redis client
+/**
+ * Create a new instance of the Redis client with the specified configurations.
+ */
 const client = redis.createClient({
   socket: {
     host: process.env.REDISHOST,

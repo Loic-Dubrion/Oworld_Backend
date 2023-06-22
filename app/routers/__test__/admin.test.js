@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const baseUrl = 'http://localhost:3000/api/'; // Remplacez par l'URL de base de votre API
+const baseUrl = 'http://localhost:3000/api/';
 
 describe('GET /admin/:userId/stat', () => {
   let accessToken;
