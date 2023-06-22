@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const request = require('supertest');
-const app = require('../..'); // replace with path to your app file
+const app = require('../..');
 
 describe('Oworld API', () => {
   it('GET /api/oworld?useView=false - should return 200', async () => {
