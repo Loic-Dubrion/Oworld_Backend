@@ -6,6 +6,7 @@ const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
 const Error400 = require('../../errors/Error400');
 const client = require('../../services/clientDB/clientPostgres');
+const auth = require('../services/jwtService');
 
 /** Class representing a user controller. */
 class UserController extends CoreController {
@@ -115,8 +116,12 @@ class UserController extends CoreController {
     const { userId } = request.params;
     const { ...objData } = request.body;
 
-    console.log(userId);
-    console.log(objData);
+    let user = await this.constructor.dataMapper.findOneByField('id', userId);
+
+    const isGoodPassword = await bcrypt.compare(objData.old_password, user.password);
+    if (!isGoodPassword) {
+      throw new Error400('Password invalid');
+    }
 
     // if new password hash
     if (objData.password) {
@@ -125,7 +130,22 @@ class UserController extends CoreController {
     }
 
     const results = await this.constructor.dataMapper.executeFunction('update_user', userId, objData);
-    response.json(results);
+
+    // Update user's data with new values
+    user = { ...user, ...objData };
+
+    // Get roles and permissions of the user
+    const rolesAndPermissions = await auth.getUserRolesAndPermissions(userId);
+    user = { ...user, ...rolesAndPermissions };
+
+    // generate access and refresh tokens after user details update
+    const accessToken = auth.generateAccessToken(request.ip, user);
+    const refreshToken = await auth.generateRefreshToken(user);
+
+    response.json({
+      update_user: results[0].update_user,
+      tokens: { accessToken, refreshToken },
+    });
   }
 
   /**

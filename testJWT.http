@@ -6,7 +6,7 @@
 POST {{baseUrl}}/log/in
 content-type: application/x-www-form-urlencoded
 
-username=Loic&password=%26Tets1234
+username=bob&password=%26Tets1234
 
 ### Marche pas
 GET {{baseUrl}}/user/601
@@ -46,5 +46,6 @@ Authorization: Bearer {{accessToken}}
 content-type: application/json
 
 {
-  "username":"Loic"
+  "old_password": "&Tets1234",
+  "username":"loic"
 }
