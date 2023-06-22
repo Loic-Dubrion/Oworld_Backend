@@ -10,6 +10,13 @@ Lorsque vous utilisez notre site, nous collectons et stockons les adresses e-mai
 
 Nous prenons des mesures appropriées pour protéger les informations personnelles que vous nous fournissez contre la perte, l'accès non autorisé, la divulgation, l'altération ou la destruction. Nous mettons en œuvre des mesures de sécurité techniques, administratives et physiques pour assurer la sécurité et la confidentialité de vos informations personnelles.
 
+## Sources
+
+- World Bank
+- Rest Country
+- Radio Browser
+- Ninja API
+
 ## Responsabilité des données erronées
 
 Nous nous efforçons de fournir des informations précises et à jour sur notre site. Cependant, nous déclinons toute responsabilité en cas de données erronées, incomplètes ou obsolètes sur le site. Les informations fournies sur notre site sont fournies à titre indicatif et ne doivent pas être considérées comme des conseils professionnels ou des décisions définitives. Nous vous encourageons à vérifier les informations auprès de sources officielles ou à contacter les organismes concernés pour obtenir des informations précises et à jour.

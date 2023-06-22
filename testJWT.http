@@ -40,3 +40,11 @@ content-type: application/json
 {
   "email":"test@test.com"
 }
+###
+PUT {{baseUrl}}/user/601
+Authorization: Bearer {{accessToken}}
+content-type: application/json
+
+{
+  "username":"Loic"
+}

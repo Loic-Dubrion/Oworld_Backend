@@ -122,3 +122,7 @@
 - Security: Joi validator added
 
 ## 22/06/2023 - J01 - sprint 3
+
+- Front-end deployment on Railway
+- Creation of a restore function from the DB backup
+- Clean Code Back

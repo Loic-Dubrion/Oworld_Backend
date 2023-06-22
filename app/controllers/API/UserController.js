@@ -115,6 +115,9 @@ class UserController extends CoreController {
     const { userId } = request.params;
     const { ...objData } = request.body;
 
+    console.log(userId);
+    console.log(objData);
+
     // if new password hash
     if (objData.password) {
       const hashedPassword = await bcrypt.hash(objData.password, 10);
