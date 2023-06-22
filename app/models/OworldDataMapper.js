@@ -19,7 +19,6 @@ class OworldDataMapper extends CoreDataMapper {
     await client.connect();
     const key = 'planet';
     const result = client.get(key);
-    console.log('datamapper', result);
     await client.quit();
     return result;
   }

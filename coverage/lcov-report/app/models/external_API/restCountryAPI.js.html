@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.32% </span>
+                <span class="strong">22.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/112</span>
+                <span class='fraction'>23/103</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.32% </span>
+                <span class="strong">22.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/112</span>
+                <span class='fraction'>23/103</span>
             </div>
         
             
@@ -166,16 +166,7 @@
 <a name='L101'></a><a href='#L101'>101</a>
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L104'></a><a href='#L104'>104</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,12 +179,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -249,9 +234,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -288,13 +270,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">require('dotenv').config();
+&nbsp;
 const axios = require('axios');
-const Error503 = require('../../errors/Error503');
+const { Error503 } = require('../../errors');
 const redisClient = require('../../services/clientRedis');
 &nbsp;
-/**
- * Object containing the functions for retrieving country data from the RestCountries API.
- */
 const countryApi = {
   /**
    * Retrieves data for a country using the ISO code.
@@ -302,17 +282,17 @@ const countryApi = {
    * @returns {Promise&lt;Object|null&gt;} - Country data or null in case of error.
    */
   fetchCountryData: <span class="fstat-no" title="function not covered" >async (isoCode) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    // redis caching</span>
 <span class="cstat-no" title="statement not covered" >    await redisClient.connect();</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const cacheKey = `restCountry:${isoCode}`;</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const cacheValue = await redisClient.get(cacheKey);</span>
-<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    // If cached data, I return them</span>
 <span class="cstat-no" title="statement not covered" >    if (cacheValue) {</span>
 <span class="cstat-no" title="statement not covered" >      await redisClient.quit();</span>
 <span class="cstat-no" title="statement not covered" >      return JSON.parse(cacheValue);</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    // query construction</span>
 <span class="cstat-no" title="statement not covered" >    const baseUrl = 'https://restcountries.com/v3.1/';</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const param = {</span>
@@ -348,22 +328,18 @@ const countryApi = {
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      return response.data;</span>
 <span class="cstat-no" title="statement not covered" >    } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >      if (error.response.status === 503) {</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });</span>
-<span class="cstat-no" title="statement not covered" >      } else {</span>
-<span class="cstat-no" title="statement not covered" >        return error;</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
   },
 &nbsp;
   /**
-   * Retrieves data from all countries.
+   * Retrieves flags and isoCode from all countries.
    * @returns {Promise&lt;Object|null&gt;} - Data for all countries or null in the event of an error.
    */
   fetchAllCountries: <span class="fstat-no" title="function not covered" >async () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    // Redis caching</span>
 <span class="cstat-no" title="statement not covered" >    await redisClient.connect();</span>
 <span class="cstat-no" title="statement not covered" >    const cacheKey = 'restCountry';</span>
-<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const cacheValue = await redisClient.get(cacheKey);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    if (cacheValue) {</span>
@@ -371,6 +347,7 @@ const countryApi = {
 <span class="cstat-no" title="statement not covered" >      return JSON.parse(cacheValue);</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    // Query construction</span>
 <span class="cstat-no" title="statement not covered" >    const baseUrl = 'https://restcountries.com/v3.1/';</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const param = {</span>
@@ -389,11 +366,7 @@ const countryApi = {
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      return response.data;</span>
 <span class="cstat-no" title="statement not covered" >    } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >      if (error.response.status === 503) {</span>
-<span class="cstat-no" title="statement not covered" >        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });</span>
-<span class="cstat-no" title="statement not covered" >      } else {</span>
-<span class="cstat-no" title="statement not covered" >        return error;</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 };
@@ -406,7 +379,7 @@ module.exports = countryApi;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-06-21T14:38:40.684Z
+                at 2023-06-22T06:11:05.224Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
