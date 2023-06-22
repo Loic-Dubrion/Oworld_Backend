@@ -89,12 +89,12 @@ class UserController extends CoreController {
   async addUser(request, response) {
     const dataUser = request.body;
     // check for an identical user.
-    const user = await UserController.dataMapper.findOneByField('username', dataUser.username);
+    const user = await this.constructor.dataMapper.findOneByField('username', dataUser.username);
     if (user) {
       throw new Error400('Existing user');
     }
     // check for an identical email
-    const email = await UserController.dataMapper.findOneByField('email', dataUser.email);
+    const email = await this.constructor.dataMapper.findOneByField('email', dataUser.email);
     if (email) {
       throw new Error400('Existing email address');
     }
@@ -109,7 +109,8 @@ class UserController extends CoreController {
   /**
    * Update an existing user.
    *
-   * @param {Object} request - 1, 2 or 3 parameters (username, email, password).
+   * @param {Object} request - 1, 2 or 3 parameters (username, email, password)
+   * and the actualy password.
    * @param {Object} response - The response object.
    */
   async updateUser(request, response) {
@@ -156,6 +157,15 @@ class UserController extends CoreController {
    */
   async deleteUser(request, response) {
     const { userId } = request.params;
+    const { password } = request.body;
+
+    const user = await this.constructor.dataMapper.findOneByField('id', userId);
+
+    const isGoodPassword = await bcrypt.compare(password, user.password);
+    if (!isGoodPassword) {
+      throw new Error400('Password invalid');
+    }
+
     const results = await this.constructor.dataMapper.executeFunction('delete_user', userId);
     response.json(results);
   }

@@ -47,5 +47,5 @@ content-type: application/json
 
 {
   "old_password": "&Tets1234",
-  "username":"loic"
+  "username":"bob"
 }
