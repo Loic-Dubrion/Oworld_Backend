@@ -2,7 +2,7 @@
 const axios = require('axios');
 const RadioBrowser = require('radio-browser');
 
-const client = require('../../services/clientDB/clientdb');
+const client = require('../../services/clientDB/clientPostgres');
 const redisClient = require('../../services/clientDB/clientRedis');
 
 const { Error400, Error503 } = require('../../errors');
