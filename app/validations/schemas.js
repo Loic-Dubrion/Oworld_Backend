@@ -4,7 +4,7 @@ const Joi = require('joi');
 // FOR USER
 const createUserBody = Joi.object({
   id: Joi.number(),
-  username: Joi.string().alphanum().max(20).required(),
+  username: Joi.string().max(20).required(),
   email: Joi.string().pattern(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/).required(),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/).required(),
   country_origin: Joi.number().required(),

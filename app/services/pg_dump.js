@@ -5,6 +5,9 @@ const sendEmailWithAttachment = require('./mailer/sender');
 
 dotenv.config();
 
+/**
+ * A function to dump the database, log any errors or messages, and email the dump file.
+ */
 const dumpDatabase = () => {
   const dumpCommand = `PGPASSWORD="${process.env.PGPASSWORD}"
   pg_dump -U ${process.env.PGUSER} -F t ${process.env.PGDATABASE} > data/dbSave/db.tar`;

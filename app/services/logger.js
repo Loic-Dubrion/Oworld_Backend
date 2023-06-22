@@ -1,3 +1,9 @@
+/**
+ * Configuration Bunyan
+ * If mode development, returns console logs
+ * If mode production, logs to a file
+ */
+
 const bunyan = require('bunyan');
 
 const env = process.env.NODE_ENV;
