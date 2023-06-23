@@ -9,8 +9,11 @@ const { adminController } = require('../../controllers/API');
 // Middlewares
 const { checkRole, checkPermission } = require('../../controllers/services/checkRBAC');
 const { authorize } = require('../../controllers/services/jwtService');
+const validate = require('../../validations/validate');
+const { validateIdParam } = require('../../validations/schemas');
 
 // Check Role
+router.param('userId', validate(validateIdParam, 'params'));
 router.use('/:userId', authorize);
 
 /**
