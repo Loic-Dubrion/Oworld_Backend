@@ -40,6 +40,11 @@ async function fetchDataByCategory(country) {
       const url = `${baseUrl}/${country}/indicator/${categories[category]}?${source}&${format}&${date}&${size}`;
       const response = await axios.get(url);
 
+      if (!response.data || response.data.length < 2) {
+        console.error('Invalid response data');
+        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      }
+
       const result = response.data[1];
       const groupedData = [];
       for (let i = 0; i < result.length; i += 21) {
@@ -72,6 +77,7 @@ async function fetchDataByCategory(country) {
 
     await redisClient.set(cacheKey, JSON.stringify(finalData));
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
+
   } catch (error) {
     console.error(error);
     throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
