@@ -15,7 +15,6 @@ const externalApiController = {
    */
   restCountry: async (request, response) => {
     const result = await countryApi.fetchCountryData(request.params.countryIso3);
-    console.log('result RC => ', result);
     response.json(result);
   },
 
@@ -38,7 +37,6 @@ const externalApiController = {
    */
   worldBank: async (request, response) => {
     const result = await fetchWorldBankData(request.params.countryIso3);
-    console.log('result WB => ', result);
     response.json(result);
   },
 
@@ -50,7 +48,6 @@ const externalApiController = {
    */
   wtf: async (request, response) => {
     const result = await fetchWTF(request.params.countryIso3);
-    console.log('result WTF => ', result);
     response.json(result);
   },
 };
