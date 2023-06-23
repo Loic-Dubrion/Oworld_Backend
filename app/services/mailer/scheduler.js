@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const dumpDatabase = require('../pg_dump');
+const dumpDatabase = require('../secureDB/pg_dump');
 const sendEmail = require('./sender');
 
 /**
@@ -15,7 +15,7 @@ const scheduleTasks = () => {
 
   /**
    * Schedule the task to send the log email every day at midnight.
-   * The email will have a subject of 'Fichier de logs du jour', a message of 
+   * The email will have a subject of 'Fichier de logs du jour', a message of
    * 'Pièce jointe : fichier de logs du jour.', and an attachment of 'logs/oWorld.log'.
    */
   cron.schedule('0 0 * * *', () => {

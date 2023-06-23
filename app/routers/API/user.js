@@ -8,14 +8,14 @@ const { userController } = require('../../controllers/API');
 
 // Import Middlewares
 const validate = require('../../validations/validate');
-const { createUserBody, updateUserBody } = require('../../validations/schemas');
+const { createUserBody, updateUserBody, deleteUserBody } = require('../../validations/schemas');
 const validateParam = require('../../services/validateParam');
 const { checkUserId } = require('../../controllers/services/checkRBAC');
 const { authorize } = require('../../controllers/services/jwtService');
 
 // Check
-router.param('userId', validateParam.validateId('userId'));
-router.param('countryISO', validateParam.validateIso('countryISO'));
+router.param('userId', validate(validateParam, 'params'));
+router.param('countryISO', validate(validateParam, 'params'));
 
 router.use('/:userId', authorize);
 router.use('/:userId', checkUserId);
@@ -138,7 +138,7 @@ router.put(
  */
 router.delete(
   '/:userId',
-  validate(createUserBody, 'body'),
+  validate(deleteUserBody, 'body'),
   controllerHandler(userController.deleteUser.bind(userController)),
 );
 
