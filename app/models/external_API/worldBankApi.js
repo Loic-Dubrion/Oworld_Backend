@@ -122,5 +122,4 @@ async function fetchWorldBankData(iso3) {
   }
 }
 
-
 module.exports = fetchWorldBankData;
