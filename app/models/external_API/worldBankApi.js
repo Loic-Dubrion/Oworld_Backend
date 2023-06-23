@@ -42,7 +42,7 @@ async function fetchDataByCategory(country) {
 
       if (!response.data || response.data.length < 2) {
         console.error('Invalid response data');
-        throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+        return null;
       }
 
       const result = response.data[1];
