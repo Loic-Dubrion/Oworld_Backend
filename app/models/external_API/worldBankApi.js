@@ -3,8 +3,6 @@ require('dotenv').config();
 const axios = require('axios');
 const redisClient = require('../../services/clientDB/clientRedis');
 
-const { Error503 } = require('../../errors');
-
 // variables for building the query
 const baseUrl = 'http://api.worldbank.org/v2/country';
 
@@ -41,7 +39,7 @@ async function fetchDataByCategory(country) {
       const response = await axios.get(url);
 
       if (!response.data || response.data.length < 2) {
-        console.error('Invalid response data');
+        // console.error('Invalid response data');
         return null;
       }
 
@@ -79,7 +77,7 @@ async function fetchDataByCategory(country) {
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
   } catch (error) {
     if (redisClient) await redisClient.quit();
-    console.error(error);
+    // console.error(error);
     return null;
   } finally {
     if (redisClient) await redisClient.quit();
@@ -94,7 +92,7 @@ async function fetchWorldBankData(iso3) {
     const transformedData = await fetchDataByCategory(country);
     return transformedData;
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return null;
   }
 }
