@@ -15,6 +15,7 @@ const externalApiController = {
    */
   restCountry: async (request, response) => {
     const result = await countryApi.fetchCountryData(request.params.countryIso3);
+    console.log('result => ', result);
     response.json(result);
   },
 
@@ -26,7 +27,6 @@ const externalApiController = {
    */
   restCountryFlags: async (request, response) => {
     const result = await countryApi.fetchAllCountries();
-    console.log('result => ', result);
     response.json(result);
   },
 
