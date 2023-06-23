@@ -77,12 +77,10 @@ async function fetchDataByCategory(country) {
 
     await redisClient.set(cacheKey, JSON.stringify(finalData));
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
-
   } catch (error) {
-    console.error(error);
-    throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
-  } finally {
     await redisClient.quit();
+    console.error(error);
+    return null;
   }
 
   return transformedData;
