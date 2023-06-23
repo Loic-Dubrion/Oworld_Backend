@@ -41,6 +41,7 @@ async function fetchDataByCategory(country) {
       const response = await axios.get(url);
 
       if (!response.data || response.data.length < 2) {
+        await redisClient.quit();
         console.error('Invalid response data');
         return null;
       }
