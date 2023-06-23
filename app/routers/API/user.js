@@ -8,14 +8,19 @@ const { userController } = require('../../controllers/API');
 
 // Import Middlewares
 const validate = require('../../validations/validate');
-const { createUserBody, updateUserBody, deleteUserBody } = require('../../validations/schemas');
-// const validate = require('../../services/validateParam');
+const {
+  createUserBody,
+  updateUserBody,
+  deleteUserBody,
+  validateIdParam,
+  validateIsoParam,
+} = require('../../validations/schemas');
 const { checkUserId } = require('../../controllers/services/checkRBAC');
 const { authorize } = require('../../controllers/services/jwtService');
 
 // Check
-// router.param('userId', validate(validateIdParam, 'params'));
-// router.param('countryISO', validate(validateIsoParam, 'params'));
+router.param('userId', validate(validateIdParam, 'params'));
+router.param('countryISO', validate(validateIsoParam, 'params'));
 
 router.use('/:userId', authorize);
 router.use('/:userId', checkUserId);
