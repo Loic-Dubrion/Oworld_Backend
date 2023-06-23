@@ -117,9 +117,7 @@ class UserController extends CoreController {
     const { userId } = request.params;
     const { ...objData } = request.body;
 
-    console.log(objData);
     let user = await this.constructor.dataMapper.findOneByField('id', userId);
-    console.log(user);
     const isGoodPassword = await bcrypt.compare(objData.old_password, user.password);
     if (!isGoodPassword) {
       throw new Error400('Password invalid');
