@@ -117,8 +117,10 @@ async function fetchWorldBankData(iso3) {
     const transformedData = await fetchDataByCategory(country);
     return transformedData;
   } catch (error) {
-    return error;
+    console.error(error);
+    return null;
   }
 }
+
 
 module.exports = fetchWorldBankData;
