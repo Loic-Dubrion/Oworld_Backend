@@ -130,12 +130,15 @@ router.put(
  * @tags User
  *
  * @param {integer} userId.path.required - The ID of the user
+ * @param {object} request.body.required - The password of the user
+
  *
  * @return {object} 200 - Success response
  * @return {Error} 500 - Internal server error
  */
 router.delete(
   '/:userId',
+  validate(createUserBody, 'body'),
   controllerHandler(userController.deleteUser.bind(userController)),
 );
 

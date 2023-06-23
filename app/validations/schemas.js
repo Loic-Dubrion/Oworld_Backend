@@ -13,13 +13,19 @@ const createUserBody = Joi.object({
 
 const updateUserBody = Joi.object({
   id: Joi.number(),
-  old_password: Joi.string(),
-  username: Joi.string().max(20),
+  old_password: Joi.string().not(null).empty(''),
+  username: Joi.string().max(20).not(null).empty(''),
   email: Joi.string().pattern(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/),
   password: Joi.string().pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/),
 }).or('username', 'email', 'password', 'old_password').required();
 
+const deleteUserBody = Joi.object({
+  id: Joi.number(),
+  password: Joi.string().not(null).empty(''),
+}).required();
+
 module.exports = {
   createUserBody,
   updateUserBody,
+  deleteUserBody,
 };
