@@ -29,7 +29,6 @@ async function fetchDataByCategory(country) {
   const cacheValue = await redisClient.get(cacheKey);
 
   if (cacheValue) {
-    await redisClient.quit();
     return JSON.parse(cacheValue);
   }
 
@@ -41,7 +40,6 @@ async function fetchDataByCategory(country) {
       const response = await axios.get(url);
 
       if (!response.data || response.data.length < 2) {
-        if (redisClient) await redisClient.quit();
         console.error('Invalid response data');
         return null;
       }
@@ -78,9 +76,7 @@ async function fetchDataByCategory(country) {
 
     await redisClient.set(cacheKey, JSON.stringify(finalData));
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
-    await redisClient.quit();
   } catch (error) {
-    if (redisClient) await redisClient.quit();
     console.error(error);
     return null;
   } finally {
@@ -89,6 +85,7 @@ async function fetchDataByCategory(country) {
 
   return transformedData;
 }
+
 
 async function fetchWorldBankData(iso3) {
   try {
