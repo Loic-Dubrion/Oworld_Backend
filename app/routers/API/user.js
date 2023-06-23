@@ -12,15 +12,9 @@ const {
   createUserBody,
   updateUserBody,
   deleteUserBody,
-  // validateIdParam,
-  validateIsoParam,
 } = require('../../validations/schemas');
 const { checkUserId } = require('../../controllers/services/checkRBAC');
 const { authorize } = require('../../controllers/services/jwtService');
-
-// Check
-// router.param('userId', validate(validateIdParam, 'params'));
-router.param('countryISO', validate(validateIsoParam, 'params'));
 
 router.use('/:userId', authorize);
 router.use('/:userId', checkUserId);

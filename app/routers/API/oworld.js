@@ -1,16 +1,11 @@
 const express = require('express');
 
-const validate = require('../../validations/validate');
-const { validateIsoParam } = require('../../validations/schemas');
-
 // Controllers
 const controllerHandler = require('../../controllers/services/controllerHandler');
 const externalApiController = require('../../controllers/API/externalApiController');
 const oworldController = require('../../controllers/API/OworldController');
 
 const router = express.Router();
-
-router.param('countryISO', validate(validateIsoParam, 'params'));
 
 /**
  * GET /api/oworld?useView=false
