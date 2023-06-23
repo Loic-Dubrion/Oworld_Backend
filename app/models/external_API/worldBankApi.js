@@ -77,6 +77,7 @@ async function fetchDataByCategory(country) {
     await redisClient.set(cacheKey, JSON.stringify(finalData));
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
   } catch (error) {
+    if (redisClient) await redisClient.quit();
     console.error(error);
     return null;
   } finally {
@@ -85,7 +86,6 @@ async function fetchDataByCategory(country) {
 
   return transformedData;
 }
-
 
 async function fetchWorldBankData(iso3) {
   try {
