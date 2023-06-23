@@ -29,6 +29,7 @@ async function fetchDataByCategory(country) {
   const cacheValue = await redisClient.get(cacheKey);
 
   if (cacheValue) {
+    if (redisClient) await redisClient.quit();
     return JSON.parse(cacheValue);
   }
 
