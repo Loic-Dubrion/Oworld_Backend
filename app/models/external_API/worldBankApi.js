@@ -80,11 +80,11 @@ async function fetchDataByCategory(country) {
     redisClient.expire(cacheKey, process.env.REDIS_TTL);
     await redisClient.quit();
   } catch (error) {
-    await redisClient.quit();
+    if (redisClient) await redisClient.quit();
     console.error(error);
     return null;
   } finally {
-    await redisClient.quit();
+    if (redisClient) await redisClient.quit();
   }
 
   return transformedData;
