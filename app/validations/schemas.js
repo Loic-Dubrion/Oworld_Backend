@@ -25,7 +25,7 @@ const deleteUserBody = Joi.object({
 }).required();
 
 // For params data
-const validateIdParam = Joi.string().pattern(/^[0-9]+$/).required();
+const validateIdParam = Joi.number().required();
 
 const validateIsoParam = Joi.string().pattern(/^[a-zA-Z]{2,3}$/).required();
 
