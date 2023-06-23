@@ -26,6 +26,7 @@ const externalApiController = {
    */
   restCountryFlags: async (request, response) => {
     const result = await countryApi.fetchAllCountries();
+    console.log('result => ', result);
     response.json(result);
   },
 
