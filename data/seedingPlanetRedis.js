@@ -1,4 +1,4 @@
-const client = require('../app/services/clientRedis'); // Remplacez par le chemin vers votre fichier de configuration Redis
+const client = require('../app/services/clientDB/clientRedis'); // Remplacez par le chemin vers votre fichier de configuration Redis
 const logger = require('../app/services/logger');
 
 const planets = {

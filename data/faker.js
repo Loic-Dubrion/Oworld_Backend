@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const faker = require('faker');
-const client = require('../app/services/clientdb');
+const client = require('../app/services/clientDB/clientPostgres');
 const logger = require('../app/services/logger');
 
 /**
