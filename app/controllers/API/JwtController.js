@@ -58,16 +58,13 @@ class JwtController extends CoreController {
    */
   async refreshToken(request, response) {
     const user = await auth.getAccessTokenUser(request);
-    console.log('avant vérif');
     if (user && (auth.isValidRefreshToken(request, user))) {
       const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
       const accessToken = auth.generateAccessToken(
         request.ip,
         { ...user, ...rolesAndPermissions },
       );
-      console.log('refresh token ancien', request.body);
       const refreshToken = await auth.generateRefreshToken(user);
-      console.log('new refresh : ', refreshToken);
       // update refresh_token in the database
       const query = 'UPDATE "user" SET refresh_token=$1 WHERE id=$2';
       const values = [refreshToken, user.id];
