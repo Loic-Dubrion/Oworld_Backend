@@ -221,10 +221,11 @@ const auth = {
     console.log('refresh token:', refreshToken);
     try {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
+      console.log(decodedRefreshToken);
     } catch (error) {
       throw new Error401('Invalid refresh token');
     }
-
+    console.log('décodage ok');
     const foundUser = await UserDataMapper.findOneByField('id', decodedRefreshToken.data.id);
 
     if (foundUser) {
