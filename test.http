@@ -18,7 +18,7 @@ GET {{baseUrl}}/oworld/flags
 GET {{baseUrl}}/oworld/LIB
 
 ### Categories by country ###
-GET {{baseUrl}}/oworld/FRA/category
+GET {{baseUrl}}/oworld/LIB/category
 
 ### WTF by country ###
 GET {{baseUrl}}/oworld/CHN/wtf

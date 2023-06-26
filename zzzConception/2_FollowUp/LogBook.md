@@ -126,3 +126,9 @@
 - Front-end deployment on Railway
 - Creation of a restore function from the DB backup
 - Clean Code Back
+
+## 23/06/2023 - J02 - sprint 3
+
+- Fix bug socket Redis
+- thoughts on version 2
+- Preparing for the presentation
