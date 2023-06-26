@@ -56,6 +56,7 @@ class JwtController extends CoreController {
    * containing the new access and refresh tokens.
    */
   async refreshToken(request, response) {
+    console.log(request.body);
     const user = await auth.getAccessTokenUser(request);
     if (user && (auth.isValidRefreshToken(request, user))) {
       const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);

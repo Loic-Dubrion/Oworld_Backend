@@ -18,7 +18,7 @@ GET {{baseUrl}}/oworld/flags
 GET {{baseUrl}}/oworld/LIB
 
 ### Categories by country ###
-GET {{baseUrl}}/oworld/LIB/category
+GET {{baseUrl}}/oworld/BEL/category
 
 ### WTF by country ###
 GET {{baseUrl}}/oworld/CHN/wtf
@@ -33,7 +33,7 @@ Content-Type: application/json
   "email": "test@test2.com",
   "password": "&Tets1234",
   "country_origin": 1,
-  "birth_date": "2024-06-16"
+  "birth_date": "2020-06-16"
 }
 
 ### Profile ###
