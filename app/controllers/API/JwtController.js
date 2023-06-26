@@ -5,6 +5,7 @@ const auth = require('../services/jwtService');
 const sendReset = require('../services/sendPasswordReset');
 const CoreController = require('./CoreController');
 const userDataMapper = require('../../models/UserDataMapper');
+const client = require('../../services/clientDB/clientPostgres');
 
 const { Error400, Error403 } = require('../../errors');
 
@@ -56,7 +57,6 @@ class JwtController extends CoreController {
    * containing the new access and refresh tokens.
    */
   async refreshToken(request, response) {
-    console.log(request.body);
     const user = await auth.getAccessTokenUser(request);
     if (user && (auth.isValidRefreshToken(request, user))) {
       const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
@@ -65,6 +65,11 @@ class JwtController extends CoreController {
         { ...user, ...rolesAndPermissions },
       );
       const refresh = await auth.generateRefreshToken(user);
+      // update refresh_token in the database
+      const query = 'UPDATE "user" SET refresh_token=$1 WHERE id=$2';
+      const values = [refresh, user.id];
+      await client.query(query, values);
+
       response.status(200).json({
         status: 'success',
         data: { accessToken, refresh },
