@@ -66,16 +66,16 @@ class JwtController extends CoreController {
         { ...user, ...rolesAndPermissions },
       );
       console.log('refresh token ancien', request.body);
-      const refresh = await auth.generateRefreshToken(user);
-      console.log('new refresh : ', refresh);
+      const refreshToken = await auth.generateRefreshToken(user);
+      console.log('new refresh : ', refreshToken);
       // update refresh_token in the database
       const query = 'UPDATE "user" SET refresh_token=$1 WHERE id=$2';
-      const values = [refresh, user.id];
+      const values = [refreshToken, user.id];
       await client.query(query, values);
 
       response.status(200).json({
         status: 'success',
-        data: { accessToken, refresh },
+        data: { accessToken, refreshToken },
       });
     }
   }
