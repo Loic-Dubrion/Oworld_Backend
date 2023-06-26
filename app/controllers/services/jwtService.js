@@ -218,7 +218,7 @@ const auth = {
     }
 
     let decodedRefreshToken;
-
+    console.log(refreshToken);
     try {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
     } catch (error) {
