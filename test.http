@@ -15,10 +15,10 @@ GET {{baseUrl}}/oworld/list?useView=true
 GET {{baseUrl}}/oworld/flags
 
 ### One country ###
-GET {{baseUrl}}/oworld/ITA
+GET {{baseUrl}}/oworld/LIB
 
 ### Categories by country ###
-GET {{baseUrl}}/oworld/LUX/category
+GET {{baseUrl}}/oworld/FRA/category
 
 ### WTF by country ###
 GET {{baseUrl}}/oworld/CHN/wtf

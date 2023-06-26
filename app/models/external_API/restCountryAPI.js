@@ -57,6 +57,7 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
+      if (redisClient) await redisClient.quit();
       throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     }
   },
@@ -95,7 +96,8 @@ const countryApi = {
 
       return response.data;
     } catch (error) {
-      throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
+      if (redisClient) await redisClient.quit();
+      throw new Error503('Service Unavailable - API REST COUNTRY');
     }
   },
 };
