@@ -6,7 +6,7 @@
 POST {{baseUrl}}/log/in
 content-type: application/x-www-form-urlencoded
 
-username=Loic2&password=%26Tets1234
+username=Loic&password=%26Test1234
 
 ### Marche pas
 GET {{baseUrl}}/user/601
