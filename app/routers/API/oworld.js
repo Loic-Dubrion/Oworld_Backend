@@ -19,7 +19,13 @@ const router = express.Router();
  *
  * @description
  * This route returns all the information about planet Earth and the other planets.
+ * applies false to useView.
  * Test me!
+ * @param {boolean} useView.query.required -
+ * Whether to use a SQL view or not.
+ * if true = dataworld, else = country list
+ * - ?useView=false -
+ * This parameter is required.
  * @return {array<object>} 200 - Success response
  * - An array of objects earth details
  * @return {Error} 500 - Internal server error
@@ -37,7 +43,7 @@ router.get(
  * @tags Oworld
  *
  * @description
- * This route returns a list of the world's flags
+ * This route returns a list of the world's flags.
  * Test me!
  *
  * @return {array<object>} 200 - Success response
@@ -58,7 +64,7 @@ router.get(
  *
  * @description
  * This route returns a list of all countries with their iso codes.
- * applies true to useView
+ * applies true to useView.
  * Test me!
  *
  * @param {boolean} useView.query.required -

@@ -17,7 +17,7 @@ const planets = {
         orbitalPeriod: '27.3 days',
       },
     ],
-    population: '7.9 billion (2023 estimate)',
+    population: '8.4 billion (2023 estimate)',
     atmosphereComposition: {
       nitrogen: '78%',
       oxygen: '21%',
