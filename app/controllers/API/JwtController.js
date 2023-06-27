@@ -58,7 +58,7 @@ class JwtController extends CoreController {
    */
   async refreshToken(request, response) {
     const user = await auth.getAccessTokenUser(request);
-    if (user && (auth.isValidRefreshToken(request, user))) {
+    if (user && (auth.isValidRefreshToken(request, response, user))) {
       const rolesAndPermissions = await auth.getUserRolesAndPermissions(user.id);
       const accessToken = auth.generateAccessToken(
         request.ip,

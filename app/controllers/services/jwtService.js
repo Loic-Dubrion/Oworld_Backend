@@ -215,7 +215,7 @@ const auth = {
  * @throws {Error401} - If no refresh token is provided or invalid, or if no user is found.
  * @throws {Error403} - If the usernames or refresh tokens between the request and db do not match.
  */
-  async isValidRefreshToken(request, user) {
+  async isValidRefreshToken(request, response, user) {
     const { refreshToken } = request.body;
     if (!refreshToken) {
       throw new Error401('No refresh token found');
@@ -225,8 +225,11 @@ const auth = {
     try {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
     } catch (error) {
-      throw new Error401('Invalid refresh token');
+      console.log('mon erreur : ', error);
+      return response.status(401).json({ error: 'token invalid' });
+      // return Error401('Invalid refresh token');
     }
+
     const foundUser = await UserDataMapper.findOneByField('id', decodedRefreshToken.data.id);
 
     if (foundUser) {
