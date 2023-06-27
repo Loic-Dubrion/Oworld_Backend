@@ -3,4 +3,6 @@ node_modules
 sqitch.conf
 .env
 .env.railway
-data/dbSave
+data/dbSave/
+coverage
+documentation
