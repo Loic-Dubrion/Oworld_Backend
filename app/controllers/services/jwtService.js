@@ -233,8 +233,7 @@ const auth = {
       if (foundUser.username === user.username && refreshToken === foundUser.refresh_token) {
         return true;
       }
-      // throw new Error403('Unmatching users between access and refresh tokens');
-      console.log('=========');
+      throw new Error403('Unmatching users between access and refresh tokens');
     }
 
     throw new Error401('User not found');
