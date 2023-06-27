@@ -136,4 +136,5 @@
 ## 26/06/2023 - J03 - sprint 3
 
 - Code review front/backend
+- Pair-programming: front-end refreshToken management
   
