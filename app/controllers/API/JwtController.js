@@ -64,8 +64,9 @@ class JwtController extends CoreController {
         request.ip,
         { ...user, ...rolesAndPermissions },
       );
+
       const refreshToken = await auth.generateRefreshToken(user);
-      // update refresh_token in the database
+
       const query = 'UPDATE "user" SET refresh_token=$1 WHERE id=$2';
       const values = [refreshToken, user.id];
       await client.query(query, values);

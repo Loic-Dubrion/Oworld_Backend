@@ -53,6 +53,7 @@ class UserController extends CoreController {
       throw new Error400('This country does not exist');
     }
     const countryId = country.rows[0].id;
+
     // Check if the country is already a favorite
     const queryFavorite = {
       text: 'SELECT * FROM "user_has_favorite" WHERE country_id = $1 and user_id = $2',
