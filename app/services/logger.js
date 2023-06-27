@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module Logger
  */
 
 /**

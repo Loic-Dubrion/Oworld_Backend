@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module pg_dump
  */
 
 const { exec } = require('child_process');

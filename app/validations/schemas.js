@@ -1,7 +1,3 @@
-/**
- * @module Validations
- */
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 const Joi = require('joi');
 

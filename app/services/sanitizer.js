@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module sanitizer
  */
 
 const sanitizer = require('sanitizer');

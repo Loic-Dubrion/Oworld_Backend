@@ -1,7 +1,3 @@
-/**
- * @module Error
- */
-
 const {
   Error400,
   Error401,

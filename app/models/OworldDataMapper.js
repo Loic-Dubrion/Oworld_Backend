@@ -1,7 +1,3 @@
-/**
- * @module Datamapper
- */
-
 /* eslint-disable class-methods-use-this */
 const CoreDataMapper = require('./CoreDataMapper');
 const client = require('../services/clientDB/clientRedis');

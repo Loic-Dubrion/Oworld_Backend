@@ -1,7 +1,3 @@
-/**
- * @module Models_external_api
- */
-
 require('dotenv').config();
 
 const axios = require('axios');

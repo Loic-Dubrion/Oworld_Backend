@@ -1,7 +1,3 @@
-/**
- * @module Datamapper
- */
-
 const memoizee = require('memoizee');
 const client = require('../services/clientDB/clientPostgres');
 

@@ -1,5 +1,5 @@
 /**
- * @module Services_Controllers
+ * @module RBAC
  */
 
 // Import environment variables

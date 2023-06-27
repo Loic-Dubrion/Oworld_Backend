@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module client_postgres
  */
 
 require('dotenv').config();

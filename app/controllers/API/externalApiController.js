@@ -1,7 +1,3 @@
-/**
- * @module Controllers
- */
-
 const countryApi = require('../../models/external_API/restCountryAPI');
 const fetchWorldBankData = require('../../models/external_API/worldBankApi');
 const fetchWTF = require('../../models/external_API/wtfAPI');

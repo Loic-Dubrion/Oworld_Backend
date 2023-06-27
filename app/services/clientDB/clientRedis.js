@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module client_redis
  */
 
 require('dotenv').config();

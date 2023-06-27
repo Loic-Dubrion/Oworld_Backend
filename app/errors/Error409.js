@@ -1,7 +1,3 @@
-/**
- * @module Error
- */
-
 class Error409 extends Error {
   constructor(message) {
     super(message);

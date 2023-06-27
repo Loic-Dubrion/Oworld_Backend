@@ -1,7 +1,3 @@
-/**
- * @module Error
- */
-
 const Error400 = require('./Error400');
 const Error401 = require('./Error401');
 const Error403 = require('./Error403');

@@ -1,5 +1,5 @@
 /**
- * @module Service
+ * @module Swagger
  */
 
 const expressSwagger = require('express-jsdoc-swagger');

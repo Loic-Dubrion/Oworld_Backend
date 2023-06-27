@@ -1,7 +1,3 @@
-/**
- * @module Index
- */
-
 // binds the .env
 require('dotenv').config();
 

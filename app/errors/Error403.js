@@ -1,7 +1,3 @@
-/**
- * @module Error
- */
-
 class Error403 extends Error {
   constructor(message) {
     super(message);
