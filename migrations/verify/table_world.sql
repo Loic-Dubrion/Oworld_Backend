@@ -2,8 +2,5 @@
 
 BEGIN;
 
-SELECT * FROM
-    planets
-WHERE false;
 
 ROLLBACK;
