@@ -9,7 +9,7 @@ describe('GET /admin/:userId/stat', () => {
     // Obtenir les tokens à partir de la route /log/in
     const loginResponse = await axios.post(`${baseUrl}/log/in`, {
       username: 'Loic',
-      password: '&Tets1234',
+      password: '&Test1234',
     });
     const responseData = loginResponse.data;
     accessToken = responseData.data.accessToken;

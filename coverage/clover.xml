@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687765366802" clover="3.2.0">
-  <project timestamp="1687765366802" name="All files">
-    <metrics statements="2193" coveredstatements="1488" conditionals="43" coveredconditionals="32" methods="68" coveredmethods="27" elements="2304" coveredelements="1547" complexity="0" loc="2193" ncloc="2193" packages="13" files="43" classes="43"/>
+<coverage generated="1687848560604" clover="3.2.0">
+  <project timestamp="1687848560604" name="All files">
+    <metrics statements="2198" coveredstatements="1491" conditionals="43" coveredconditionals="32" methods="68" coveredmethods="27" elements="2309" coveredelements="1550" complexity="0" loc="2198" ncloc="2198" packages="13" files="43" classes="43"/>
     <package name="app">
       <metrics statements="42" coveredstatements="42" conditionals="1" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/index.js">
@@ -51,7 +51,7 @@
       </file>
     </package>
     <package name="app.controllers.API">
-      <metrics statements="435" coveredstatements="267" conditionals="10" coveredconditionals="10" methods="26" coveredmethods="10"/>
+      <metrics statements="441" coveredstatements="268" conditionals="10" coveredconditionals="10" methods="26" coveredmethods="10"/>
       <file name="AdminController.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/API/AdminController.js">
         <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -107,7 +107,7 @@
         <line num="30" count="1" type="stmt"/>
       </file>
       <file name="JwtController.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/API/JwtController.js">
-        <metrics statements="106" coveredstatements="57" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="2"/>
+        <metrics statements="112" coveredstatements="58" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -120,15 +120,15 @@
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
@@ -141,7 +141,7 @@
         <line num="31" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
@@ -156,7 +156,7 @@
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
@@ -166,7 +166,7 @@
         <line num="56" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
@@ -180,23 +180,23 @@
         <line num="70" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="79" count="1" type="stmt"/>
         <line num="80" count="1" type="stmt"/>
         <line num="81" count="1" type="stmt"/>
         <line num="82" count="1" type="stmt"/>
         <line num="83" count="1" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
@@ -211,9 +211,15 @@
         <line num="101" count="0" type="stmt"/>
         <line num="102" count="0" type="stmt"/>
         <line num="103" count="0" type="stmt"/>
-        <line num="104" count="1" type="stmt"/>
-        <line num="105" count="1" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="110" count="1" type="stmt"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
       </file>
       <file name="OworldController.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/API/OworldController.js">
         <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
@@ -510,7 +516,7 @@
       </file>
     </package>
     <package name="app.controllers.services">
-      <metrics statements="392" coveredstatements="215" conditionals="7" coveredconditionals="4" methods="13" coveredmethods="3"/>
+      <metrics statements="390" coveredstatements="215" conditionals="7" coveredconditionals="4" methods="13" coveredmethods="3"/>
       <file name="checkRBAC.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/checkRBAC.js">
         <metrics statements="88" coveredstatements="43" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -629,7 +635,7 @@
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="jwtService.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/jwtService.js">
-        <metrics statements="241" coveredstatements="135" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <metrics statements="239" coveredstatements="135" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -866,11 +872,9 @@
         <line num="234" count="0" type="stmt"/>
         <line num="235" count="0" type="stmt"/>
         <line num="236" count="0" type="stmt"/>
-        <line num="237" count="0" type="stmt"/>
-        <line num="238" count="0" type="stmt"/>
+        <line num="237" count="1" type="stmt"/>
+        <line num="238" count="1" type="stmt"/>
         <line num="239" count="1" type="stmt"/>
-        <line num="240" count="1" type="stmt"/>
-        <line num="241" count="1" type="stmt"/>
       </file>
       <file name="sendPasswordReset.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/controllers/services/sendPasswordReset.js">
         <metrics statements="40" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -1211,7 +1215,7 @@
       </file>
     </package>
     <package name="app.models.external_API">
-      <metrics statements="301" coveredstatements="70" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="302" coveredstatements="72" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
       <file name="restCountryAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/external_API/restCountryAPI.js">
         <metrics statements="105" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -1321,7 +1325,7 @@
         <line num="105" count="1" type="stmt"/>
       </file>
       <file name="worldBankApi.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/external_API/worldBankApi.js">
-        <metrics statements="99" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="100" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1343,8 +1347,8 @@
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -1408,9 +1412,9 @@
         <line num="84" count="0" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
-        <line num="87" count="1" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
@@ -1419,8 +1423,9 @@
         <line num="95" count="0" type="stmt"/>
         <line num="96" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
-        <line num="98" count="1" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
         <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
       </file>
       <file name="wtfAPI.js" path="/var/www/html/Apothéose/projet-05-o-world-back/app/models/external_API/wtfAPI.js">
         <metrics statements="97" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
