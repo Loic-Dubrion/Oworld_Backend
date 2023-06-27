@@ -1,4 +1,8 @@
 /**
+ * @module Services_Controllers
+ */
+
+/**
  * This is a middleware function that handles controllers.
  * It is an express middleware that wraps the controller function and catches any errors it throws,
  * passing them to the next middleware (usually an error handling middleware).

@@ -1,3 +1,7 @@
+/**
+ * @module Service
+ */
+
 const expressSwagger = require('express-jsdoc-swagger');
 const logger = require('./logger');
 

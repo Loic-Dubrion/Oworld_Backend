@@ -3,10 +3,10 @@ const userController = require('./UserController');
 const oworldController = require('./OworldController');
 const jwtController = require('./JwtController');
 const externalApiController = require('./externalApiController');
-
 /**
- * Controller for API endpoints.
+ * @module Controllers
  */
+
 const apiController = {
   /**
    * Responds with the API documentation URL and redirects to it.

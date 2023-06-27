@@ -1,3 +1,7 @@
+/**
+ * @module Service
+ */
+
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const logger = require('../logger');

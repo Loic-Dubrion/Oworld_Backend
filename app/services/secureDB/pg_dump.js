@@ -1,3 +1,7 @@
+/**
+ * @module Service
+ */
+
 const { exec } = require('child_process');
 const dotenv = require('dotenv');
 const logger = require('../logger');

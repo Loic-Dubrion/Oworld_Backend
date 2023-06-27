@@ -1,3 +1,7 @@
+/**
+ * @module Controllers
+ */
+
 /** Class representing an abstract core controller. */
 class CoreController {
   static dataMapper;

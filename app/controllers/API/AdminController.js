@@ -1,3 +1,7 @@
+/**
+ * @module Controllers
+ */
+
 const CoreController = require('./CoreController');
 const adminDataMapper = require('../../models/AdminDataMapper');
 

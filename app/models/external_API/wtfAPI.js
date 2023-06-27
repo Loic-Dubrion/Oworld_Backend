@@ -1,3 +1,7 @@
+/**
+ * @module Models_external_api
+ */
+
 /* eslint-disable camelcase */
 const axios = require('axios');
 const RadioBrowser = require('radio-browser');

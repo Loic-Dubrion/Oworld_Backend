@@ -1,3 +1,7 @@
+/**
+ * @module Datamapper
+ */
+
 const CoreDataMapper = require('./CoreDataMapper');
 
 /** Class representing a user data mapper. */

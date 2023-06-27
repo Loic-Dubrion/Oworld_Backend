@@ -1,3 +1,7 @@
+/**
+ * @module Router
+ */
+
 const express = require('express');
 
 // Controllers

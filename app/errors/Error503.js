@@ -1,3 +1,7 @@
+/**
+ * @module Error
+ */
+
 class Error503 extends Error {
   constructor(message) {
     super(message);

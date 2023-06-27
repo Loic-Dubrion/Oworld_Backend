@@ -1,3 +1,7 @@
+/**
+ * @module Service
+ */
+
 const cron = require('node-cron');
 const dumpDatabase = require('../secureDB/pg_dump');
 const sendEmail = require('./sender');

@@ -1,3 +1,7 @@
+/**
+ * @module Controllers
+ */
+
 /* eslint-disable class-methods-use-this */
 const jwt = require('jsonwebtoken');
 

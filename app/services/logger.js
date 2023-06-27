@@ -1,4 +1,8 @@
 /**
+ * @module Service
+ */
+
+/**
  * Configuration Bunyan
  * If mode development, returns console logs
  * If mode production, logs to a file

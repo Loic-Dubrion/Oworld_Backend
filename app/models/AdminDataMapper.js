@@ -1,3 +1,6 @@
+/**
+ * @module Datamapper
+ */
 const CoreDataMapper = require('./CoreDataMapper');
 
 /** Class representing a admin data mapper. */

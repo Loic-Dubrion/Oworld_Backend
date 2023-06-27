@@ -1,3 +1,7 @@
+/**
+ * @module Validations
+ */
+
 const Error400 = require('../errors/Error400');
 
 /**

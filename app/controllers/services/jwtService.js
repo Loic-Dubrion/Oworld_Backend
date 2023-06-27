@@ -1,3 +1,7 @@
+/**
+ * @module Services_Controllers
+ */
+
 // import libraries
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');

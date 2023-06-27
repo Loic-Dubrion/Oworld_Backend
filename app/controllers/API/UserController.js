@@ -1,3 +1,7 @@
+/**
+ * @module Controllers
+ */
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 const bcrypt = require('bcrypt');
 

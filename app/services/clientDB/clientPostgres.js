@@ -1,3 +1,7 @@
+/**
+ * @module Service
+ */
+
 require('dotenv').config();
 
 const { Pool } = require('pg');
