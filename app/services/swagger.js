@@ -11,7 +11,7 @@ const logger = require('./logger');
 const swaggerOptions = {
   servers: [
     {
-      url: `http://${process.env.PGHOST}:${process.env.PORT}` || 'http://localhost:3000',
+      url: `https://${process.env.PGHOST}:${process.env.PORT}` || 'http://localhost:3000',
     },
   ],
   info: {

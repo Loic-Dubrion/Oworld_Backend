@@ -12,7 +12,7 @@ const oworldController = require('../../controllers/API/OworldController');
 const router = express.Router();
 
 /**
- * GET /api/oworld?useView=false
+ * GET /api/oworld
  *
  * @summary Get data World
  * @tags Oworld
@@ -109,7 +109,7 @@ router.get(
  * @tags Oworld
  *
  * @description
- * Returns details by category for each country using World Bank data * Test me!
+ * Returns details by category for each country using World Bank data.
  * Test me !
  *
  * @param {string} countryIso3.path.required - The ISO3 code of the country
@@ -128,7 +128,7 @@ router.get(
  * @tags Oworld
  *
  * @description
- * Return a local radio station, an anecdote and a list of celebrities
+ * Return a local radio station, an anecdote and a list of celebrities.
  * Test me !
  *
  * @param {string} countryIso3.path.required - The ISO3 code of the country
