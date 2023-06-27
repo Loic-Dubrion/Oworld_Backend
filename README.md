@@ -101,8 +101,8 @@ Lancer et tester le serveur
 - Créer les fichier .env et sqitch.conf à la racine du projet à l'aide des exemples
 
 - Créer les tables et insérer les données
-** ! modifiez les script en fonction de votre environnement ! **
-** "psql -U <user> -d <myDataBase> -f data/seedingCountry.sql" **
+**! modifiez les script en fonction de votre environnement !**
+**"psql -U <user> -d <myDataBase> -f data/seedingCountry.sql"**
 
   ```bash
     sqitch deploy
@@ -124,3 +124,20 @@ Lancer et tester le serveur
     npm run start
   ```
   
+## Lancer les test
+
+  ```bash
+    jest
+  ```
+
+## Accéder à la documentaion
+
+La documentation swagger est directement accessible sur <https://projet-05-o-world-back-production.up.railway.app/api-docs/>
+
+Pour créer et accéder à la documentaion générale
+
+  ```bash
+    npm run docs
+  ```
+
+puis accéder via la route /api/docs.
