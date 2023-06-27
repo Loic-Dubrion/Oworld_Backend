@@ -11,7 +11,8 @@
     "db:reset": "npm run db:create && npm run db:seed | bunyan -o short",
     "db:save": "nodemon app/services/secureDB/pg_dump.js | bunyan -o short",
     "test": "jest",
-    "docs": "jsdoc -c jsdoc.config.json"
+    "docs": "jsdoc -c jsdoc.config.json",
+    "pg_dump": "node app/services/secureDB/pg_dump.js"
   },
   "author": "Loïc Dubrion",
   "license": "ISC",
