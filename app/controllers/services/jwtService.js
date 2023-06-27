@@ -13,7 +13,7 @@ const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
 // import errors
-const { Error401, Error403 } = require('../../errors');
+const { Error401, Error403, Error409 } = require('../../errors');
 
 // import models
 const UserDataMapper = require('../../models/UserDataMapper');
@@ -225,7 +225,7 @@ const auth = {
     try {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
     } catch (error) {
-      throw new Error401('Invalid refresh token');
+      throw new Error409('Invalid refresh token');
     }
     const foundUser = await UserDataMapper.findOneByField('id', decodedRefreshToken.data.id);
 
