@@ -13,7 +13,7 @@ const ACCESS_TOKEN_EXPIRATION = process.env.ACCESS_TOKEN_EXPIRATION ?? '15m';
 const REFRESH_TOKEN_EXPIRATION = process.env.REFRESH_TOKEN_EXPIRATION ?? '7d';
 
 // import errors
-const { Error401, Error403, Error409 } = require('../../errors');
+const { Error401, Error403 } = require('../../errors');
 
 // import models
 const UserDataMapper = require('../../models/UserDataMapper');
@@ -218,16 +218,16 @@ const auth = {
   async isValidRefreshToken(request, response, user) {
     const { refreshToken } = request.body;
     if (!refreshToken) {
-      throw new Error401('No refresh token found');
+      return response.status(401).json({ error: 'No refresh token found' });
+      // throw new Error401('No refresh token found');
     }
 
     let decodedRefreshToken;
     try {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
     } catch (error) {
-      console.log('mon erreur : ', error);
       return response.status(401).json({ error: 'token invalid' });
-      // return Error401('Invalid refresh token');
+      // throw new Error401('Invalid refresh token');
     }
 
     const foundUser = await UserDataMapper.findOneByField('id', decodedRefreshToken.data.id);
