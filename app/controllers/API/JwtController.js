@@ -45,7 +45,7 @@ class JwtController extends CoreController {
         data: { accessToken, refreshToken },
       });
     }
-    throw new Error403('Forbidden');
+    throw new Error403('Username or password invalid');
   }
 
   /**

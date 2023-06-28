@@ -219,7 +219,6 @@ const auth = {
     const { refreshToken } = request.body;
     if (!refreshToken) {
       return response.status(401).json({ error: 'No refresh token found' });
-      // throw new Error401('No refresh token found');
     }
 
     let decodedRefreshToken;
@@ -227,7 +226,6 @@ const auth = {
       decodedRefreshToken = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
     } catch (error) {
       return response.status(401).json({ error: 'token invalid' });
-      // throw new Error401('Invalid refresh token');
     }
 
     const foundUser = await UserDataMapper.findOneByField('id', decodedRefreshToken.data.id);

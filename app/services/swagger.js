@@ -17,7 +17,7 @@ const swaggerOptions = {
   info: {
     version: '1.0',
     title: 'O\'World API',
-    description: 'API with data on every country in the world. With multiple sources (World Bank, Rest country)',
+    description: 'API with data on every country in the world. With multiple sources (World Bank, Rest country, Ninja API, ,RadioBrowser)',
   },
   baseDir: `${__dirname}/app`,
   filesPattern: './**/*.js',
