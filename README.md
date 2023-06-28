@@ -1,4 +1,7 @@
 # projet-05-o-world-back
+Création d'une api pour le site O'world.
+Le server back possède deux bases de données, une relationnelle PostgresSql pour les données utilisateurs ( gestion des rôles et permissions, favoris, données personnelles) et une noSql avec Redis pour la gestion des caches (mise en cache des données issues d'api externe).
+Il est réalisé en NodeJs avec Express, un fichier "feakers" permet l'insertion de données fictives pour faciliter la phase de développement et une documentation est disponible (Swagger et JsDoc).
 
 ## Installation
 
