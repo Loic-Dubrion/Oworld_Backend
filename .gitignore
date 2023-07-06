@@ -5,4 +5,3 @@ sqitch.conf
 .env.railway
 data/dbSave/
 coverage/
-documentation/
