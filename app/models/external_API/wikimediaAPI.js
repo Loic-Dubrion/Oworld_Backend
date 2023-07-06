@@ -7,15 +7,15 @@ const redisClient = require('../../services/clientDB/clientRedis');
 const wikimedia = {
   fetchCountryPictures: async (name) => {
     // redis caching
-    await redisClient.connect();
-    const cacheKey = `wikimedia:${name}`;
-    const cacheValue = await redisClient.get(cacheKey);
+    // await redisClient.connect();
+    // const cacheKey = `wikimedia:${name}`;
+    // const cacheValue = await redisClient.get(cacheKey);
 
     // If cached data, I return them
-    if (cacheValue) {
-      await redisClient.quit();
-      return JSON.parse(cacheValue);
-    }
+    // if (cacheValue) {
+    //   await redisClient.quit();
+    //   return JSON.parse(cacheValue);
+    // }
 
     // query construction for the category
     const baseUrl = 'https://commons.wikimedia.org/w/api.php?';
@@ -61,9 +61,9 @@ const wikimedia = {
       });
 
       // Caching with Redis
-      await redisClient.set(cacheKey, JSON.stringify(images));
-      redisClient.expire(cacheKey, process.env.REDIS_TTL);
-      await redisClient.quit();
+      // await redisClient.set(cacheKey, JSON.stringify(images));
+      // redisClient.expire(cacheKey, process.env.REDIS_TTL);
+      // await redisClient.quit();
 
       return images;
     } catch (error) {
@@ -107,7 +107,7 @@ const wikimedia = {
   },
 };
 
-// wikimedia.fetchCountryPictures('Poland').then(console.log).catch(console.error);
+wikimedia.fetchCountryPictures('Japan').then(console.log).catch(console.error);
 wikimedia.fetchCelebrityPicture('Coluche').then(console.log).catch(console.error);
 
 module.exports = wikimedia;
