@@ -71,8 +71,43 @@ const wikimedia = {
       throw new Error503({ HttpCode: 503, Status: 'Fail', Message: 'Service Unavailable' });
     }
   },
+
+  fetchCelebrityPicture: async (celebrityName) => {
+    // query construction for the category
+    const baseUrl = 'https://commons.wikimedia.org/w/api.php?';
+    const param = {
+      action: 'query',
+      format: 'json',
+      list: 'categorymembers',
+      cmtitle: `Category:${celebrityName}`,
+      cmtype: 'file',
+      cmlimit: 1, // Limit the response to 1 result
+    };
+
+    const url = `${baseUrl}action=${param.action}&format=${param.format}&list=${param.list}&cmtitle=${param.cmtitle}&cmtype=${param.cmtype}&cmlimit=${param.cmlimit}`;
+
+    try {
+      const response = await axios.get(url);
+      const pages = response.data.query.categorymembers;
+
+      if (pages.length === 0) {
+        return null;
+      }
+
+      const page = pages[0];
+      const imageUrl = `${baseUrl}action=${param.action}&format=${param.format}&prop=imageinfo&iiprop=url&titles=${encodeURIComponent(page.title)}`;
+      const imageInfoResponse = await axios.get(imageUrl);
+
+      const imageInfo = imageInfoResponse.data.query.pages[Object.keys(imageInfoResponse.data.query.pages)[0]].imageinfo[0];
+      return imageInfo.url;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  },
 };
 
-wikimedia.fetchCountryPictures('Poland').then(console.log).catch(console.error);
+// wikimedia.fetchCountryPictures('Poland').then(console.log).catch(console.error);
+wikimedia.fetchCelebrityPicture('Coluche').then(console.log).catch(console.error);
 
 module.exports = wikimedia;
