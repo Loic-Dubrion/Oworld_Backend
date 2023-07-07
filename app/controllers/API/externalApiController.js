@@ -59,12 +59,15 @@ const externalApiController = {
    * @param {Object} response - The response object.
    */
   unsplash: async (request, response) => {
-    const { iso3 } = request.params;
+    const { countryIso3 } = request.params;
+    console.log(countryIso3);
     const queryCountry = {
-      text: 'SELECT "name" FROM "country" WHERE iso3 = $1',
-      values: [iso3],
+      text: 'SELECT name FROM country WHERE iso3 = $1',
+      values: [countryIso3],
     };
-    const nameCountry = await client.query(queryCountry);
+    let nameCountry = await client.query(queryCountry);
+    nameCountry = nameCountry.rows[0].name;
+    console.log(nameCountry);
     const result = await fetchUnsplash(nameCountry);
     response.json(result);
   },
