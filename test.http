@@ -17,6 +17,9 @@ GET {{baseUrl}}/oworld/flags
 ### One country ###
 GET {{baseUrl}}/oworld/LIB
 
+### List pictures ###
+GET {{baseUrl}}/oworld/BEL/unsplash
+
 ### Categories by country ###
 GET {{baseUrl}}/oworld/BEL/category
 

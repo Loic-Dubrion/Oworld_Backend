@@ -1,6 +1,8 @@
 const countryApi = require('../../models/external_API/restCountryAPI');
 const fetchWorldBankData = require('../../models/external_API/worldBankApi');
 const fetchWTF = require('../../models/external_API/wtfAPI');
+const fetchUnsplash = require('../../models/external_API/unplashAPI');
+const client = require('../../services/clientDB/clientPostgres');
 
 /**
  * Controller for external API endpoints.
@@ -47,6 +49,23 @@ const externalApiController = {
    */
   wtf: async (request, response) => {
     const result = await fetchWTF(request.params.countryIso3);
+    response.json(result);
+  },
+
+  /**
+   * Fetches Unsplash pictures for a specific country from the Unsplash API.
+   *
+   * @param {Object} request - The request object.
+   * @param {Object} response - The response object.
+   */
+  unsplash: async (request, response) => {
+    const { iso3 } = request.params;
+    const queryCountry = {
+      text: 'SELECT "name" FROM "country" WHERE iso3 = $1',
+      values: [iso3],
+    };
+    const nameCountry = await client.query(queryCountry);
+    const result = await fetchUnsplash(nameCountry);
     response.json(result);
   },
 };

@@ -136,4 +136,23 @@ router.get(
   controllerHandler(externalApiController.wtf),
 );
 
+/**
+ * GET /api/oworld/{countryIso3}/unsplash
+ *
+ * @summary Get five urls 5 urls of images of the country
+ * @tags Oworld
+ *
+ * @description
+ * Return five urls 5 urls of images of the country with author, description and alt.
+ * Test me !
+ *
+ * @param {string} countryIso3.path.required - The ISO3 code of the country
+ * @return {object} 200 - Success response - An object containing 5 image urls and their info
+ * @return {Error} 500 - Internal server error
+ */
+router.get(
+  '/:countryIso3/unsplash',
+  controllerHandler(externalApiController.unsplash),
+);
+
 module.exports = router;
